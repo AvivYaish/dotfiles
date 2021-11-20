@@ -1,7 +1,7 @@
-# Set theme
+# Set theme (uses oh-my-posh)
 Set-PoshPrompt -Theme powerlevel10k_lean
 
-# Autocomplete
+# Autocomplete (uses PSReadLine)
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionViewStyle ListView
