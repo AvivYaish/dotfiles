@@ -1,8 +1,9 @@
 # Apps
-# zsh
-# oh-my-zsh
-# powerlevel10k
-# byobu
+# Editor: vim
+# Shell: zsh
+# Shell styling: oh-my-zsh, powerlevel10k
+# Terminal multiplexer: byobu
+# Dotfile tracking: chezmoi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
