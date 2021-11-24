@@ -9,13 +9,11 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| endif
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
     Plug 'junegunn/fzf.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'vim-airline/vim-airline'
-	" Plug 'dense-analysis/ale'
 	Plug 'lervag/vimtex'
 	Plug 'luochen1990/rainbow'
 	Plug 'terryma/vim-multiple-cursors'
@@ -48,14 +46,6 @@ vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
 " Ctrl-O keymap for tree
 map <C-o> :NERDTreeToggle<CR> 
-
-" " ALE stuff
-" let g:ale_completion_enabled = 1
-" let g:ale_fixers = {
-" \	'*': ['remove_trailing_lines', 'trim_whitespace'],
-" \	'javascript': ['eslint'],
-" \	'python': ['autopep8'],
-" \}
 
 " User the onedark colorscheme
 set background=dark
