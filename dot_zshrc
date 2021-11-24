@@ -141,6 +141,7 @@ if [[ `uname` == "Darwin"  ]]; then
     export PATH=$HOME/homebrew/bin:$PATH
     export BYOBU_PREFIX=/Users/avivyaish/homebrew
 else
+    alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
     # Configure node version manager
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -150,4 +151,3 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$PATH
-alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
