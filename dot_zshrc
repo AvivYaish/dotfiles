@@ -1,5 +1,5 @@
 # Apps
-# Editor: vim
+# Editor: nvim
 # Shell: zsh
 # Shell styling: oh-my-zsh, powerlevel10k
 # Terminal multiplexer: byobu
@@ -150,6 +150,4 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.pyenv/bin:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin

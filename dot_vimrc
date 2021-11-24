@@ -15,7 +15,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'vim-airline/vim-airline'
-	Plug 'dense-analysis/ale'
+	" Plug 'dense-analysis/ale'
 	Plug 'lervag/vimtex'
 	Plug 'luochen1990/rainbow'
 	Plug 'terryma/vim-multiple-cursors'
@@ -49,13 +49,13 @@ vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 " Ctrl-O keymap for tree
 map <C-o> :NERDTreeToggle<CR> 
 
-" ALE stuff
-let g:ale_completion_enabled = 1
-let g:ale_fixers = {
-\	'*': ['remove_trailing_lines', 'trim_whitespace'],
-\	'javascript': ['eslint'],
-\	'python': ['autopep8'],
-\}
+" " ALE stuff
+" let g:ale_completion_enabled = 1
+" let g:ale_fixers = {
+" \	'*': ['remove_trailing_lines', 'trim_whitespace'],
+" \	'javascript': ['eslint'],
+" \	'python': ['autopep8'],
+" \}
 
 " User the onedark colorscheme
 set background=dark
@@ -328,3 +328,6 @@ set backspace=indent,eol,start
 " Autocomplete in command mode
 set wildmenu
 set wildmode=longest,list,full
+
+" Highlight search
+set hlsearch
