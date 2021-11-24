@@ -151,3 +151,5 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$PATH
+alias vim="nvim"
+alias vimdiff="nvim -d"
