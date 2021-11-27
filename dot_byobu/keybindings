@@ -1,0 +1,3 @@
+source $BYOBU_PREFIX/share/byobu/keybindings/common
+unbind -n C-Home
+unbind -n C-End
