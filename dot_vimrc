@@ -9,6 +9,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| endif
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
     Plug 'junegunn/fzf.vim'
