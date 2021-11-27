@@ -16,7 +16,7 @@ set backspace=indent,eol,start
 
 " Autocomplete in command mode
 set wildmenu
-set wildmode=longest,list,full
+set wildmode=longest:full,full
 
 " Highlight search
 set hlsearch
@@ -42,6 +42,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| endif
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'vim-test/vim-test'
     Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
@@ -59,8 +60,7 @@ call plug#begin('$HOME/.vim/plugged')
 call plug#end()
 
 " nerdcommenter
-" Need to turn on the filetype plugin
-filetype plugin on
+" Need to turn on the filetype plugin, but did this already with `filetype plugin indent on`
 " Create default mappings
 let g:NERDCreateDefaultMappings = 1
 " Add spaces after comment delimiters by default
@@ -338,3 +338,11 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+" vim-test
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+" nmap <silent> t<C-n> :TestNearest<CR>
+" nmap <silent> t<C-f> :TestFile<CR>
+" nmap <silent> t<C-s> :TestSuite<CR>
+" nmap <silent> t<C-l> :TestLast<CR>
+" nmap <silent> t<C-g> :TestVisit<CR>
