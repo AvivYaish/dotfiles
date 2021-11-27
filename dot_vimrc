@@ -42,8 +42,13 @@ let g:NERDCommentEmptyLines = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 " Ctrl-/ keymap
-nmap <C-_>   <Plug>NERDCommenterToggle
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+if has('win64')
+    nmap <C-/>   <Plug>NERDCommenterToggle
+    vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
+else
+    nmap <C-_>   <Plug>NERDCommenterToggle
+    vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+endif
 
 " Ctrl-O keymap for tree
 map <C-o> :NERDTreeToggle<CR> 
