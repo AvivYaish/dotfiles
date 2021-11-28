@@ -40,8 +40,11 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
   \| endif
+
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'machakann/vim-highlightedyank'
+    Plug 'sbdchd/neoformat'
     Plug 'vim-test/vim-test'
     Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
