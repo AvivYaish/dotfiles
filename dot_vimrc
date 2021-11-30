@@ -1,14 +1,38 @@
-" Set indentation to use 4 spaces
-filetype plugin indent on
-" Show existing tab with 4 spaces width
-set tabstop=4
-" When indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+" Vim cheatsheet: https://devhints.io/vim
+ 
+" For a split window: use Ctrl-w + and Ctrl-w - to resize the height of the current window by a single row. 
+" For a vsplit window: use Ctrl-w > and Ctrl-w < to resize the width of the current window by a single column
+
+" " Set indentation to use 4 spaces
+" filetype plugin indent on
+" " Show existing tab with 4 spaces width
+" set tabstop=4
+" " When indenting with '>', use 4 spaces width
+" set shiftwidth=4
+" " On pressing tab, insert 4 spaces
+" set expandtab
 
 " Set linenumbers
 set number
+
+" Create .vim/files directory if needed
+if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files')
+endif
+
+" Backup files
+set backup
+set backupdir   =$HOME/.vim/files/backup/
+set backupext   =-vimbackup
+set backupskip  =
+" swap files
+set directory   =$HOME/.vim/files/swap//
+set updatecount =100
+" Set undo persistence (save undo history and restore it when opening a file)
+set undofile
+set undodir     =$HOME/.vim/files/undo/
+" viminfo files save histories (command line, search, input), registers, marks, buffer list, global variables etc.
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " Fix backspace in insert mode
 set backspace=2
@@ -31,6 +55,12 @@ nnoremap <C-Y> <C-R>
 inoremap <C-Z> <C-O>u
 inoremap <C-Y> <C-O><C-R>
 
+" Map Ctrl-a to select all
+nnoremap <C-A> ggVG
+
+" Map Ctrl-s to save
+nnoremap <C-s> :w<CR>
+
 " Install vim-plug
 if empty(glob('$HOME/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo '.glob('$HOME').'/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -43,24 +73,83 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'machakann/vim-highlightedyank'
-    Plug 'sbdchd/neoformat'
-    Plug 'vim-test/vim-test'
-    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'matze/vim-move' 		" Moves selection using Alt-SomeArrow
+    Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
+    Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
+    Plug 'mbbill/undotree'    		" Shows an undo history tree (Alt-z)
+    Plug 'tpope/vim-sleuth'             " Automatically adjusts shiftwidth and expandtab based on the current file. If is blank, based on other files from the same directory
+    Plug 'tpope/vim-fugitive'           " Git integration (:Git commit, :Git <some-git-command>)
+    Plug 'machakann/vim-highlightedyank' " Highlights last yank
+    Plug 'sbdchd/neoformat'             " Formats code (:Neoformat)
+    Plug 'vim-test/vim-test'            " Testing framework
+    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git' " NAND2TETRIS syntax highlighting
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Live preview for markdown
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
-    Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'vim-airline/vim-airline'
-	Plug 'lervag/vimtex'
-	Plug 'luochen1990/rainbow'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'preservim/nerdtree'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'joshdick/onedark.vim' "'cocopon/iceberg.vim'
-    Plug 'ryanoasis/vim-devicons'
+    Plug 'junegunn/fzf.vim'             " Command-line fuzzy finder
+    Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
+    Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
+    Plug 'lervag/vimtex'                " Tex
+    Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
+    Plug 'terryma/vim-multiple-cursors' " Multiple cursors (Ctrl+n to mark the next, Ctrl+x to skip)
+    Plug 'preservim/nerdtree'           " Opens a file-tree (Ctrl+o)
+    Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
+    Plug 'scrooloose/nerdcommenter'     " For easy commenting (Ctrl+/)
+    Plug 'joshdick/onedark.vim'         " Onedark theme
+    Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
+
+function! OnVimEnter() abort
+  " Run PlugUpdate every week automatically when entering Vim.
+  if exists('g:plug_home')
+    let l:filename = printf('%s/.vim_plug_update', g:plug_home)
+    if filereadable(l:filename) == 0
+      call writefile([], l:filename)
+    endif
+
+    let l:this_week = strftime('%Y_%V')
+    let l:contents = readfile(l:filename)
+    if index(l:contents, l:this_week) < 0
+      call execute('PlugUpdate')
+      call writefile([l:this_week], l:filename, 'a')
+    endif
+  endif
+endfunction
+autocmd VimEnter * call OnVimEnter()
+
+" undotree
+" Alt-z keymap to show undotree
+nnoremap <A-z> :UndotreeToggle<CR>
+" Persistent undo in undotree
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+
+    " create the directory and any parent directories if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
+
+" vim-move
+let g:move_map_keys=0
+let g:move_auto_indent=1
+let g:move_past_end_of_line=1
+vmap <A-Down> <Plug>MoveBlockDown
+vmap <A-Up> <Plug>MoveBlockUp
+vmap <A-Left> <Plug>MoveBlockLeft
+vmap <A-Right> <Plug>MoveBlockRight
+nmap <A-Down> <Plug>MoveLineDown
+nmap <A-Up> <Plug>MoveLineUp
+
+" Ctrl-O keymap for NERDTree (show file browser)
+map <C-o> :NERDTreeToggle<CR> 
+
+" Use the onedark colorscheme
+set background=dark
+colorscheme onedark 
+let g:airline_theme='onedark' "'iceberg'
 
 " nerdcommenter
 " Need to turn on the filetype plugin, but did this already with `filetype plugin indent on`
@@ -85,17 +174,23 @@ else
     vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 endif
 
-" Ctrl-O keymap for tree
-map <C-o> :NERDTreeToggle<CR> 
-
-" User the onedark colorscheme
-set background=dark
-colorscheme onedark "iceberg
-let g:airline_theme='onedark' "'iceberg'
-
 " coc config
 " coc servers
-let g:coc_global_extensions = ['coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint']
+let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-lightbulb', 'coc-spell-checker', 'coc-fzf-preview']
+" coc-lightbulb Shows a lightbulb if there are code-actions
+" coc-highlight highlights colors and the current word
+" coc-spell-checker is a spellchecker, used by invoking codeAction and then down
+" coc-pydocstring generates pydocs via codeAction
+" coc-fzf-preview provides previews for fzf
+"
+" coc-pyright CocCommand:
+" python.runLinting: Run linting
+" python.sortImports: Sort imports by isort
+" pyright.version: Show the currently used Pyright version in :messages
+" pyright.organizeimports: Organize imports by Pyright
+" pyright.restartserver: This command forces the type checker to discard all of its cached type information and restart analysis. It is useful in cases where new type stubs or libraries have been installed.
+" pyright.createtypestub: Creates Type Stubs with given module name, for example :CocCommand pyright.createtypestub numpy
+
 if !has('nvim')
 	" Disable warning for old VIM
 	let g:coc_disable_startup_warning = 1
@@ -169,6 +264,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nnoremap <C-Z> u
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
@@ -208,8 +304,8 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 " Add `:Fold` command to fold current buffer.
