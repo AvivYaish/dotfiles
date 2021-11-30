@@ -19,6 +19,21 @@ set number
 if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files')
 endif
+if !isdirectory($HOME.'/.vim/files/backup') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files/backup')
+endif
+if !isdirectory($HOME.'/.vim/files/swap') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files/swap')
+endif
+if !isdirectory($HOME.'/.vim/files/undo') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files/undo')
+endif
+if !isdirectory($HOME.'/.vim/files/info') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files/info')
+endif
+if !isdirectory($HOME.'/.vim/files/info/viminfo') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files/info/viminfo')
+endif
 
 " Backup files
 set backup
@@ -26,7 +41,7 @@ set backupdir   =$HOME/.vim/files/backup/
 set backupext   =-vimbackup
 set backupskip  =
 " swap files
-set directory   =$HOME/.vim/files/swap//
+set directory   =$HOME/.vim/files/swap/
 set updatecount =100
 " Set undo persistence (save undo history and restore it when opening a file)
 set undofile
@@ -84,8 +99,8 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'vim-test/vim-test'            " Testing framework
     Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git' " NAND2TETRIS syntax highlighting
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Live preview for markdown
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
-    Plug 'junegunn/fzf.vim'             " Command-line fuzzy finder
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Make sure you have latest version of the fzf binary. fzf is a command-line fuzzy finder
+    Plug 'junegunn/fzf.vim'             " vim-fzf integration
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
     Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
     Plug 'lervag/vimtex'                " Tex
