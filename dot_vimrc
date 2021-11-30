@@ -31,9 +31,6 @@ endif
 if !isdirectory($HOME.'/.vim/files/info') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files/info')
 endif
-if !isdirectory($HOME.'/.vim/files/info/viminfo') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files/info/viminfo')
-endif
 
 " Backup files
 set backup
@@ -158,10 +155,11 @@ vmap <A-Right> <Plug>MoveBlockRight
 nmap <A-Down> <Plug>MoveLineDown
 nmap <A-Up> <Plug>MoveLineUp
 
-" Ctrl-O keymap for NERDTree (show file browser)
+" NERDTree
+" Ctrl-o shows file browser
 map <C-o> :NERDTreeToggle<CR> 
 
-" Use the onedark colorscheme
+" onedark colorscheme
 set background=dark
 colorscheme onedark 
 let g:airline_theme='onedark' "'iceberg'
@@ -191,12 +189,11 @@ endif
 
 " coc config
 " coc servers
-let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-lightbulb', 'coc-spell-checker', 'coc-fzf-preview']
+let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-lightbulb', 'coc-spell-checker']
 " coc-lightbulb Shows a lightbulb if there are code-actions
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
 " coc-pydocstring generates pydocs via codeAction
-" coc-fzf-preview provides previews for fzf
 "
 " coc-pyright CocCommand:
 " python.runLinting: Run linting
