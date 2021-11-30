@@ -1,7 +1,7 @@
 # dotfiles
 My dotfiles.
 I use the following applications:
-- Editor: nvim
+- Editor: nvim/vim
 - Shell: zsh, PowerShell
 - Shell styling: oh-my-zsh, oh-my-posh, powerlevel10k
 - Terminal multiplexer: byobu
