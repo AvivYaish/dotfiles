@@ -45,28 +45,28 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'majutsushi/tagbar' 		" Programming file overview (variables, functions, etc)
-    Plug 'matze/vim-move' 		" Moves selection using Alt-ArrowKeys
+    Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
+    Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
     Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
     Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
-    Plug 'mbbill/undotree'    		" Shows an undo history tree (Alt-z)
+    Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Shows an undo history tree (Alt-z)
     Plug 'tpope/vim-sleuth'             " Automatically adjusts shiftwidth and expandtab based on the current file. If is blank, based on other files from the same directory
     Plug 'tpope/vim-fugitive'           " Git integration (:Git commit, :Git <some-git-command>)
     Plug 'machakann/vim-highlightedyank' " Highlights last yank
-    Plug 'sbdchd/neoformat'             " Formats code (:Neoformat)
+    Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " Formats code (:Neoformat)
     Plug 'vim-test/vim-test'            " Testing framework
-    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git' " NAND2TETRIS syntax highlighting
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " Live preview for markdown
+    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git', { 'for': ['hdl', 'hack', 'asm', 'vm', 'jack', 'tst'] } " NAND2TETRIS syntax highlighting, only open for nand2tet files
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown']} " Live preview for markdown
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Make sure you have latest version of the fzf binary. fzf is a command-line fuzzy finder
     Plug 'junegunn/fzf.vim'             " vim-fzf integration
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
     Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
-    Plug 'lervag/vimtex'                " Tex
+    Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
     Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
     Plug 'terryma/vim-multiple-cursors' " Multiple cursors (Ctrl+n to mark the next, Ctrl+x to skip)
-    Plug 'preservim/nerdtree'           " Opens a file-tree (Ctrl+o)
+    Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+o)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
-    Plug 'scrooloose/nerdcommenter'     " For easy commenting (Ctrl+/)
+    Plug 'scrooloose/nerdcommenter', { 'on': 'NERDCommenterToggle' }     " For easy commenting (Ctrl+/)
     Plug 'joshdick/onedark.vim'         " Onedark theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
