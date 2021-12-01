@@ -17,20 +17,6 @@ inoremap <C-Y> <C-O><C-R>
 nnoremap <C-A> ggVG 
 nnoremap <C-s> :w<CR>
 
-" Create .vim/files directory if needed
-if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files')
-endif
-if !isdirectory($HOME.'/.vim/files/undo') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files/undo')
-endif
-if !isdirectory($HOME.'/.vim/files/info') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files/info')
-endif
-set undofile 					" Undo persistence saves undo history
-set undodir=$HOME/.vim/files/undo/
-set viminfo='100,n$HOME/.vim/files/info/viminfo " viminfo files save state and histories (command line, search, input)
-
 " Indentation config unnecessary because of vim-sleuth
 " filetype plugin indent on
 " set tabstop=4 	" Show existing tab with 4 spaces width
@@ -105,13 +91,15 @@ let g:airline_theme='onedark'
 " Alt-z keymap to show undotree
 nnoremap <A-z> :UndotreeToggle<CR>
 if has("persistent_undo") " Persistent undo in undotree
-   let target_path = expand('~/.undodir')
-    if !isdirectory(target_path) " create the directory and any parent directories if the location does not exist.
-        call mkdir(target_path, "p", 0700)
-    endif
-    let &undodir=target_path
-    set undofile
+  let target_path = expand('$HOME/.vim/.undodir')
+  if !isdirectory(target_path) " create the directory and any parent directories if the location does not exist.
+    call mkdir(target_path, "p", 0700)
+  endif
+  let &undodir=target_path
+  set undofile
 endif
+
+set viminfo='100,n$HOME/.vim/.viminfo " viminfo files save state and histories (command line, search, input)
 
 " vim-move
 let g:move_map_keys=0
