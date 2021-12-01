@@ -24,6 +24,15 @@ inoremap <C-Y> <C-O><C-R>
 nnoremap <C-A> ggVG 
 nnoremap <C-s> :w<CR>
 
+set termguicolors
+if has('win64')
+  let &shell = 'pwsh'
+  let &shellcmdflag = '-NoLogo  -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  set shellquote= shellxquote=
+endif
+
 " Indentation config unnecessary because of vim-sleuth
 " filetype plugin indent on
 " set tabstop=4 	" Show existing tab with 4 spaces width
@@ -336,3 +345,4 @@ let g:vimtex_view_general_options
 " let g:vimtex_view_general_viewer = 'firefox'
 " let g:vimtex_view_general_options = "file:///@pdf"
 " let g:vimtex_view_general_options_latexmk = '--unique'
+
