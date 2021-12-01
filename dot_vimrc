@@ -38,7 +38,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'matze/vim-move' 		" Moves selection using Alt-SomeArrow
+    Plug 'matze/vim-move' 		" Moves selection using Alt-ArrowKeys
     Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
     Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
     Plug 'mbbill/undotree'    		" Shows an undo history tree (Alt-z)
@@ -91,7 +91,7 @@ let g:airline_theme='onedark'
 " Alt-z keymap to show undotree
 nnoremap <A-z> :UndotreeToggle<CR>
 if has("persistent_undo") " Persistent undo in undotree
-  let target_path = expand('$HOME/.vim/.undodir')
+  let target_path = expand('$HOME/.vim/undodir')
   if !isdirectory(target_path) " create the directory and any parent directories if the location does not exist.
     call mkdir(target_path, "p", 0700)
   endif
@@ -99,7 +99,7 @@ if has("persistent_undo") " Persistent undo in undotree
   set undofile
 endif
 
-set viminfo='100,n$HOME/.vim/.viminfo " viminfo files save state and histories (command line, search, input)
+set viminfo='100,n$HOME/.vim/viminfo " viminfo files save state and histories (command line, search, input)
 
 " vim-move
 let g:move_map_keys=0
