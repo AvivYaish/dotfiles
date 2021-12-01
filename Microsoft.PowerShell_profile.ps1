@@ -6,7 +6,7 @@ function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)]
 }
 
 # Set theme (uses oh-my-posh)
-Set-PoshPrompt -Theme powerlevel10k_lean
+Set-PoshPrompt -Theme ~\.mytheme.omp.json
 
 # Autocomplete (uses PSReadLine)
 Set-PSReadLineOption -PredictionSource History
