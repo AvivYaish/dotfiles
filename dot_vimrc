@@ -14,9 +14,6 @@ set backspace=indent,eol,start
 set wildmenu
 set wildmode=longest:full,full
 
-" Spell checking and word completion
-setlocal spell
-set complete+=kspell
 
 " Map Ctrl-z, Ctrl-y to undo, redo, Ctrl-a to select all, Ctrl-s to save
 nnoremap <C-Z> u
@@ -25,12 +22,6 @@ inoremap <C-Z> <C-O>u
 inoremap <C-Y> <C-O><C-R>
 nnoremap <C-A> ggVG 
 nnoremap <C-s> :w<CR>
-
-" Indentation config unnecessary because of vim-sleuth
-" filetype plugin indent on
-" set tabstop=4 	" Show existing tab with 4 spaces width
-" set shiftwidth=4 	" When indenting with '>', use 4 spaces width
-" set expandtab 	" On pressing tab, insert 4 spaces
 
 " Create .vim/files directory if needed
 if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
@@ -48,6 +39,16 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 " viminfo files save histories (command line, search, input), registers, marks, buffer list, global variables etc.
 set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+
+" Indentation config unnecessary because of vim-sleuth
+" filetype plugin indent on
+" set tabstop=4 	" Show existing tab with 4 spaces width
+" set shiftwidth=4 	" When indenting with '>', use 4 spaces width
+" set expandtab 	" On pressing tab, insert 4 spaces
+
+" Spell checking and word completion are unnecessary, using coc for that
+" setlocal spell
+" set complete+=kspell
 
 " Install vim-plug
 if empty(glob('$HOME/.vim/autoload/plug.vim'))
@@ -160,8 +161,7 @@ else
 endif
 
 " coc language plugins
-let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-lightbulb', 'coc-spell-checker']
-" coc-lightbulb Shows a lightbulb if there are code-actions
+let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
 " coc-pydocstring generates pydocs via codeAction
