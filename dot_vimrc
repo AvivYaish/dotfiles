@@ -116,11 +116,9 @@ let g:airline_theme='onedark'
 " undotree
 " Alt-z keymap to show undotree
 nnoremap <A-z> :UndotreeToggle<CR>
-" Persistent undo in undotree
-if has("persistent_undo")
+if has("persistent_undo") " Persistent undo in undotree
    let target_path = expand('~/.undodir')
-    " create the directory and any parent directories if the location does not exist.
-    if !isdirectory(target_path)
+    if !isdirectory(target_path) " create the directory and any parent directories if the location does not exist.
         call mkdir(target_path, "p", 0700)
     endif
     let &undodir=target_path
@@ -141,24 +139,59 @@ nmap <A-Up> <Plug>MoveLineUp
 " nerdcommenter
 " Need to turn on the filetype plugin, but did this already with `filetype plugin indent on`
 let g:NERDCreateDefaultMappings = 1
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-" Ctrl-/ keymap
-if has('win64')
+let g:NERDSpaceDelims = 1 " Add spaces after comment delimiters by default
+let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
+let g:NERDDefaultAlign = 'left' " Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not 
+if has('win64') " Ctrl-/ keymap is different between Windows and Linux
     nmap <C-/>   <Plug>NERDCommenterToggle
     vmap <C-/>   <Plug>NERDCommenterToggle<CR>gv
 else
     nmap <C-_>   <Plug>NERDCommenterToggle
     vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 endif
+
+" vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+" vim-test
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+" nmap <silent> t<C-n> :TestNearest<CR>
+" nmap <silent> t<C-f> :TestFile<CR>
+" nmap <silent> t<C-s> :TestSuite<CR>
+" nmap <silent> t<C-l> :TestLast<CR>
+" nmap <silent> t<C-g> :TestVisit<CR>
+
+" Markdownpreview
+let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
+let g:mkdp_auto_close = 1 " set to 1, the nvim will auto close current preview window when change from markdown buffer to another buffer
+let g:mkdp_refresh_slow = 0 " set to 1, the vim will refresh markdown when save the buffer or leave from insert mode, default 0 is auto refresh markdown as you edit or move the cursor
+let g:mkdp_open_ip = '' " use custom IP to open preview page, useful when you work in remote vim and preview on local browser, more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+let g:mkdp_port = '' " use a custom port to start server or random for empty
+let g:mkdp_filetypes = ['markdown'] " recognized filetypes, these filetypes will have MarkdownPreview... commands
+" options for markdown render
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
 
 " coc language plugins
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
@@ -316,44 +349,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-" Markdownpreview
-let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
-let g:mkdp_auto_close = 1 " set to 1, the nvim will auto close current preview window when change from markdown buffer to another buffer
-let g:mkdp_refresh_slow = 0 " set to 1, the vim will refresh markdown when save the buffer or leave from insert mode, default 0 is auto refresh markdown as you edit or move the cursor
-let g:mkdp_open_ip = '' " use custom IP to open preview page, useful when you work in remote vim and preview on local browser, more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-let g:mkdp_port = '' " use a custom port to start server or random for empty
-let g:mkdp_filetypes = ['markdown'] " recognized filetypes, these filetypes will have MarkdownPreview... commands
-" options for markdown render
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-
-" vim-multiple-cursors
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
-" vim-test
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-" nmap <silent> t<C-n> :TestNearest<CR>
-" nmap <silent> t<C-f> :TestFile<CR>
-" nmap <silent> t<C-s> :TestSuite<CR>
-" nmap <silent> t<C-l> :TestLast<CR>
-" nmap <silent> t<C-g> :TestVisit<CR>
