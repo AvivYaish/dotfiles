@@ -3,8 +3,8 @@
 " For a split window: use Ctrl-w + and Ctrl-w - to resize the height of the current window by a single row. 
 " For a vsplit window: use Ctrl-w > and Ctrl-w < to resize the width of the current window by a single column
 
-" Set linenumbers
-set number
+set number " Show linenumbers
+set hlsearch " Highlight current search
 
 " Fix backspace in insert mode
 set backspace=2
@@ -14,44 +14,27 @@ set backspace=indent,eol,start
 set wildmenu
 set wildmode=longest:full,full
 
-" Highlight search
-set hlsearch
-
 " Spell checking and word completion
 setlocal spell
 set complete+=kspell
 
-" Map Ctrl-z, Ctrl-y to undo, redo
+" Map Ctrl-z, Ctrl-y to undo, redo, Ctrl-a to select all, Ctrl-s to save
 nnoremap <C-Z> u
 nnoremap <C-Y> <C-R>
 inoremap <C-Z> <C-O>u
 inoremap <C-Y> <C-O><C-R>
-
-" Map Ctrl-a to select all
-nnoremap <C-A> ggVG
-
-" Map Ctrl-s to save
+nnoremap <C-A> ggVG 
 nnoremap <C-s> :w<CR>
 
 " Indentation config unnecessary because of vim-sleuth
-" " Set indentation to use 4 spaces
 " filetype plugin indent on
-" " Show existing tab with 4 spaces width
-" set tabstop=4
-" " When indenting with '>', use 4 spaces width
-" set shiftwidth=4
-" " On pressing tab, insert 4 spaces
-" set expandtab
+" set tabstop=4 	" Show existing tab with 4 spaces width
+" set shiftwidth=4 	" When indenting with '>', use 4 spaces width
+" set expandtab 	" On pressing tab, insert 4 spaces
 
 " Create .vim/files directory if needed
 if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files')
-endif
-if !isdirectory($HOME.'/.vim/files/backup') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files/backup')
-endif
-if !isdirectory($HOME.'/.vim/files/swap') && exists('*mkdir')
-  call mkdir($HOME.'/.vim/files/swap')
 endif
 if !isdirectory($HOME.'/.vim/files/undo') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files/undo')
@@ -60,14 +43,6 @@ if !isdirectory($HOME.'/.vim/files/info') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files/info')
 endif
 
-" Backup files
-set backup
-set backupdir   =$HOME/.vim/files/backup/
-set backupext   =-vimbackup
-set backupskip  =
-" swap files
-set directory   =$HOME/.vim/files/swap/
-set updatecount =100
 " Set undo persistence (save undo history and restore it when opening a file)
 set undofile
 set undodir     =$HOME/.vim/files/undo/
@@ -129,8 +104,7 @@ function! OnVimEnter() abort
 endfunction
 autocmd VimEnter * call OnVimEnter()
 
-" NERDTree
-" Ctrl-o shows file browser
+" NERDTree Ctrl-o shows file browser
 map <C-o> :NERDTreeToggle<CR> 
 
 " onedark colorscheme
@@ -144,12 +118,10 @@ nnoremap <A-z> :UndotreeToggle<CR>
 " Persistent undo in undotree
 if has("persistent_undo")
    let target_path = expand('~/.undodir')
-
     " create the directory and any parent directories if the location does not exist.
     if !isdirectory(target_path)
         call mkdir(target_path, "p", 0700)
     endif
-
     let &undodir=target_path
     set undofile
 endif
@@ -167,7 +139,6 @@ nmap <A-Up> <Plug>MoveLineUp
 
 " nerdcommenter
 " Need to turn on the filetype plugin, but did this already with `filetype plugin indent on`
-" Create default mappings
 let g:NERDCreateDefaultMappings = 1
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -188,8 +159,7 @@ else
     vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 endif
 
-" coc config
-" coc servers
+" coc language plugins
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-lightbulb', 'coc-spell-checker']
 " coc-lightbulb Shows a lightbulb if there are code-actions
 " coc-highlight highlights colors and the current word
@@ -355,19 +325,6 @@ let g:mkdp_open_ip = '' " use custom IP to open preview page, useful when you wo
 let g:mkdp_port = '' " use a custom port to start server or random for empty
 let g:mkdp_filetypes = ['markdown'] " recognized filetypes, these filetypes will have MarkdownPreview... commands
 " options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-" content_editable: if enable content editable for preview page, default: v:false
-" disable_filename: if disable filename header for preview page, default: 0
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -381,7 +338,6 @@ let g:mkdp_preview_options = {
     \ 'content_editable': v:false,
     \ 'disable_filename': 0
     \ }
-
 
 " vim-multiple-cursors
 let g:multi_cursor_use_default_mapping=0
