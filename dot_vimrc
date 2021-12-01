@@ -318,3 +318,21 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" VimTeX
+syntax enable " This enables Vim's and neovim's syntax-related features. Without this, some VimTeX features will not work (see ':help vimtex-requirements' for more info).
+let g:vimtex_view_general_viewer = 'SumatraPDF'
+let g:vimtex_view_general_options
+            \ = '-reuse-instance -forward-search @tex @line @pdf'
+            \ . ' -inverse-search "vim --servername ' . v:servername
+            \ . ' --remote-send \"^<C-\^>^<C-n^>'
+            \ . ':drop \%f^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'
+            \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+            \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+            \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+" Fix inverse search on nvim+windows+sumatra: https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/
+" If you prefer Firefox
+" let g:vimtex_view_method = 'general'
+" let g:vimtex_view_general_viewer = 'firefox'
+" let g:vimtex_view_general_options = "file:///@pdf"
+" let g:vimtex_view_general_options_latexmk = '--unique'
