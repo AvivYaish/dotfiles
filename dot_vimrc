@@ -1,19 +1,13 @@
 " Vim cheatsheet: https://devhints.io/vim
- 
 " For a split window: use Ctrl-w + and Ctrl-w - to resize the height of the current window by a single row. 
 " For a vsplit window: use Ctrl-w > and Ctrl-w < to resize the width of the current window by a single column
 
-set number " Show linenumbers
-set hlsearch " Highlight current search
-
-" Fix backspace in insert mode
+set number 			" Show linenumbers
+set hlsearch 			" Highlight current search
 set backspace=2
-set backspace=indent,eol,start
-
-" Autocomplete in command mode
+set backspace=indent,eol,start 	" Fix backspace in insert mode
 set wildmenu
-set wildmode=longest:full,full
-
+set wildmode=longest:full,full 	" Autocomplete in command mode
 
 " Map Ctrl-z, Ctrl-y to undo, redo, Ctrl-a to select all, Ctrl-s to save
 nnoremap <C-Z> u
@@ -33,19 +27,15 @@ endif
 if !isdirectory($HOME.'/.vim/files/info') && exists('*mkdir')
   call mkdir($HOME.'/.vim/files/info')
 endif
-
-" Set undo persistence (save undo history and restore it when opening a file)
-set undofile
-set undodir     =$HOME/.vim/files/undo/
-" viminfo files save histories (command line, search, input), registers, marks, buffer list, global variables etc.
-set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+set undofile 					" Undo persistence saves undo history
+set undodir=$HOME/.vim/files/undo/
+set viminfo='100,n$HOME/.vim/files/info/viminfo " viminfo files save state and histories (command line, search, input)
 
 " Indentation config unnecessary because of vim-sleuth
 " filetype plugin indent on
 " set tabstop=4 	" Show existing tab with 4 spaces width
 " set shiftwidth=4 	" When indenting with '>', use 4 spaces width
 " set expandtab 	" On pressing tab, insert 4 spaces
-
 " Spell checking and word completion are unnecessary, using coc for that
 " setlocal spell
 " set complete+=kspell
@@ -88,13 +78,11 @@ call plug#begin('$HOME/.vim/plugged')
 call plug#end()
 
 function! OnVimEnter() abort
-  " Run PlugUpdate every week automatically when entering Vim.
-  if exists('g:plug_home')
+  if exists('g:plug_home') 	" Run PlugUpdate every week automatically when entering Vim.
     let l:filename = printf('%s/.vim_plug_update', g:plug_home)
     if filereadable(l:filename) == 0
       call writefile([], l:filename)
     endif
-
     let l:this_week = strftime('%Y_%V')
     let l:contents = readfile(l:filename)
     if index(l:contents, l:this_week) < 0
@@ -197,37 +185,19 @@ let g:mkdp_preview_options = {
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
-" coc-pydocstring generates pydocs via codeAction
-"
-" coc-pyright CocCommand:
-" python.runLinting: Run linting
-" python.sortImports: Sort imports by isort
-" pyright.version: Show the currently used Pyright version in :messages
-" pyright.organizeimports: Organize imports by Pyright
-" pyright.restartserver: This command forces the type checker to discard all of its cached type information and restart analysis. It is useful in cases where new type stubs or libraries have been installed.
-" pyright.createtypestub: Creates Type Stubs with given module name, for example :CocCommand pyright.createtypestub numpy
 
 if !has('nvim')
-	" Disable warning for old VIM
-	let g:coc_disable_startup_warning = 1
-	" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-	" unicode characters in the file autoload/float.vim
+	let g:coc_disable_startup_warning = 1 " Disable warning for old VIM
+	" Set internal encoding of vim, not needed on neovim, since coc.nvim using some unicode characters in the file autoload/float.vim
 	set encoding=utf-8
 endif
-" TextEdit might fail if hidden is not set.
-set hidden
-" Some servers have issues with backup files, see #649.
-set nobackup
+set hidden 		" TextEdit might fail if hidden is not set.
+set nobackup 		" Some servers have issues with backup files, see #649.
 set nowritebackup
-" Give more space for displaying messages.
-set cmdheight=2
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
+set cmdheight=2 	" Give more space for displaying messages.
+set updatetime=300 	" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set shortmess+=c 	" Don't pass messages to |ins-completion-menu|.
+" Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
