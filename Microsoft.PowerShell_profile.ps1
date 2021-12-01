@@ -1,3 +1,10 @@
+# Alias for nvim
+Set-Alias -Name vim -Value nvim
+function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining)
+{
+	vim -d $Remaining
+}
+
 # Set theme (uses oh-my-posh)
 Set-PoshPrompt -Theme powerlevel10k_lean
 
