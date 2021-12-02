@@ -54,6 +54,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
     Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
     Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
