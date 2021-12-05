@@ -56,7 +56,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('$HOME/.vim/plugged')
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
-    Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
+    Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveLineUp', '<Plug>MoveBlockUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
     Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
     Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Shows an undo history tree (Alt-z)
@@ -76,7 +76,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'terryma/vim-multiple-cursors' " Multiple cursors (Ctrl+n to mark the next, Ctrl+x to skip)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+o)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
-    Plug 'scrooloose/nerdcommenter', { 'on': 'NERDCommenterToggle' }     " For easy commenting (Ctrl+/)
+    Plug 'scrooloose/nerdcommenter', { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }     " For easy commenting (Ctrl+/)
     Plug 'joshdick/onedark.vim'         " Onedark theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()

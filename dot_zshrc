@@ -86,14 +86,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-	pip
-	macos
+    pip
+    macos
     bundler
     dotenv
     python
     npm
-	zsh-autocomplete
-	zsh-syntax-highlighting
+    zsh-autocomplete
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -130,26 +130,75 @@ compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if [[ `uname` == "Darwin"  ]]; then
+    # Configure homebrew
+    export PATH=$HOME/homebrew/bin:$PATH
+
+    # byobu
+    export BYOBU_PREFIX=$HOME/homebrew
+
     # Configure npm
     export PATH=$HOME/node-v17.1.0-darwin-arm64/bin:$PATH
     npm config set prefix ~/.npm-packages
 
     # Hardhat doesn't like node 17
     export NODE_OPTIONS=--openssl-legacy-provider
-
-    # Configure homebrew
-    export PATH=$HOME/homebrew/bin:$PATH
-    export BYOBU_PREFIX=/Users/avivyaish/homebrew
 else
-    alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
+    export PATH=$HOME/.pyenv/bin:$PATH
+
     # Configure node version manager
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-    export PATH=$HOME/byobu/bin:$PATH
 fi
 
 export PATH=$HOME/.local/bin:$PATH
+# export BYOBU_CONFIG_DIR=~/.local/share/byobu
+
+# nvim
+alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
 alias vim="nvim"
 alias vimdiff="nvim -d"
+
+# Correctly setting pyenv's python on HUJI's computers
+eval "$(pyenv init --path)"
+
+# Install byobu to .local:
+# wget https://launchpad.net/byobu/trunk/5.133/+download/byobu_5.133.orig.tar.gz
+# tar -zxvf byobu_5.133.orig.tar.gz
+# rm byobu_5.133.orig.tar.gz
+# cd byobu-5.133
+# ./configure --prefix="$HOME/.local"
+# make
+# make install
+# cd ..
+# rm -rf byobu-5.133
+
+# Some versions have a problem when installing from source https://bugs.launchpad.net/byobu/+bug/1025998
+# Edit byobu-janitor: vim .local/bin/byobu-janitor
+# Replace this:
+
+# if ! grep -qs "^screen_upper_left=" "$BYOBU_CONFIG_DIR/status"; then
+#         rm -f "$BYOBU_CONFIG_DIR/status" "$BYOBU_CONFIG_DIR/statusrc"
+# fi
+
+# with
+
+# if [ -f "$BYOBU_CONFIG_DIR/status" ]; then
+#     if ! grep -qs "^screen_upper_left=" "$BYOBU_CONFIG_DIR/status"; then
+#         rm -f "$BYOBU_CONFIG_DIR/status" "$BYOBU_CONFIG_DIR/statusrc"
+#     fi
+# fi
+
+# Try running: byobu-config
+# If "snack" is missing, install: conda install -c conda-forge newt
+
+# If you don't have anaconda:
+# Install pyenv from source for HUJI: https://github.com/pyenv/pyenv-installer
+# Then install some python interpreter: pyenv install miniconda3-latest
+# Then use it: pyenv global miniconda3-latest
+# Also for python2: pyenv install miniconda2-latest ; pyenv global miniconda2-latest
+
+# Seems .local/lib/byobu/include/common uses some wrong paths
+# For example, doesn't use $BYOBU_PREFIX on '/etc'
+
+# TmuxPluginManager requires a .tmux.conf at the root, run: ln -s .local/share/byobu/.tmux.conf .
