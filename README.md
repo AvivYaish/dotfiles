@@ -6,13 +6,15 @@
 # dotfiles
 My dotfiles.
 I use the following applications:
-- Editor: nvim/vim
+- Editor: [nvim](https://github.com/neovim/neovim)
 - Shell: zsh, PowerShell
-- Shell styling: oh-my-zsh, oh-my-posh, powerlevel10k
-- Terminal multiplexer: byobu
-- Dotfile tracking: chezmoi
+- Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
+- Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
 
 Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
 - Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
 - Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+
+[Here](https://www.youtube.com/playlist?list=PLuHmgt1HXB7Cb2b1LKWad9HpEZ_Rt5MZt) is a course I've recorded about the command-line shell, in Hebrew.
