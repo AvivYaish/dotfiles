@@ -129,38 +129,35 @@ compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# I put local programs in .local/bin
+export PATH=$HOME/.local/bin:$PATH
+
 if [[ `uname` == "Darwin"  ]]; then
     # Configure homebrew
     export PATH=$HOME/homebrew/bin:$PATH
 
     # byobu
-    export BYOBU_PREFIX=$HOME/homebrew
+    # export BYOBU_PREFIX=$HOME/homebrew
 
     # Configure npm
     export PATH=$HOME/node-v17.1.0-darwin-arm64/bin:$PATH
     npm config set prefix ~/.npm-packages
-
-    # Hardhat doesn't like node 17
-    export NODE_OPTIONS=--openssl-legacy-provider
 else
+    # Correctly setting pyenv's python on HUJI's computers
     export PATH=$HOME/.pyenv/bin:$PATH
+    eval "$(pyenv init --path)"
 
     # Configure node version manager
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    
+    alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
 fi
 
-export PATH=$HOME/.local/bin:$PATH
-# export BYOBU_CONFIG_DIR=~/.local/share/byobu
-
 # nvim
-alias nvim="nvim.appimage" # Assuming this is installed in $HOME/.local/bin
 alias vim="nvim"
 alias vimdiff="nvim -d"
-
-# Correctly setting pyenv's python on HUJI's computers
-eval "$(pyenv init --path)"
 
 # Install byobu to .local:
 # wget https://launchpad.net/byobu/trunk/5.133/+download/byobu_5.133.orig.tar.gz
