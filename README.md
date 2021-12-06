@@ -17,4 +17,4 @@ Desktop configuration:
 - Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
 - Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 
-[Here](https://www.youtube.com/playlist?list=PLuHmgt1HXB7Cb2b1LKWad9HpEZ_Rt5MZt) is a course I've recorded about the command-line shell, in Hebrew.
+[Here](https://www.youtube.com/playlist?list=PLuHmgt1HXB7Cb2b1LKWad9HpEZ_Rt5MZt) is a course I have recorded for The Hebrew University about the command-line shell, in Hebrew.
