@@ -17,15 +17,15 @@ Desktop configuration:
 - Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
 - Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 
-To paraphrase the Rifleman's Creed:
-> This is my terminal. There are many like it, but this one is mine.
-> My terminal is my best friend. It is my life. I must master it as I must master my life.
-> Without me, my terminal is useless. Without my terminal, I am useless. 
-
-[Here](https://www.youtube.com/playlist?list=PLuHmgt1HXB7Cb2b1LKWad9HpEZ_Rt5MZt) is a course I have recorded for The Hebrew University about the command-line shell, in Hebrew.
-
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
 To that end, many people have created countless configurations to help you start:
 - [Oh-my-zsh](https://github.com/ohmyzsh/): a framework that makes your terminal informative and beautiful.
 - [Nvchad](https://nvchad.github.io/): a NeoVIM IDE!
 - [.tmux](https://github.com/gpakosz/.tmux): a tmux configuration file.
+
+To paraphrase the Rifleman's Creed:
+> This is my terminal. There are many like it, but this one is mine.
+> My terminal is my best friend. It is my life. I must master it as I must master my life.
+> Without me, my terminal is useless. Without my terminal, I am useless. 
+
+[Here](https://www.youtube.com/playlist?list=PLuHmgt1HXB7Cb2b1LKWad9HpEZ_Rt5MZt) is a course I have recorded for The Hebrew University about the command-line shell, in Hebrew. It has some additional thoughts on how and why the command-line shell should be used.
