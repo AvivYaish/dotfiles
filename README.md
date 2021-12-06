@@ -2,6 +2,8 @@
 ![screenshot](https://user-images.githubusercontent.com/12000894/144871015-58aa42aa-ad76-4e14-8e1f-2832dfcec3a2.jpg)
 ![screenshotError](https://user-images.githubusercontent.com/12000894/144314558-065dffa8-ad35-447a-984e-01de5270f8c6.jpg)
 ![screenshotAction](https://user-images.githubusercontent.com/12000894/144314568-390f2795-51cd-4c81-b96d-39bee1518680.jpg)
+![screenshotNestedTmux](https://user-images.githubusercontent.com/12000894/144904160-97db0837-3416-4ff2-bfe8-151e293b73fb.png)
+
 
 # dotfiles
 My dotfiles.
