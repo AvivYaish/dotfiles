@@ -11,4 +11,8 @@ I use the following applications:
 - Shell styling: oh-my-zsh, oh-my-posh, powerlevel10k
 - Terminal multiplexer: byobu
 - Dotfile tracking: chezmoi
-- Desktop theme: 
+
+Desktop uses:
+- Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
+- Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
+- Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
