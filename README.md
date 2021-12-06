@@ -17,7 +17,7 @@ Desktop configuration:
 - Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
 - Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 
-To rephrase the Rifleman's Creed:
+To paraphrase the Rifleman's Creed:
 > This is my terminal. There are many like it, but this one is mine.
 > My terminal is my best friend. It is my life. I must master it as I must master my life.
 > Without me, my terminal is useless. Without my terminal, I am useless. 
