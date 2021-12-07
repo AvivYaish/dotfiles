@@ -8,7 +8,7 @@ set backspace=2
 set backspace=indent,eol,start 	" Fix backspace in insert mode
 set wildmenu
 set wildmode=longest:full,full 	" Autocomplete in command mode
-set mouse=a 			" Allows using the mouse
+set mouse=a 			" Allows using the mouse. Note this prevents copying to system clipboard, so if you want to do that you need to set mouse=r
 
 " When pasting code, indentation can be broken without setting 'paste'
 " F2 in normal mode will invert the 'paste' option, and will show the option value
@@ -54,6 +54,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
     Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveLineUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
