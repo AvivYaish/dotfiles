@@ -1,0 +1,6 @@
+README.md
+{{ if ne .chezmoi.os "windows" }}
+Microsoft.PowerShell_profile.ps1
+.mytheme.omp.json
+settings.json
+{{ end }}
