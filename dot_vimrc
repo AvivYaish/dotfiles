@@ -25,7 +25,7 @@ nnoremap <C-A> ggVG
 nnoremap <C-s> :w<CR>
 
 set termguicolors
-if has('win64')
+if has('win64') && has('nvim')  " Configure nvim's terminal to work with powershell
   let &shell = 'pwsh'
   let &shellcmdflag = '-NoLogo  -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
   let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
