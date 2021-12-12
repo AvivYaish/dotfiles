@@ -147,7 +147,7 @@ if command -v ${local_bin}/node/bin/node &> /dev/null; then
   export PATH=${local_bin}/node/bin:$PATH
 fi
 
-if command -v byobu &> /dev/null; then
+if command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
   export PATH=${local_bin}/byobu/bin:$PATH
 fi
 
