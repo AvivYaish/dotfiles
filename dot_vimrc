@@ -54,7 +54,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'tomlion/vim-solidity'         " Solidity syntax-highlighting
+    Plug 'TovarishFin/vim-solidity'         " Solidity syntax-highlighting
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
