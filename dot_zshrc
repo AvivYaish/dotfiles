@@ -68,6 +68,12 @@ if [[ `uname` == "Darwin" ]]; then
   if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
     export PATH=${local_bin}/homebrew/bin:$PATH
   fi
+  if ! command -v node &> /dev/null; then
+    brew install node
+  fi
+  if ! command -v byobu &> /dev/null; then
+    brew install byobu
+  fi
   if ! command -v nvim &> /dev/null; then
     brew install neovim
   fi
@@ -101,7 +107,7 @@ if [[ `uname` == "Linux" ]]; then
   fi
   
   if ! command -v byobu &> /dev/null; then
-    if ! command -v ${local_bin}/byobu/byobu &> /dev/null; then
+    if ! command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
       echo "Installing byobu"
       curl https://launchpad.net/byobu/trunk/5.133/+download/byobu_5.133.orig.tar.gz --output byobu.tar.gz
       mkdir $temp_dir
