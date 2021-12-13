@@ -59,14 +59,14 @@ while [ -d ${temp_dir} ]; do
 done
 
 if [[ `uname` == "Darwin" ]]; then
+  if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
+    export PATH=${local_bin}/homebrew/bin:$PATH
+  fi
   if ! command -v brew &> /dev/null; then
     git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
     eval "$(${local_bin}/homebrew/bin/brew shellenv)"
     brew update --force --quiet
     chmod -R go-w "$(brew --prefix)/share/zsh"
-  fi
-  if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
-    export PATH=${local_bin}/homebrew/bin:$PATH
   fi
   if ! command -v node &> /dev/null; then
     brew install node
@@ -77,7 +77,9 @@ if [[ `uname` == "Darwin" ]]; then
   if ! command -v byobu &> /dev/null; then
     brew install byobu
   fi
-  export BYOBU_PREFIX=${local_bin}/homebrew
+  if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
+    export BYOBU_PREFIX=${local_bin}/homebrew
+  fi
 fi
 
 if [[ `uname` == "Linux" ]]; then
@@ -101,7 +103,10 @@ if [[ `uname` == "Linux" ]]; then
       mv -f $temp_dir/node* ${local_bin}/node
       rm -rf $temp_dir node.tar.gz
     fi
+  fi
+  if command -v ${local_bin}/node/bin/node &> /dev/null; then
     export PATH=${local_bin}/node/bin:$PATH
+    alias node="${local_bin}/node/bin/node"
   fi
   
   if ! command -v byobu &> /dev/null; then
@@ -117,6 +122,9 @@ if [[ `uname` == "Linux" ]]; then
       cd ~
       rm -rf $temp_dir byobu.tar.gz
     fi
+  fi
+  if command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
+    export PATH=${local_bin}/byobu/bin:$PATH
   fi
   
 # Some byobu versions have a problem when installing from source https://bugs.launchpad.net/byobu/+bug/1025998
@@ -145,15 +153,6 @@ if [[ `uname` == "Linux" ]]; then
 # Also for python2: pyenv install miniconda2-latest ; pyenv global miniconda2-latest
 
 # TmuxPluginManager requires a .tmux.conf at the root, run: ln -s ${local_bin}/byobu/share/byobu/.tmux.conf .
-fi
-
-if command -v ${local_bin}/node/bin/node &> /dev/null; then
-  export PATH=${local_bin}/node/bin:$PATH
-  alias node="${local_bin}/node/bin/node"
-fi
-
-if command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
-  export PATH=${local_bin}/byobu/bin:$PATH
 fi
 
 if command -v pyenv &> /dev/null; then
