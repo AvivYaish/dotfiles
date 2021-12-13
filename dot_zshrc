@@ -71,15 +71,13 @@ if [[ `uname` == "Darwin" ]]; then
   if ! command -v node &> /dev/null; then
     brew install node
   fi
-  if ! command -v byobu &> /dev/null; then
-    brew install byobu
-  fi
   if ! command -v nvim &> /dev/null; then
     brew install neovim
   fi
-
-  # byobu
-  export BYOBU_PREFIX=$HOME/homebrew
+  if ! command -v byobu &> /dev/null; then
+    brew install byobu
+  fi
+  export BYOBU_PREFIX=${local_bin}/homebrew
 fi
 
 if [[ `uname` == "Linux" ]]; then
