@@ -145,6 +145,7 @@ fi
 
 if command -v ${local_bin}/node/bin/node &> /dev/null; then
   export PATH=${local_bin}/node/bin:$PATH
+  alias node="${local_bin}/node/bin/node"
 fi
 
 if command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
