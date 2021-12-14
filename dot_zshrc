@@ -89,8 +89,10 @@ fi
 
 if [[ `uname` == "Linux" ]]; then
   if ! command -v fzf &> /dev/null; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ${local_bin}/fzf
-    ${local_bin}/fzf/install
+    if ! command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
+      git clone --depth 1 https://github.com/junegunn/fzf.git ${local_bin}/fzf
+      ${local_bin}/fzf/install
+    fi
   fi
   if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
     export PATH=${local_bin}/fzf/bin:$PATH
