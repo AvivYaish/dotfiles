@@ -71,6 +71,11 @@ if [[ `uname` == "Darwin" ]]; then
   if ! command -v node &> /dev/null; then
     brew install node
   fi
+  if ! command -v fzf &> /dev/null; then
+    brew install fzf
+    # To install useful key bindings and fuzzy completion:
+    # $(brew --prefix)/opt/fzf/install
+  fi
   if ! command -v nvim &> /dev/null; then
     brew install neovim
   fi
@@ -83,6 +88,14 @@ if [[ `uname` == "Darwin" ]]; then
 fi
 
 if [[ `uname` == "Linux" ]]; then
+  if ! command -v fzf &> /dev/null; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ${local_bin}/fzf
+    ${local_bin}/fzf/install
+  fi
+  if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
+    export PATH=${local_bin}/fzf/bin:$PATH
+  fi
+
   # Currently assumes you are using Linux on x64
   if ! command -v nvim &> /dev/null; then
     if ! command -v nvim.appimage &> /dev/null; then
@@ -90,7 +103,9 @@ if [[ `uname` == "Linux" ]]; then
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
       mv -f nvim.appimage ${local_bin}/
     fi
-    alias nvim="nvim.appimage"
+    if command -v nvim.appimage &> /dev/null; then
+      alias nvim="nvim.appimage"
+    fi
   fi
 
   # Node is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc')
@@ -164,3 +179,7 @@ fi
 # nvim
 alias vim="nvim"
 alias vimdiff="nvim -d"
+
+if command -v fzf &> /dev/null; then
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
