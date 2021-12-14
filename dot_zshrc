@@ -181,5 +181,7 @@ alias vim="nvim"
 alias vimdiff="nvim -d"
 
 if command -v fzf &> /dev/null; then
+  # FZF is a "fuzzy" finder
+  # A nice tutorial: https://www.youtube.com/watch?v=qgG5Jhi_Els
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
