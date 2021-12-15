@@ -22,6 +22,11 @@ if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
 
+if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  export FZF_BASE=${local_bin}/fzf
+fi
+
 # Install necessary applications
 if ! test -f ${local_bin}/antigen.zsh; then
   curl -L git.io/antigen > ${local_bin}/antigen.zsh
