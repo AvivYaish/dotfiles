@@ -33,11 +33,12 @@ source ${local_bin}/antigen.zsh
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle command-not-found
 antigen bundle git
 antigen bundle python
 antigen bundle pip
 antigen bundle npm
-antigen bundle command-not-found
+antigen bundle fzf
 if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
 fi
