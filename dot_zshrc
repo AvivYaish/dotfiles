@@ -23,7 +23,6 @@ if [ ! -d ${local_bin} ]; then
 fi
 
 if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   export FZF_BASE=${local_bin}/fzf
 fi
 
