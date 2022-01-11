@@ -108,9 +108,7 @@ colorscheme onedark
 let g:airline_theme='onedark'
 
 " tagbar
-if has('win64')
-  let g:tagbar_ctags_bin="~/.local/bin/ctags/ctags.exe" " Set location of the correct ctags, if you have multiple installations of ctags
-else
+if !has('win64')
   let g:tagbar_ctags_bin="~/.local/bin/ctags"
 endif
 nmap <A-o> :TagbarToggle<CR>
