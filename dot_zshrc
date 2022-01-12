@@ -114,3 +114,4 @@ fi
 
 alias vim="nvim"
 alias vimdiff="nvim -d"
+alias ll="lsd -l"
