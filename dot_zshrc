@@ -22,10 +22,6 @@ if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
 
-if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
-  export FZF_BASE=${local_bin}/fzf
-fi
-
 # Install necessary applications
 if ! test -f ${local_bin}/antigen.zsh; then
   curl -L git.io/antigen > ${local_bin}/antigen.zsh
@@ -46,66 +42,52 @@ antigen bundle fzf
 if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
 fi
-
 # Bundles from other repos
 antigen bundle marlonrichert/zsh-autocomplete@main
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# Load the theme.
-antigen theme romkatv/powerlevel10k
+antigen theme romkatv/powerlevel10k     # Load the theme.
+antigen apply   # Tell Antigen that you're done.
 
-# Tell Antigen that you're done.
-antigen apply
+if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
+  export PATH=${local_bin}/homebrew/bin:$PATH
+fi
+if ! command -v brew &> /dev/null; then
+  git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
+  eval "$(${local_bin}/homebrew/bin/brew shellenv)"
+  brew update --force --quiet
+  chmod -R go-w "$(brew --prefix)/share/zsh"
+  brew analytics off
+fi
 
-# Temp dir, in case we need it
-temp_dir="temp_$(date +%s)"
-while [ -d ${temp_dir} ]; do
-  temp_dir="temp_$(date +%s)"
+# node is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
+# bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+# lsd is a nicer 'ls'.
+# To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
+for app in chezmoi curlie bat lsd git-delta ripgrep universal-ctags tealdeer node byobu fzf; do
+  case ${app} in
+    git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
+    universal-ctags)    appCommand="ctags";;  # If your ctags is outdated, this is required for VIM's tagbar
+    ripgrep)            appCommand="rg";;     # Faster, better 'grep'!
+    tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
+    *)                  appCommand=${app};;
+  esac
+  if ! command -v ${appCommand} &> /dev/null; then
+    brew install ${app}
+  fi
 done
+if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
+  export BYOBU_PREFIX=${local_bin}/homebrew
+fi
 
 if [[ `uname` == "Darwin" ]]; then
-  if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
-    export PATH=${local_bin}/homebrew/bin:$PATH
-  fi
-  if ! command -v brew &> /dev/null; then
-    git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
-    eval "$(${local_bin}/homebrew/bin/brew shellenv)"
-    brew update --force --quiet
-    chmod -R go-w "$(brew --prefix)/share/zsh"
-  fi
-  if ! command -v node &> /dev/null; then
-    brew install node
-  fi
-  if ! command -v fzf &> /dev/null; then
-    brew install fzf
-    # To install useful key bindings and fuzzy completion:
-    # $(brew --prefix)/opt/fzf/install
-  fi
   if ! command -v nvim &> /dev/null; then
     brew install neovim
   fi
-  if ! command -v byobu &> /dev/null; then
-    brew install byobu
-  fi
-  if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
-    export BYOBU_PREFIX=${local_bin}/homebrew
-  fi
 fi
-
 if [[ `uname` == "Linux" ]]; then
-  if ! command -v fzf &> /dev/null; then
-    if ! command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
-      git clone --depth 1 https://github.com/junegunn/fzf.git ${local_bin}/fzf
-      ${local_bin}/fzf/install
-    fi
-  fi
-  if command -v ${local_bin}/fzf/bin/fzf &> /dev/null; then
-    export PATH=${local_bin}/fzf/bin:$PATH
-  fi
-
-  # Currently assumes you are using Linux on x64
   if ! command -v nvim &> /dev/null; then
-    if ! command -v nvim.appimage &> /dev/null; then
+    if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
       echo "Installing NeoVIM"
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
       mv -f nvim.appimage ${local_bin}/
@@ -114,81 +96,7 @@ if [[ `uname` == "Linux" ]]; then
       alias nvim="nvim.appimage"
     fi
   fi
-
-  # Node is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc')
-  if ! command -v node &> /dev/null; then
-    if ! command -v ${local_bin}/node/bin/node &> /dev/null; then
-      echo "Installing NodeJS"
-      curl https://nodejs.org/dist/latest/node-v17.2.0-linux-x64.tar.gz --output node.tar.gz
-      mkdir $temp_dir
-      tar --no-overwrite-dir -mzxvf node.tar.gz -C $temp_dir
-      mv -f $temp_dir/node* ${local_bin}/node
-      rm -rf $temp_dir node.tar.gz
-    fi
-  fi
-  if command -v ${local_bin}/node/bin/node &> /dev/null; then
-    export PATH=${local_bin}/node/bin:$PATH
-    alias node="${local_bin}/node/bin/node"
-  fi
-  
-  if ! command -v byobu &> /dev/null; then
-    if ! command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
-      echo "Installing byobu"
-      curl https://launchpad.net/byobu/trunk/5.133/+download/byobu_5.133.orig.tar.gz --output byobu.tar.gz
-      mkdir $temp_dir
-      tar --no-overwrite-dir -mzxvf byobu.tar.gz -C $temp_dir
-      cd $temp_dir
-      ./configure --prefix="${local_bin}/byobu"
-      make
-      make install
-      cd ~
-      rm -rf $temp_dir byobu.tar.gz
-    fi
-  fi
-  if command -v ${local_bin}/byobu/bin/byobu &> /dev/null; then
-    export PATH=${local_bin}/byobu/bin:$PATH
-  fi
-  
-# Some byobu versions have a problem when installing from source https://bugs.launchpad.net/byobu/+bug/1025998
-# Edit byobu-janitor: vim ${local_bin}/byobu-janitor
-# Replace this:
-
-# if ! grep -qs "^screen_upper_left=" "$BYOBU_CONFIG_DIR/status"; then
-#     rm -f "$BYOBU_CONFIG_DIR/status" "$BYOBU_CONFIG_DIR/statusrc"
-# fi
-
-# with
-
-# if [ -f "$BYOBU_CONFIG_DIR/status" ]; then
-#   if ! grep -qs "^screen_upper_left=" "$BYOBU_CONFIG_DIR/status"; then
-#     rm -f "$BYOBU_CONFIG_DIR/status" "$BYOBU_CONFIG_DIR/statusrc"
-#   fi
-# fi
-
-# Try running: byobu-config
-# If "snack" is missing, install: conda install -c conda-forge newt
-
-# If you don't have anaconda:
-# Install pyenv from source for HUJI: https://github.com/pyenv/pyenv-installer
-# Then install some python interpreter: pyenv install miniconda3-latest
-# Then use it: pyenv global miniconda3-latest
-# Also for python2: pyenv install miniconda2-latest ; pyenv global miniconda2-latest
-
-# TmuxPluginManager requires a .tmux.conf at the root, run: ln -s ${local_bin}/byobu/share/byobu/.tmux.conf .
 fi
 
-if command -v pyenv &> /dev/null; then
-  # Correctly setting pyenv's python on HUJI's computers
-  # export PATH=$HOME/.pyenv/bin:$PATH
-  eval "$(pyenv init --path)"
-fi
-
-# nvim
 alias vim="nvim"
 alias vimdiff="nvim -d"
-
-if command -v fzf &> /dev/null; then
-  # FZF is a "fuzzy" finder
-  # A nice tutorial: https://www.youtube.com/watch?v=qgG5Jhi_Els
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fi
