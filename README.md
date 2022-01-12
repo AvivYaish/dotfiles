@@ -19,6 +19,7 @@ I use the following applications:
   - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'
   - [ripgrep](https://github.com/BurntSushi/ripgrep): faster, better 'grep'!
   - [tealdeer](https://github.com/dbrgn/tealdeer): a good companion for 'man', with succint descriptions and useful examples
+  - [curlie](https://github.com/rs/curlie): a 'curl' front-end inspired by HTTPie.
 
 Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
