@@ -14,7 +14,7 @@ I use the following applications:
 - Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
 - Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
 - Additional niceties (all are available on Linux, MacOS and Windows, except tealdeer):
-  - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark theme
+  - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme
   - [delta](https://github.com/dandavison/delta): snazzier 'diff', also with One Half Dark support
   - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'
   - [ripgrep](https://github.com/BurntSushi/ripgrep): faster, better 'grep'!
