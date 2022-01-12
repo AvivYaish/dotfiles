@@ -4,6 +4,9 @@
 # Shell styling: oh-my-zsh, oh-my-posh, powerlevel10k
 # Terminal multiplexer: byobu
 # Dotfile tracking: chezmoi
+if [[ `uname` == "Linux" ]]; then
+  export FPATH=/usr/local/share/zsh/site-functions:/usr/share/zsh/vendor-functions:/usr/share/zsh/vendor-completions:/usr/share/zsh/functions/Calendar:/usr/share/zsh/functions/Chpwd:/usr/share/zsh/functions/Completion:/usr/share/zsh/functions/Completion/AIX:/usr/share/zsh/functions/Completion/BSD:/usr/share/zsh/functions/Completion/Base:/usr/share/zsh/functions/Completion/Cygwin:/usr/share/zsh/functions/Completion/Darwin:/usr/share/zsh/functions/Completion/Debian:/usr/share/zsh/functions/Completion/Linux:/usr/share/zsh/functions/Completion/Mandriva:/usr/share/zsh/functions/Completion/Redhat:/usr/share/zsh/functions/Completion/Solaris:/usr/share/zsh/functions/Completion/Unix:/usr/share/zsh/functions/Completion/X:/usr/share/zsh/functions/Completion/Zsh:/usr/share/zsh/functions/Completion/openSUSE:/usr/share/zsh/functions/Exceptions:/usr/share/zsh/functions/MIME:/usr/share/zsh/functions/Math:/usr/share/zsh/functions/Misc:/usr/share/zsh/functions/Newuser:/usr/share/zsh/functions/Prompts:/usr/share/zsh/functions/TCP:/usr/share/zsh/functions/VCS_Info:/usr/share/zsh/functions/VCS_Info/Backends:/usr/share/zsh/functions/Zftp:/usr/share/zsh/functions/Zle:$FPATH
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -38,6 +41,11 @@ antigen bundle git
 antigen bundle python
 antigen bundle pip
 antigen bundle npm
+if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
+  export FZF_BASE=${local_bin}/homebrew/opt/fzf
+  export PATH=${local_bin}/homebrew/opt/fzf:$PATH
+fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 antigen bundle fzf
 if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
@@ -60,16 +68,16 @@ if ! command -v brew &> /dev/null; then
   brew analytics off
 fi
 
-# node is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
 # bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # lsd is a nicer 'ls'.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
-for app in chezmoi curlie bat lsd git-delta ripgrep universal-ctags tealdeer node byobu fzf; do
+for app in chezmoi bat lsd git-delta ripgrep universal-ctags tealdeer nvm byobu fzf; do
   case ${app} in
     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
     universal-ctags)    appCommand="ctags";;  # If your ctags is outdated, this is required for VIM's tagbar
     ripgrep)            appCommand="rg";;     # Faster, better 'grep'!
     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
+    nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
     *)                  appCommand=${app};;
   esac
   if ! command -v ${appCommand} &> /dev/null; then
@@ -78,6 +86,12 @@ for app in chezmoi curlie bat lsd git-delta ripgrep universal-ctags tealdeer nod
 done
 if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
   export BYOBU_PREFIX=${local_bin}/homebrew
+  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
+fi
+if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
+  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
 
 if [[ `uname` == "Darwin" ]]; then
