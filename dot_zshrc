@@ -112,6 +112,9 @@ if [[ `uname` == "Linux" ]]; then
   fi
 fi
 
-alias vim="nvim"
-alias vimdiff="nvim -d"
+if [[ `uname` == "Linux" ]]; then
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+fi
 alias ll="lsd -l"
+alias dif="delta -ns"
