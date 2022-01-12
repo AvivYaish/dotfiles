@@ -94,11 +94,6 @@ if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
 
-if [[ `uname` == "Darwin" ]]; then
-  if ! command -v nvim &> /dev/null; then
-    brew install neovim
-  fi
-fi
 if [[ `uname` == "Linux" ]]; then
   if ! command -v nvim &> /dev/null; then
     if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
@@ -108,13 +103,11 @@ if [[ `uname` == "Linux" ]]; then
     fi
     if command -v nvim.appimage &> /dev/null; then
       alias nvim="nvim.appimage"
+      alias vim="nvim"
+      alias vimdiff="nvim -d"
     fi
   fi
 fi
 
-if [[ `uname` == "Linux" ]]; then
-  alias vim="nvim"
-  alias vimdiff="nvim -d"
-fi
 alias ll="lsd -l"
 alias dif="delta -ns"
