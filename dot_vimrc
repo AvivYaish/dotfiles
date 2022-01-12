@@ -108,9 +108,6 @@ colorscheme onedark
 let g:airline_theme='onedark'
 
 " tagbar
-if !has('win64')
-  let g:tagbar_ctags_bin="~/.local/bin/ctags"
-endif
 nmap <A-o> :TagbarToggle<CR>
 
 " undotree
@@ -346,4 +343,3 @@ let g:vimtex_view_general_options
 " let g:vimtex_view_general_viewer = 'firefox'
 " let g:vimtex_view_general_options = "file:///@pdf"
 " let g:vimtex_view_general_options_latexmk = '--unique'
-
