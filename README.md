@@ -13,6 +13,12 @@ I use the following applications:
 - Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
 - Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
+- Additional niceties: 
+  - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark theme
+  - [delta](https://github.com/dandavison/delta): snazzier 'diff', also with One Half Dark support
+  - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'
+  - [ripgrep](https://github.com/BurntSushi/ripgrep): faster, better 'grep'!
+  - [tealdeer](https://github.com/dbrgn/tealdeer): a good companion for 'man', with succint descriptions and useful examples
 
 Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
