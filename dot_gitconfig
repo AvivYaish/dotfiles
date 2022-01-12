@@ -1,0 +1,20 @@
+[user]
+	name = Aviv Yaish
+	email = aviv.yaish@mail.huji.ac.il
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    theme = One Half Dark
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
