@@ -108,10 +108,8 @@ colorscheme onedark
 let g:airline_theme='onedark'
 
 " tagbar
-if has('win64')
-  let g:tagbar_ctags_bin="~/.local/bin/ctags/ctags.exe" " Set location of the correct ctags, if you have multiple installations of ctags
-else
-  let g:tagbar_ctags_bin="~/.local/bin/ctags"
+if !empty(glob("~/.local/bin/homebrew/bin/ctags"))
+  let g:tagbar_ctags_bin="~/.local/bin/homebrew/bin/ctags"
 endif
 nmap <A-o> :TagbarToggle<CR>
 
@@ -198,9 +196,9 @@ let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershe
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
 
 if !has('nvim')
-	let g:coc_disable_startup_warning = 1 " Disable warning for old VIM
-	" Set internal encoding of vim, not needed on neovim, since coc.nvim using some unicode characters in the file autoload/float.vim
-	set encoding=utf-8
+  let g:coc_disable_startup_warning = 1 " Disable warning for old VIM
+  " Set internal encoding of vim, not needed on neovim, since coc.nvim using some unicode characters in the file autoload/float.vim
+  set encoding=utf-8
 endif
 set hidden 		" TextEdit might fail if hidden is not set.
 set nobackup 		" Some servers have issues with backup files, see #649.
@@ -348,4 +346,3 @@ let g:vimtex_view_general_options
 " let g:vimtex_view_general_viewer = 'firefox'
 " let g:vimtex_view_general_options = "file:///@pdf"
 " let g:vimtex_view_general_options_latexmk = '--unique'
-
