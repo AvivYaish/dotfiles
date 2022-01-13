@@ -4,3 +4,8 @@ Microsoft.PowerShell_profile.ps1
 .mytheme.omp.json
 settings.json
 {{ end }}
+{{ if .chezmoi.os "windows" }}
+.zshrc
+.p10k.zsh
+.tmux.conf
+{{ end }}
