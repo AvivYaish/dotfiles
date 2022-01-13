@@ -1,4 +1,17 @@
-# Alias for nvim
+# Installation
+# winget install JanDeDobbeleer.OhMyPosh
+# Install-Module PSReadLine
+# iwr -useb get.scoop.sh | iex
+# scoop install neovim
+# scoop install universal-ctags
+# scoop install chezmoi
+# scoop install bat
+# scoop install delta
+# scoop install lsd
+# scoop install ripgrep
+# scoop install curlie # 7zip is installed too for some reason
+
+# Aliases
 Set-Alias -Name vim -Value nvim
 function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
 	vim -d $Remaining
