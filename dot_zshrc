@@ -110,5 +110,5 @@ if [[ `uname` == "Linux" ]]; then
   fi
 fi
 
-alias ll="lsd -l"
+alias ll="lsd -lhat"
 alias dif="delta -ns"
