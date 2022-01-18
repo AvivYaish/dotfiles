@@ -19,7 +19,7 @@ function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)]
 
 Set-Alias -Name ls -Value lsd 
 function ll([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
-	lsd -l $Remaining
+	lsd -lhat $Remaining
 }
 
 function dif([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
