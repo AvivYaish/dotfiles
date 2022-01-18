@@ -1,15 +1,11 @@
 # Installation
-# winget install JanDeDobbeleer.OhMyPosh
-# Install-Module PSReadLine
-# iwr -useb get.scoop.sh | iex
-# scoop install neovim
-# scoop install universal-ctags
-# scoop install chezmoi
-# scoop install bat
-# scoop install delta
-# scoop install lsd
-# scoop install ripgrep
-# scoop install curlie # 7zip is installed too for some reason
+# winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
+# Install-Module PSReadLine			# Nicer powershell auto-completion
+# iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
+# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'curlie') {
+# 	scoop install $app
+# }
+# # 7zip is installed with curlie for some reason
 
 # Aliases
 Set-Alias -Name vim -Value nvim
