@@ -1,9 +1,3 @@
-# Apps
-# Editor: nvim
-# Shell: zsh
-# Shell styling: oh-my-zsh, oh-my-posh, powerlevel10k
-# Terminal multiplexer: byobu
-# Dotfile tracking: chezmoi
 if [[ `uname` == "Linux" ]]; then
   export FPATH=/usr/local/share/zsh/site-functions:/usr/share/zsh/vendor-functions:/usr/share/zsh/vendor-completions:/usr/share/zsh/functions/Calendar:/usr/share/zsh/functions/Chpwd:/usr/share/zsh/functions/Completion:/usr/share/zsh/functions/Completion/AIX:/usr/share/zsh/functions/Completion/BSD:/usr/share/zsh/functions/Completion/Base:/usr/share/zsh/functions/Completion/Cygwin:/usr/share/zsh/functions/Completion/Darwin:/usr/share/zsh/functions/Completion/Debian:/usr/share/zsh/functions/Completion/Linux:/usr/share/zsh/functions/Completion/Mandriva:/usr/share/zsh/functions/Completion/Redhat:/usr/share/zsh/functions/Completion/Solaris:/usr/share/zsh/functions/Completion/Unix:/usr/share/zsh/functions/Completion/X:/usr/share/zsh/functions/Completion/Zsh:/usr/share/zsh/functions/Completion/openSUSE:/usr/share/zsh/functions/Exceptions:/usr/share/zsh/functions/MIME:/usr/share/zsh/functions/Math:/usr/share/zsh/functions/Misc:/usr/share/zsh/functions/Newuser:/usr/share/zsh/functions/Prompts:/usr/share/zsh/functions/TCP:/usr/share/zsh/functions/VCS_Info:/usr/share/zsh/functions/VCS_Info/Backends:/usr/share/zsh/functions/Zftp:/usr/share/zsh/functions/Zle:$FPATH
 fi
@@ -21,14 +15,49 @@ fi
 # I put local programs in .local/bin
 local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
-if [ ! -d ${local_bin} ]; then
-  mkdir -p ${local_bin}
-fi
 
-# Install necessary applications
-if ! test -f ${local_bin}/antigen.zsh; then
-  curl -L git.io/antigen > ${local_bin}/antigen.zsh
-fi
+# Install favorite applications
+# bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+# lsd is a nicer 'ls'.
+# byobu is a nice frontend for terminal multiplexers such as tmux.
+# chezmoi is a dotfile manager.
+# To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
+# if [ ! -d ${local_bin} ]; then
+#   mkdir -p ${local_bin}
+# fi
+# if ! test -f ${local_bin}/antigen.zsh; then
+#   curl -L git.io/antigen > ${local_bin}/antigen.zsh
+# fi
+# if ! command -v brew &> /dev/null; then
+#   git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
+#   eval "$(${local_bin}/homebrew/bin/brew shellenv)"
+#   brew update --force --quiet
+#   chmod -R go-w "$(brew --prefix)/share/zsh"
+#   brew analytics off
+# fi
+# for app in chezmoi rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf; do
+#   case ${app} in
+#     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
+#     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
+#     universal-ctags)    appCommand="ctags";;  # If your ctags is outdated, this is required for VIM's tagbar
+#     ripgrep)            appCommand="rg";;     # Faster, better 'grep'!
+#     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
+#     nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
+#     *)                  appCommand=${app};;
+#   esac
+#   if ! command -v ${appCommand} &> /dev/null; then
+#     brew install ${app}
+#   fi
+# done
+# if [[ `uname` == "Linux" ]]; then
+#   if ! command -v nvim &> /dev/null; then
+#     if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
+#       echo "Installing NeoVIM"
+#       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+#       mv -f nvim.appimage ${local_bin}/
+#     fi
+#   fi
+# fi
 
 source ${local_bin}/antigen.zsh
 
@@ -57,34 +86,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme romkatv/powerlevel10k     # Load the theme.
 antigen apply   # Tell Antigen that you're done.
 
+# Check if apps are found in non-standard directories
 if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
   export PATH=${local_bin}/homebrew/bin:$PATH
 fi
-if ! command -v brew &> /dev/null; then
-  git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
-  eval "$(${local_bin}/homebrew/bin/brew shellenv)"
-  brew update --force --quiet
-  chmod -R go-w "$(brew --prefix)/share/zsh"
-  brew analytics off
-fi
-
-# bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-# lsd is a nicer 'ls'.
-# To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
-for app in chezmoi rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf; do
-  case ${app} in
-    rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
-    git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
-    universal-ctags)    appCommand="ctags";;  # If your ctags is outdated, this is required for VIM's tagbar
-    ripgrep)            appCommand="rg";;     # Faster, better 'grep'!
-    tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
-    nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
-    *)                  appCommand=${app};;
-  esac
-  if ! command -v ${appCommand} &> /dev/null; then
-    brew install ${app}
-  fi
-done
 if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
   export BYOBU_PREFIX=${local_bin}/homebrew
   [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
@@ -94,19 +99,11 @@ if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
   [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
-
-if [[ `uname` == "Linux" ]]; then
-  if ! command -v nvim &> /dev/null; then
-    if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
-      echo "Installing NeoVIM"
-      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-      mv -f nvim.appimage ${local_bin}/
-    fi
-    if command -v nvim.appimage &> /dev/null; then
-      alias nvim="nvim.appimage"
-      alias vim="nvim"
-      alias vimdiff="nvim -d"
-    fi
+if ! command -v nvim &> /dev/null; then
+  if command -v nvim.appimage &> /dev/null; then
+    alias nvim="nvim.appimage"
+    alias vim="nvim"
+    alias vimdiff="nvim -d"
   fi
 fi
 
