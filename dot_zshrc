@@ -36,7 +36,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf procs; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf procs; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -67,6 +67,7 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle command-not-found
+antigen bundle ajeetdsouza/zoxide # Nicer 'cd'
 antigen bundle git
 antigen bundle python
 antigen bundle pip
@@ -86,6 +87,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme romkatv/powerlevel10k     # Load the theme.
 antigen apply   # Tell Antigen that you're done.
+
+eval "$(zoxide init zsh)"
 
 # Check if apps are found in non-standard directories
 if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
