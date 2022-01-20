@@ -31,6 +31,12 @@ Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
+# For zoxide v0.8.0+
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+})
+
 #region conda initialize
 # !! Contents within this block are managed by 'conda init' !!
 (& "C:\Users\darti\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
