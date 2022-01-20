@@ -1,15 +1,15 @@
 [user]
-	name = Aviv Yaish
-	email = aviv.yaish@mail.huji.ac.il
+    name = Aviv Yaish
+    email = aviv.yaish@mail.huji.ac.il
 
 [core]
-    pager = delta
+    pager = delta --paging=never
 
 [interactive]
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true
+    navigate = true # use n and N to move between diff sections
     theme = One Half Dark
 
 [merge]
