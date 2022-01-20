@@ -88,8 +88,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme romkatv/powerlevel10k     # Load the theme.
 antigen apply   # Tell Antigen that you're done.
 
-eval "$(zoxide init zsh)"
-
 # Check if apps are found in non-standard directories
 if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
   export PATH=${local_bin}/homebrew/bin:$PATH
@@ -111,5 +109,6 @@ if ! command -v nvim &> /dev/null; then
   fi
 fi
 
+eval "$(zoxide init zsh)"
 alias ll="lsd -lhat"
 alias dif="delta -ns"
