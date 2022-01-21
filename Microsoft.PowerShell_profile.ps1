@@ -3,10 +3,10 @@
 # Install-Module PSReadLine			# Nicer PowerShell auto-completion
 # Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
+# foreach ($app in @('7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
 # 	scoop install $app
 # }
-# # 7zip is installed with curlie for some reason
+# 7zip is installed with curlie for some reason
 
 # Aliases
 Set-Alias -Name vim -Value nvim
@@ -28,7 +28,7 @@ Set-PoshPrompt -Theme ~\.mytheme.omp.json
 
 # Autocomplete (uses PSReadLine)
 Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -EditMode Windows
+# Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionViewStyle ListView
 # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
@@ -44,7 +44,7 @@ Invoke-Expression (& {
     (zoxide init --hook $hook powershell | Out-String)
 })
 
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-(& "C:\Users\darti\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-#endregion
+# #region conda initialize
+# # !! Contents within this block are managed by 'conda init' !!
+# (& "C:\Users\darti\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+# #endregion
