@@ -33,6 +33,8 @@ Set-PSReadLineOption -PredictionViewStyle ListView
 # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 # Autocomplete (uses PSFzf)
+# If bat is installed, will show syntax-highlighted previews
+# Previews can be scrolled using alt+up/down arrows
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
