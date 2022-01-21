@@ -2,6 +2,7 @@
 " For a split window: use Ctrl-w + and Ctrl-w - to resize the height of the current window by a single row. 
 " For a vsplit window: use Ctrl-w > and Ctrl-w < to resize the width of the current window by a single column
 
+set termguicolors
 set number 			" Show linenumbers
 set hlsearch 			" Highlight current search
 set backspace=2
@@ -23,15 +24,6 @@ inoremap <C-Z> <C-O>u
 inoremap <C-Y> <C-O><C-R>
 nnoremap <C-A> ggVG 
 nnoremap <C-s> :w<CR>
-
-set termguicolors
-if has('win64') && has('nvim')  " Configure nvim's terminal to work with powershell
-  let &shell = 'pwsh'
-  let &shellcmdflag = '-NoLogo  -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
-  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-  set shellquote= shellxquote=
-endif
 
 " Indentation config unnecessary because of vim-sleuth
 " filetype plugin indent on
