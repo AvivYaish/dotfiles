@@ -2,7 +2,7 @@
 # winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
 # Install-Module PSReadLine			# Nicer powershell auto-completion
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'curlie', 'procs') {
+# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
 # 	scoop install $app
 # }
 # # 7zip is installed with curlie for some reason
