@@ -1,8 +1,9 @@
 # Installation
 # winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
-# Install-Module PSReadLine			# Nicer powershell auto-completion
+# Install-Module PSReadLine			# Nicer PowerShell auto-completion
+# Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
+# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'curlie', 'procs') {
 # 	scoop install $app
 # }
 # # 7zip is installed with curlie for some reason
@@ -29,7 +30,11 @@ Set-PoshPrompt -Theme ~\.mytheme.omp.json
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+# Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
+# Autocomplete (uses PSFzf)
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # For zoxide v0.8.0+
 Invoke-Expression (& {
