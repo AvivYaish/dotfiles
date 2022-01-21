@@ -17,12 +17,14 @@ local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
 
 # Install favorite applications
+# chezmoi is a dotfile manager.
 # bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # lsd is a nicer 'ls'.
-# procs is a 'ps' alternative.
 # byobu is a nice frontend for terminal multiplexers such as tmux.
-# chezmoi is a dotfile manager.
+# procs is a 'ps' alternative.
+# bottom is a 'top' replacement.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
+# lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
 #   mkdir -p ${local_bin}
 # fi
@@ -36,7 +38,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf procs; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf lf procs bottom; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
