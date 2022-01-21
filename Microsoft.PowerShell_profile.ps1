@@ -3,7 +3,7 @@
 # Install-Module PSReadLine			# Nicer PowerShell auto-completion
 # Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'curlie', 'procs') {
+# foreach ($app in @('chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
 # 	scoop install $app
 # }
 # # 7zip is installed with curlie for some reason
