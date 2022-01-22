@@ -3,10 +3,12 @@
 # Install-Module PSReadLine			# Nicer PowerShell auto-completion
 # Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# foreach ($app in @('7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
+# # sudo allows sudoing in Windows
+# foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom') {
 # 	scoop install $app
 # }
-# 7zip is installed with curlie for some reason
+
+Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
 
 # Aliases
 Set-Alias -Name vim -Value nvim
@@ -22,9 +24,6 @@ function ll([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Rem
 function dif([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
 	delta -ns $Remaining
 }
-
-# Set theme (uses oh-my-posh)
-Set-PoshPrompt -Theme ~\.mytheme.omp.json
 
 # Autocomplete (uses PSReadLine)
 Set-PSReadLineOption -PredictionSource History
