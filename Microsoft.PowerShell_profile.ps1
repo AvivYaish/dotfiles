@@ -11,6 +11,8 @@
 Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
 
 # Aliases
+Set-Alias -Name sed -Value sd
+
 Set-Alias -Name vim -Value nvim
 function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
 	vim -d $Remaining
