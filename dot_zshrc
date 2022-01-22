@@ -20,6 +20,7 @@ export PATH=${local_bin}:$PATH
 # chezmoi is a dotfile manager.
 # bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # lsd is a nicer 'ls'.
+# sd is a more common-sense 'sed' that supports python-like regex.
 # byobu is a nice frontend for terminal multiplexers such as tmux.
 # procs is a 'ps' alternative.
 # bottom is a 'top' replacement.
@@ -38,7 +39,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep universal-ctags tealdeer fd nvm byobu fzf lf procs bottom; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
