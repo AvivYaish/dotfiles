@@ -7,6 +7,9 @@
 # foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command') {
 # 	scoop install $app
 # }
+#
+# Other niceties:
+# cargo install viu # A cross-platform terminal image viewer
 
 Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
 
