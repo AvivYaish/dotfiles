@@ -33,6 +33,7 @@ nnoremap <C-s> :w<CR>
 " Spell checking and word completion are unnecessary, using coc for that
 " setlocal spell
 " set complete+=kspell
+" set viminfo='100,n$HOME/.vim/viminfo " viminfo files save state and histories (command line, search, input), irrelevant for nvim
 
 " Install vim-plug
 if empty(glob('$HOME/.vim/autoload/plug.vim'))
@@ -70,7 +71,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'terryma/vim-multiple-cursors' " Multiple cursors (Ctrl+n to mark the next, Ctrl+x to skip)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+o)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
-    Plug 'scrooloose/nerdcommenter', { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }     " For easy commenting (Ctrl+/)
+    Plug 'scrooloose/nerdcommenter'     ", { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }      For easy commenting (Ctrl+/)
     Plug 'joshdick/onedark.vim'         " Onedark theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
@@ -117,8 +118,6 @@ if has("persistent_undo") " Persistent undo in undotree
   set undofile
 endif
 
-" set viminfo='100,n$HOME/.vim/viminfo " viminfo files save state and histories (command line, search, input), irrelevant for nvim
-
 " vim-move
 let g:move_map_keys=0
 let g:move_auto_indent=1
@@ -131,15 +130,16 @@ nmap <A-Down> <Plug>MoveLineDown
 nmap <A-Up> <Plug>MoveLineUp
 
 " nerdcommenter
-" Need to turn on the filetype plugin, but did this already with `filetype plugin indent on`
+" Need to turn on the filetype plugin, note that `filetype plugin indent on` also does this
+filetype plugin on
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1 " Add spaces after comment delimiters by default
 let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
 let g:NERDDefaultAlign = 'left' " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all selected lines is commented or not 
-nmap <C-_>   <Plug>NERDCommenterToggle
-vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 
 " vim-multiple-cursors
 let g:multi_cursor_use_default_mapping=0
@@ -151,14 +151,6 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
-
-" vim-test
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-" nmap <silent> t<C-n> :TestNearest<CR>
-" nmap <silent> t<C-f> :TestFile<CR>
-" nmap <silent> t<C-s> :TestSuite<CR>
-" nmap <silent> t<C-l> :TestLast<CR>
-" nmap <silent> t<C-g> :TestVisit<CR>
 
 " Markdownpreview
 let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -338,3 +330,11 @@ let g:vimtex_view_general_options
 " let g:vimtex_view_general_viewer = 'firefox'
 " let g:vimtex_view_general_options = "file:///@pdf"
 " let g:vimtex_view_general_options_latexmk = '--unique'
+
+" vim-test
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+" nmap <silent> t<C-n> :TestNearest<CR>
+" nmap <silent> t<C-f> :TestFile<CR>
+" nmap <silent> t<C-s> :TestSuite<CR>
+" nmap <silent> t<C-l> :TestLast<CR>
+" nmap <silent> t<C-g> :TestVisit<CR>
