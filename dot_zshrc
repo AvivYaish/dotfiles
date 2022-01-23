@@ -110,10 +110,10 @@ if ! command -v nvim &> /dev/null; then
   elif command -v ${local_bin}/nvim/bin/nvim &> /dev/null; then
     alias nvim="${local_bin}/nvim/bin/nvim"
   fi
-  if ! command -v nvim &> /dev/null; then
-    alias vim="nvim"
-    alias vimdiff="nvim -d"
-  fi
+fi
+if command -v nvim &> /dev/null; then
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
 fi
 
 eval "$(zoxide init zsh)"
