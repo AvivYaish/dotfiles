@@ -4,7 +4,7 @@
 # Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
 # # sudo allows sudoing in Windows
-# foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command') {
+# foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command', 'glow') {
 # 	scoop install $app
 # }
 #
