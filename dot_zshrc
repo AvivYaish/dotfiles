@@ -17,6 +17,7 @@ local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
 
 # Install favorite applications
+# neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
 # chezmoi is a dotfile manager.
 # bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # lsd is a nicer 'ls'.
