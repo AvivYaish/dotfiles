@@ -1,11 +1,12 @@
 # Termux stuff
 
 - Installed termux using F-Droid
-- Installed [scrcpy](https://github.com/Genymobile/scrcpy) on my PC to control the phone remotely
+- Installed [scrcpy](https://github.com/Genymobile/scrcpy) on my PC to control
+  the phone remotely.
 - Installed some programs:
 
   ```Shell
-  for app in git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow; do
+  for app in git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
     pkg install ${app}
   done
   ```
@@ -26,6 +27,7 @@
   pkg install xfce4-terminal
   pkg install otter-browser
   ```
+
 - Configure TigerVNC:
   - In ~/.vnc/xstartup:
 
@@ -68,7 +70,8 @@
 - Can connect from phone using [VNC Viewer](https://play.google.com/store/apps/details?id=com.realvnc.viewer.android), IP is 127.0.0.1
 - Can connect from a computer using TigerVNC, check IP using ifconfig
 - After starting XFCE:
-  - Install MesloLGMNF: 
+  - Install MesloLGMNF:
+
   ```Shell
   p10k configure
   ```
@@ -81,6 +84,8 @@
   ./install.sh
   ```
 
+  - Change theme both in "Appearance" and "Window Manager"
+
   - Install Tela circle icon theme:
 
   ```Shell
@@ -88,3 +93,5 @@
   cd Tela-circle-icon-theme
   ./install.sh
   ```
+
+  - Unlock bottom panel, move to the left.
