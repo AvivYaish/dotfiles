@@ -1,6 +1,7 @@
 # Termux stuff
 
 - Installed termux using F-Droid
+- Installed [scrcpy](https://github.com/Genymobile/scrcpy) on my PC to control the phone remotely
 - Installed some programs:
 
   ```Shell
@@ -39,7 +40,7 @@
   # Supported server options to pass to vncserver upon invocation can be listed
   # in this file. See the following manpages for more: vncserver(1) Xvnc(1).
   # Several common ones are shown below. Uncomment and modify to your liking.
-  geometry=1366x768 # Define the resolution
+  geometry=3840x2160 # Define the resolution
   ```
 
 - Create a run script in .local/bin/startdesktop
@@ -49,17 +50,17 @@
   # Export Display
   export DISPLAY=":1"
   # Start VNC Server
-  if [[ \$(pidof Xvnc) ]]; then
-    echo -e "\\n[!] Server Already Running."
+  if [[ $(pidof Xvnc) ]]; then
+    echo -e "\n[!] Server Already Running."
     { vncserver -list; echo; }
     read -p "Kill VNC Server? (Y/N) : "
-    if [[ "\$REPLY" == "Y" || "\$REPLY" == "y" ]]; then
-      killall Xvnc; echo; }
+    if [[ "$REPLY" == "Y" || "$REPLY" == "y" ]]; then
+      { killall Xvnc; echo; }
     else
       echo
     fi
   else
-    echo -e "\\n[*] Starting VNC Server..."
+    echo -e "\n[*] Starting VNC Server..."
     vncserver  # add -localhost if you don't want to connect remotely
   fi
   ```
