@@ -93,4 +93,5 @@
   ```
 
   - Install [Oreo Blue cursors](https://github.com/varlesh/oreo-cursors).
+  - Create [onedark.theme](https://gist.github.com/fluxrad/f9ff8bf36c3f58e63265c34f2751ff18) in ~/../usr/share/xfce4/terminal/colorschemes/
   - Unlock bottom panel, move to the left.
