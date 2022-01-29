@@ -6,7 +6,7 @@
 - Installed some programs:
 
   ```Shell
-  for app in git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
+  for app in git wget chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
     pkg install ${app}
   done
   ```
@@ -76,7 +76,7 @@
   p10k configure
   ```
 
-  - Install Orchis-theme:
+  - Install Orchis-dark-compact theme:
 
   ```Shell
   git clone https://github.com/vinceliuice/Orchis-theme.git
@@ -86,12 +86,11 @@
 
   - Change theme both in "Appearance" and "Window Manager"
 
-  - Install Tela circle icon theme:
+  - Install Papirus-Dark:
 
   ```Shell
-  git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
-  cd Tela-circle-icon-theme
-  ./install.sh
+  wget -qO- https://git.io/papirus-icon-theme-install | sh
   ```
 
+  - Install [Oreo Blue cursors](https://github.com/varlesh/oreo-cursors).
   - Unlock bottom panel, move to the left.
