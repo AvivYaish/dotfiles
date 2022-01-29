@@ -50,7 +50,7 @@
   # Export Display
   export DISPLAY=":1"
   # Start VNC Server
-  if [[ $(pidof Xvnc) ]]; then
+  while [[ $(pidof Xvnc) ]]; do
     echo -e "\n[!] Server Already Running."
     { vncserver -list; echo; }
     read -p "Kill VNC Server? (Y/N) : "
@@ -59,10 +59,9 @@
     else
       echo
     fi
-  else
-    echo -e "\n[*] Starting VNC Server..."
-    vncserver  # add -localhost if you don't want to connect remotely
-  fi
+  done
+  echo -e "\n[*] Starting VNC Server..."
+  vncserver  # add -localhost if you don't want to connect remotely
   ```
 
 - After running the script, the relevant port is 5901
