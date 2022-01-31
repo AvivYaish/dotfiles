@@ -31,7 +31,7 @@ function dif([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Re
 }
 
 # Autocomplete (uses PSReadLine)
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin 
 # Set-PSReadLineOption -EditMode Windows
 Set-PSReadLineOption -PredictionViewStyle ListView
 # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
