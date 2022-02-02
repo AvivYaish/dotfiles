@@ -17,6 +17,8 @@ local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
 
 # Install favorite applications
+# To get nerdfonts to work on termux, run 'p10k configure'
+# neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
 # chezmoi is a dotfile manager.
 # bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # lsd is a nicer 'ls'.
@@ -24,6 +26,7 @@ export PATH=${local_bin}:$PATH
 # byobu is a nice frontend for terminal multiplexers such as tmux.
 # procs is a 'ps' alternative.
 # bottom is a 'top' replacement.
+# glow is a CLI markdown reader.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
 # lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
@@ -39,7 +42,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
