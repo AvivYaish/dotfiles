@@ -47,7 +47,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'TovarishFin/vim-solidity'         " Solidity syntax-highlighting
+    Plug 'puremourning/vimspector'      " Debugger
+    Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
@@ -330,6 +331,14 @@ let g:vimtex_view_general_options
 " let g:vimtex_view_general_viewer = 'firefox'
 " let g:vimtex_view_general_options = "file:///@pdf"
 " let g:vimtex_view_general_options_latexmk = '--unique'
+
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " vim-test
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
