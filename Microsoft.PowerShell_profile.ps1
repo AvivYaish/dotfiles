@@ -1,5 +1,6 @@
 # Installation
 # winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
+# Install-Module PSWindowsUpdate 		# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
 # Install-Module PSReadLine			# Nicer PowerShell auto-completion
 # Install-Module -Name PSFzf 			# fzf integration with PowerShell
 # iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
@@ -44,11 +45,21 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # For zoxide v0.8.0+
 Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook powershell | Out-String)
+	$hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+	(zoxide init --hook $hook powershell | Out-String)
 })
 
-# #region conda initialize
-# # !! Contents within this block are managed by 'conda init' !!
-# (& "C:\Users\darti\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-# #endregion
+function updateStoreApps() {
+	 Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod
+}
+
+function updateAll() {
+	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocUpdate +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
+}
+
+function condaStart() {
+	#region conda initialize
+	# !! Contents within this block are managed by 'conda init' !!
+	(& "C:\Users\darti\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+	#endregion
+}
