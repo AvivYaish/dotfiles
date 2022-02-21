@@ -14,16 +14,22 @@ I use the following applications:
 - Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
 - Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
 - Additional niceties (all are available on Linux, MacOS and Windows, except tealdeer):
-  - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme
-  - [delta](https://github.com/dandavison/delta): snazzier 'diff', also with One Half Dark support
-  - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'
+  - [zoxide](https://github.com/ajeetdsouza/zoxide): a smarter 'cd' command.
+  - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'.
+  - [fd](https://github.com/sharkdp/fd): user-friendly alternative to 'find'.
+  - [fzf](https://github.com/junegunn/fzf): cli fuzzy finder.
+  - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+  - [delta](https://github.com/dandavison/delta): snazzier 'diff', also with One Half Dark support.
   - [ripgrep](https://github.com/BurntSushi/ripgrep): faster, better 'grep'!
-  - [tealdeer](https://github.com/dbrgn/tealdeer): a good companion for 'man', with succint descriptions and useful examples
+  - [tealdeer](https://github.com/dbrgn/tealdeer): a good companion for 'man', with succint descriptions and useful examples.
+  - [sd](https://github.com/chmln/sd): intuitive 'sed' alternative.
   - [curlie](https://github.com/rs/curlie): a 'curl' front-end inspired by HTTPie.
+  - [glow](https://github.com/charmbracelet/glow): cli markdown renderer.
 
 Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
-- Icons: [Tela circle blue dark](https://www.gnome-look.org/p/1359276/)
+- Icons: [Papirus icons](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+- Curosr: [Oreo Cursors](https://github.com/varlesh/oreo-cursors)
 - Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
 
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
