@@ -18,17 +18,19 @@ export PATH=${local_bin}:$PATH
 
 # Install favorite applications
 # To get nerdfonts to work on termux, run 'p10k configure'
-# neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
-# chezmoi is a dotfile manager.
-# bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-# lsd is a nicer 'ls'.
-# sd is a more common-sense 'sed' that supports python-like regex.
-# byobu is a nice frontend for terminal multiplexers such as tmux.
-# procs is a 'ps' alternative.
-# bottom is a 'top' replacement.
-# glow is a CLI markdown reader.
-# ptpython is a nicer Python REPL.
-# googler searches google.
+# - neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
+# - chezmoi is a dotfile manager.
+# - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+# - lsd is a nicer 'ls'.
+# - sd is a more common-sense 'sed' that supports python-like regex.
+# - byobu is a nice frontend for terminal multiplexers such as tmux.
+# - procs is a 'ps' alternative.
+# - bottom is a 'top' replacement.
+# - glow is a CLI markdown reader.
+# - ptpython is a nicer Python REPL.
+# - googler searches google.
+# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
+# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
 # lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
