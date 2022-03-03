@@ -347,3 +347,12 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 " nmap <silent> t<C-s> :TestSuite<CR>
 " nmap <silent> t<C-l> :TestLast<CR>
 " nmap <silent> t<C-g> :TestVisit<CR>
+
+" Vim integration for mrusme/reader
+function s:vertopen_url()
+  normal! "uyiW
+  let mycommand = "reader " . @u
+  execute "vertical terminal " . mycommand
+endfunction
+noremap <Plug>vertopen_url : call <SID>vertopen_url()<CR>
+nmap gx <Plug>vertopen_url
