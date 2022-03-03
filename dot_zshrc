@@ -78,7 +78,6 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle command-not-found
-antigen bundle ajeetdsouza/zoxide # Nicer 'cd'
 antigen bundle git
 antigen bundle python
 antigen bundle pip
