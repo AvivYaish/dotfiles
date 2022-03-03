@@ -11,6 +11,9 @@
 #
 # Other niceties:
 # - cargo install viu 				# A cross-platform terminal image viewer
+# - pip install ptpython 			# A nicer Python REPL
+# - pip install visidata 			# A nice terminal spreadsheet tool, requires windows-curses
+#   pip install windows-curses
 # - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 #
