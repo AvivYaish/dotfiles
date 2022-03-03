@@ -27,6 +27,8 @@ export PATH=${local_bin}:$PATH
 # procs is a 'ps' alternative.
 # bottom is a 'top' replacement.
 # glow is a CLI markdown reader.
+# ptpython is a nicer Python REPL.
+# googler searches google.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
 # lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
@@ -42,7 +44,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -51,6 +53,7 @@ export PATH=${local_bin}:$PATH
 #     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
 #     nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
 #     *)                  appCommand=${app};;
+#     saulpw/vd/visidata) appCommand="visidata" # CLI spreadsheet editor
 #   esac
 #   if ! command -v ${appCommand} &> /dev/null; then
 #     brew install ${app}
