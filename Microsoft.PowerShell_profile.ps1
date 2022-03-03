@@ -67,7 +67,7 @@ function backupAll() {
 	winget export -o $backup_path/winget.json;
 	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/windows_store.txt;
 	winget list | rg -v "winget" > $backup_path/windows_regular.txt;
-	$backup_path/syncToExternal.ps1;
+	"$backup_path/syncToExternal.ps1";
 }
 
 function condaStart() {
