@@ -62,7 +62,7 @@ function updateAll() {
 }
 
 $backup_path = "D:/OneDrive/Backups"
-function backupApps() {
+function backupAll() {
 	scoop export > $backup_path/scoop.txt;
 	winget export -o $backup_path/winget.json;
 	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/windows_store.txt;
