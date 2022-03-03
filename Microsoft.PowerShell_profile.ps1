@@ -10,7 +10,11 @@
 # }
 #
 # Other niceties:
-# cargo install viu # A cross-platform terminal image viewer
+# - cargo install viu 				# A cross-platform terminal image viewer
+# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
+# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
+#
+# I put non-packaged apps in ${HOME}\.local\bin, and add the path to PATH.
 
 Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
 
@@ -55,6 +59,15 @@ function updateStoreApps() {
 
 function updateAll() {
 	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocUpdate +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
+}
+
+$backup_path = "D:/OneDrive/Backups"
+function backupApps() {
+	scoop export > $backup_path/scoop.txt;
+	winget export -o $backup_path/winget.json;
+	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/windows_store.txt;
+	winget list | rg -v "winget" > $backup_path/windows_regular.txt;
+	$backup_path/syncToExternal.ps1;
 }
 
 function condaStart() {
