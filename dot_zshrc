@@ -22,6 +22,7 @@ export PATH=${local_bin}:$PATH
 # - chezmoi is a dotfile manager.
 # - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
 # - lsd is a nicer 'ls'.
+# - lf is a file manager.
 # - sd is a more common-sense 'sed' that supports python-like regex.
 # - byobu is a nice frontend for terminal multiplexers such as tmux.
 # - procs is a 'ps' alternative.
@@ -32,7 +33,6 @@ export PATH=${local_bin}:$PATH
 # - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
-# lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
 #   mkdir -p ${local_bin}
 # fi
