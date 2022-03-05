@@ -18,15 +18,19 @@ export PATH=${local_bin}:$PATH
 
 # Install favorite applications
 # To get nerdfonts to work on termux, run 'p10k configure'
-# neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
-# chezmoi is a dotfile manager.
-# bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-# lsd is a nicer 'ls'.
-# sd is a more common-sense 'sed' that supports python-like regex.
-# byobu is a nice frontend for terminal multiplexers such as tmux.
-# procs is a 'ps' alternative.
-# bottom is a 'top' replacement.
-# glow is a CLI markdown reader.
+# - neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
+# - chezmoi is a dotfile manager.
+# - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+# - lsd is a nicer 'ls'.
+# - sd is a more common-sense 'sed' that supports python-like regex.
+# - byobu is a nice frontend for terminal multiplexers such as tmux.
+# - procs is a 'ps' alternative.
+# - bottom is a 'top' replacement.
+# - glow is a CLI markdown reader.
+# - ptpython is a nicer Python REPL.
+# - googler searches google.
+# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
+# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 # To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
 # lf is a file manager.
 # if [ ! -d ${local_bin} ]; then
@@ -42,7 +46,7 @@ export PATH=${local_bin}:$PATH
 #   chmod -R go-w "$(brew --prefix)/share/zsh"
 #   brew analytics off
 # fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow; do
+# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
 #     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -51,6 +55,7 @@ export PATH=${local_bin}:$PATH
 #     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
 #     nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
 #     *)                  appCommand=${app};;
+#     saulpw/vd/visidata) appCommand="visidata" # CLI spreadsheet editor
 #   esac
 #   if ! command -v ${appCommand} &> /dev/null; then
 #     brew install ${app}
@@ -73,7 +78,6 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle command-not-found
-antigen bundle ajeetdsouza/zoxide # Nicer 'cd'
 antigen bundle git
 antigen bundle python
 antigen bundle pip
