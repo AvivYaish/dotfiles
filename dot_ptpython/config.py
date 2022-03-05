@@ -101,9 +101,35 @@ def configure(repl):
     # color schemes. See:
     # https://pygments.org/docs/styles/
     # https://pygments.org/demo/
-    repl.use_code_colorscheme("monokai")
+    # repl.use_code_colorscheme("monokai")
     # A colorscheme that looks good on dark backgrounds is 'native':
     # repl.use_code_colorscheme("native")
+
+    # Install custom colorscheme named 'my-colorscheme' and use it.
+    # Custom colorscheme for the UI. See `ptpython/layout.py` and
+    # `ptpython/style.py` for all possible tokens.
+    dracula_code_colorscheme = {
+        "pygments.comment": "#6272a4",
+        "pygments.keyword": "#ff79c6",
+        "pygments.number": "#bd93f9",
+        "pygments.operator": "#ff79c6",
+        "pygments.string": "#f1fa8c",
+        "pygments.name": "#f8f8f2",
+        "pygments.name.decorator": "#f8f8f2",
+        "pygments.name.class": "#50fa7b",
+        "pygments.name.function": "#50fa7b",
+        "pygments.name.builtin": "#8be9fd italic",
+        "pygments.name.attribute": "#50fa7b",
+        "pygments.name.constant": "#f8f8f2",
+        "pygments.name.entity": "#f8f8f2",
+        "pygments.name.exception": "#f8f8f2",
+        "pygments.name.label": "#8be9fd italic",
+        "pygments.name.namespace": "#f8f8f2",
+        "pygments.name.tag": "#ff79c6",
+        "pygments.name.variable": "#8be9fd italic",
+    }
+    repl.install_code_colorscheme("dracula", Style.from_dict(dracula_code_colorscheme))
+    repl.use_code_colorscheme("dracula")
 
     # Set color depth (keep in mind that not all terminals support true color).
 
