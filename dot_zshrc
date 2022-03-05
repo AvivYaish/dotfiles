@@ -1,5 +1,5 @@
-# On [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers,
-# add the following to the top of your ~/.cshrc file:
+# Using ZSH on [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers:
+# Add the following to the top of your ~/.cshrc file:
 # if ( $?prompt && -x /bin/zsh ) then
 #   setenv SHELL /bin/zsh
 #   exec /bin/zsh
