@@ -14,7 +14,7 @@
 # - pip install ptpython 			# A nicer Python REPL
 # - pip install visidata 			# A nice terminal spreadsheet tool, requires windows-curses
 #   pip install windows-curses
-# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
+# - pip install epy-reader 			# CLI ebook reader.
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 #
 # I put non-packaged apps in ${HOME}\.local\bin, and add the path to PATH.
@@ -70,7 +70,7 @@ function backupAll() {
 	winget export -o $backup_path/winget.json;
 	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/windows_store.txt;
 	winget list | rg -v "winget" > $backup_path/windows_regular.txt;
-	"$backup_path/syncToExternal.ps1";
+	& "$backup_path/syncToExternal.ps1";
 }
 
 function condaStart() {
