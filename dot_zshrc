@@ -6,7 +6,7 @@
 #   exec /bin/zsh
 # endif
 # The first setenv is for VSCode's remote extension.
-# For VSCode, you need to set csh as the default shell.
+# For VSCode remote, you need to set csh as the default shell.
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
