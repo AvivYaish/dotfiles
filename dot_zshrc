@@ -1,12 +1,15 @@
 # Using ZSH on [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers:
 # Add the following to the top of your ~/.cshrc file:
 # if ( $?prompt && -x /bin/zsh ) then
-#   setenv FPATH $FPATH\:/usr/local/share/zsh/site-functions\:/usr/share/zsh/vendor-functions\:/usr/share/zsh/vendor-completions\:/usr/share/zsh/functions/Calendar\:/usr/share/zsh/functions/Chpwd\:/usr/share/zsh/functions/Completion\:/usr/share/zsh/functions/Completion/AIX\:/usr/share/zsh/functions/Completion/BSD\:/usr/share/zsh/functions/Completion/Base\:/usr/share/zsh/functions/Completion/Cygwin\:/usr/share/zsh/functions/Completion/Darwin\:/usr/share/zsh/functions/Completion/Debian\:/usr/share/zsh/functions/Completion/Linux\:/usr/share/zsh/functions/Completion/Mandriva\:/usr/share/zsh/functions/Completion/Redhat\:/usr/share/zsh/functions/Completion/Solaris\:/usr/share/zsh/functions/Completion/Unix\:/usr/share/zsh/functions/Completion/X\:/usr/share/zsh/functions/Completion/Zsh\:/usr/share/zsh/functions/Completion/openSUSE\:/usr/share/zsh/functions/Exceptions\:/usr/share/zsh/functions/MIME\:/usr/share/zsh/functions/Math\:/usr/share/zsh/functions/Misc\:/usr/share/zsh/functions/Newuser\:/usr/share/zsh/functions/Prompts\:/usr/share/zsh/functions/TCP\:/usr/share/zsh/functions/VCS_Info\:/usr/share/zsh/functions/VCS_Info/Backends\:/usr/share/zsh/functions/Zftp\:/usr/share/zsh/functions/Zle
 #   setenv SHELL /bin/zsh
 #   exec /bin/zsh
 # endif
-# The first setenv is for VSCode's remote extension.
-# For VSCode, you need to set csh as the default shell.
+#
+# Using VSCode on HUJI's computers:
+# Add the following as the first command in the previous "if":
+#   setenv FPATH $FPATH\:/usr/local/share/zsh/site-functions\:/usr/share/zsh/vendor-functions\:/usr/share/zsh/vendor-completions\:/usr/share/zsh/functions/Calendar\:/usr/share/zsh/functions/Chpwd\:/usr/share/zsh/functions/Completion\:/usr/share/zsh/functions/Completion/AIX\:/usr/share/zsh/functions/Completion/BSD\:/usr/share/zsh/functions/Completion/Base\:/usr/share/zsh/functions/Completion/Cygwin\:/usr/share/zsh/functions/Completion/Darwin\:/usr/share/zsh/functions/Completion/Debian\:/usr/share/zsh/functions/Completion/Linux\:/usr/share/zsh/functions/Completion/Mandriva\:/usr/share/zsh/functions/Completion/Redhat\:/usr/share/zsh/functions/Completion/Solaris\:/usr/share/zsh/functions/Completion/Unix\:/usr/share/zsh/functions/Completion/X\:/usr/share/zsh/functions/Completion/Zsh\:/usr/share/zsh/functions/Completion/openSUSE\:/usr/share/zsh/functions/Exceptions\:/usr/share/zsh/functions/MIME\:/usr/share/zsh/functions/Math\:/usr/share/zsh/functions/Misc\:/usr/share/zsh/functions/Newuser\:/usr/share/zsh/functions/Prompts\:/usr/share/zsh/functions/TCP\:/usr/share/zsh/functions/VCS_Info\:/usr/share/zsh/functions/VCS_Info/Backends\:/usr/share/zsh/functions/Zftp\:/usr/share/zsh/functions/Zle
+# Set csh as the default shell for VSCode remote.
+# To turn on Settings Sync, you need to set Chrome as the default browser.
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
