@@ -22,36 +22,43 @@ fi
 local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
 
-# Install favorite applications
-# To get nerdfonts to work on termux, run 'p10k configure'
-# - neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
-# - chezmoi is a dotfile manager.
-# - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-# - lsd is a nicer 'ls'.
-# - lf is a file manager.
-# - sd is a more common-sense 'sed' that supports python-like regex.
-# - byobu is a nice frontend for terminal multiplexers such as tmux.
-# - procs is a 'ps' alternative.
-# - bottom is a 'top' replacement.
-# - glow is a CLI markdown reader.
-# - ptpython is a nicer Python REPL.
-# - googler searches google.
-# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
-# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
-# To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
 # if [ ! -d ${local_bin} ]; then
 #   mkdir -p ${local_bin}
 # fi
+
+# Install favorite applications
+# - To get nerdfonts to work on termux, run 'p10k configure'
+
+## [zap](https://github.com/srevinsaju/zap) is an AppImage package manager, install:
+# curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
+
+## zap install:
+## pomotroid is a pomodoro app.
+## neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
+# for app in firefox pomotroid neovim; do
+#   if ! command -v ${app} &> /dev/null; then
+#     zap install ${app}
+#   fi
+# done
+
+
+## Install antigen:
 # if ! test -f ${local_bin}/antigen.zsh; then
 #   curl -L git.io/antigen > ${local_bin}/antigen.zsh
 # fi
-# if ! command -v brew &> /dev/null; then
-#   git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
-#   eval "$(${local_bin}/homebrew/bin/brew shellenv)"
-#   brew update --force --quiet
-#   chmod -R go-w "$(brew --prefix)/share/zsh"
-#   brew analytics off
-# fi
+
+## Install homebrew applications:
+## - chezmoi is a dotfile manager.
+## - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
+## - lsd is a nicer 'ls'.
+## - lf is a file manager.
+## - sd is a more common-sense 'sed' that supports python-like regex.
+## - byobu is a nice frontend for terminal multiplexers such as tmux.
+## - procs is a 'ps' alternative.
+## - bottom is a 'top' replacement.
+## - glow is a CLI markdown reader.
+## - ptpython is a nicer Python REPL.
+
 # for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
@@ -67,15 +74,21 @@ export PATH=${local_bin}:$PATH
 #     brew install ${app}
 #   fi
 # done
-# if [[ `uname` == "Linux" ]]; then
-#   if ! command -v nvim &> /dev/null; then
-#     if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
-#       echo "Installing NeoVIM"
-#       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-#       mv -f nvim.appimage ${local_bin}/
-#     fi
+
+## To install useful key bindings and fuzzy completion for FZF: 
+# $(brew --prefix)/opt/fzf/install
+
+# Manual installation:
+# - googler searches google.
+# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
+
+## pip install:
+# pip install epy 	# [epy](https://github.com/wustho/epy) CLI ebook reader.
+# for app in epy; do
+#   if ! command -v ${app} &> /dev/null; then
+#     pip install ${app}
 #   fi
-# fi
+# done
 
 source ${local_bin}/antigen.zsh
 
@@ -117,16 +130,9 @@ if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
   [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
-if ! command -v nvim &> /dev/null; then
-  if command -v nvim.appimage &> /dev/null; then
-    alias nvim="nvim.appimage"
-  elif command -v ${local_bin}/nvim/bin/nvim &> /dev/null; then
-    alias nvim="${local_bin}/nvim/bin/nvim"
-  fi
-fi
-if command -v nvim &> /dev/null; then
-  alias vim="nvim"
-  alias vimdiff="nvim -d"
+if command -v neovim &> /dev/null; then
+  alias vim="neovim"
+  alias vimdiff="neovim -d"
 fi
 
 eval "$(zoxide init zsh)"
