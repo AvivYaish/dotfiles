@@ -1,3 +1,8 @@
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
 # Powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -18,12 +23,17 @@ if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
 fi
 if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
   export BYOBU_PREFIX=${local_bin}/homebrew
-  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
+#  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
 fi
 if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   export NVM_DIR="$HOME/.nvm"
-  [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
-  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
+  export NVM_LAZY_LOAD=true
+  export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim' 'neovim')
+  export NVM_COMPLETION=true
+
+## nvm is lazy-loaded by zsh-nvm, no need for the following:
+#   [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
+#  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
 if command -v neovim &> /dev/null; then
   alias vim="neovim"
@@ -36,9 +46,9 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle command-not-found
 antigen bundle git
-antigen bundle python
-antigen bundle pip
-antigen bundle npm
+# antigen bundle python
+# antigen bundle pip
+# antigen bundle npm
 if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
   export FZF_BASE=${local_bin}/homebrew/opt/fzf
   # ${FZF_BASE}/install # To install useful key bindings and fuzzy completion for FZF, run once
@@ -48,13 +58,15 @@ if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
 fi
 # Bundles from other repos
+antigen bundle mroth/evalcache 	# Speeds up evals
+antigen bundle lukechilds/zsh-nvm  # Lazy-loads nvm
 antigen bundle marlonrichert/zsh-autocomplete@main
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme romkatv/powerlevel10k     # Load the theme.
 antigen apply   # Tell Antigen that you're done.
 
-eval "$(zoxide init zsh)"
+_evalcache zoxide init zsh # eval "$(zoxide init zsh)"
 alias ..="z .."
 alias ll="lsd -lhat"
 alias dif="delta -ns"
