@@ -1,0 +1,79 @@
+#!/bin/csh -f
+# Using ZSH on [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers:
+if ( $?prompt && -x /bin/zsh ) then
+	# For VSCode, set FPATH and configure VSC's default shell to be csh.
+	setenv FPATH /usr/local/share/zsh/site-functions\:/usr/share/zsh/vendor-functions\:/usr/share/zsh/vendor-completions\:/usr/share/zsh/functions/Calendar\:/usr/share/zsh/functions/Chpwd\:/usr/share/zsh/functions/Completion\:/usr/share/zsh/functions/Completion/AIX\:/usr/share/zsh/functions/Completion/BSD\:/usr/share/zsh/functions/Completion/Base\:/usr/share/zsh/functions/Completion/Cygwin\:/usr/share/zsh/functions/Completion/Darwin\:/usr/share/zsh/functions/Completion/Debian\:/usr/share/zsh/functions/Completion/Linux\:/usr/share/zsh/functions/Completion/Mandriva\:/usr/share/zsh/functions/Completion/Redhat\:/usr/share/zsh/functions/Completion/Solaris\:/usr/share/zsh/functions/Completion/Unix\:/usr/share/zsh/functions/Completion/X\:/usr/share/zsh/functions/Completion/Zsh\:/usr/share/zsh/functions/Completion/openSUSE\:/usr/share/zsh/functions/Exceptions\:/usr/share/zsh/functions/MIME\:/usr/share/zsh/functions/Math\:/usr/share/zsh/functions/Misc\:/usr/share/zsh/functions/Newuser\:/usr/share/zsh/functions/Prompts\:/usr/share/zsh/functions/TCP\:/usr/share/zsh/functions/VCS_Info\:/usr/share/zsh/functions/VCS_Info/Backends\:/usr/share/zsh/functions/Zftp\:/usr/share/zsh/functions/Zle
+	# Set zsh as the default shell and execute it.
+	setenv SHELL /bin/zsh
+	exec $SHELL
+endif
+
+#
+# Personal C shell customizations
+# Read at start of execution of each C shell
+#
+
+# No core dumps
+limit coredumpsize 0
+
+# default permissions of newly created files and directories
+# - deny all others directory-access and write permissions
+umask 033
+
+# Site-wide C shell customizations  -- DO NOT DELETE!
+if ( -e /cs/share/skel/cshrc.site ) source /cs/share/skel/cshrc.site
+
+# Environment variables
+setenv	PAGER		less		# use 'less' rather then 'more'
+setenv	EDITOR		vim     
+## PRINTER is now set per machine, and the GUI remembers the last used anyway.
+#setenv	PRINTER 	st
+setenv	BLOCKSIZE	1k
+
+if (-e ~/.classpath) source ~/.classpath # sets java's CLASSPATH 
+
+# If non-interactive, exit
+if (! $?prompt) exit 0
+
+# If interactive, switch over to Enhanced C shell
+
+if (! $?tcsh) then
+	foreach dir ($path)
+		if ($dir =~ .*) continue
+		if (-x $dir/tcsh) then
+			set tcshpath = $dir/tcsh
+			break
+		endif
+	end
+	if ($?tcshpath) then
+		setenv SHELL $tcshpath
+		exec tcsh $argv
+	endif
+endif
+
+# -------------------------------------------------
+# Interactive C shell customizations
+
+# Fancy aliases
+if (-e ~/.aliases) source ~/.aliases
+
+# Shell variables
+#set savehist=200	# on logout, save last 200 commands in ~/.history 
+set history=1000		# remember last 500 commands
+set inputmode=insert	# or '=overwrite'
+set notify		# notify at once when a background job terminates
+set noclobber		# to overwrite a file, must use '>!', not '>'
+set ignoreeof		# to logout, must use 'exit', not Ctl-D
+set correct=cmd		# or '=all'. Try to correct typing errors
+set autoexpand
+set autolist		# so <tab> lists possible completions (like Ctl-D)
+set listmax=500		# so autolistings don't clutter screen
+set pushdtohome		# pushd without arguments does 'pushd ~'
+
+# shell checks mail every 60 secs
+set mail = (60 /cs/mail/$user /cs/spam/$user)
+
+# Show a fortune cookie
+if ( -x /usr/games/fortune ) then
+   /usr/games/fortune
+endif
