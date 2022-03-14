@@ -102,9 +102,9 @@ antigen bundle pip
 antigen bundle npm
 if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
   export FZF_BASE=${local_bin}/homebrew/opt/fzf
-  export PATH=${local_bin}/homebrew/opt/fzf:$PATH
+  export PATH=${FZF_BASE}:$PATH
 fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 antigen bundle fzf
 if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
