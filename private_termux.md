@@ -70,7 +70,7 @@
 - Can connect from phone using [VNC Viewer](https://play.google.com/store/apps/details?id=com.realvnc.viewer.android), IP is 127.0.0.1
 - Can connect from a computer using TigerVNC, check IP using ifconfig
 - After starting XFCE:
-  - Install MesloLGMNF:
+  - Install the Nerd Font "MesloLGMNF":
 
   ```Shell
   p10k configure
