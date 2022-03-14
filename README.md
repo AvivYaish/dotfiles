@@ -31,8 +31,8 @@ Desktop configuration:
 - Icons: [Papirus icons](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - Curosr: [Oreo Cursors](https://github.com/varlesh/oreo-cursors)
 - Font: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regular/complete)
-- gedit theme: [Dracula](https://draculatheme.com/gedit)
-- Mate Terminal theme: [Dracula](https://github.com/pygaurav/mate-terminal-dracula-custom-theme)
+- gedit theme: [One Dark](https://github.com/isdampe/gedit-gtk-one-dark-style-scheme)
+- Mate Terminal theme: [One Dark](https://github.com/denysdovhan/one-gnome-terminal)
 
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
 To that end, many people have created countless configurations to help you start:
