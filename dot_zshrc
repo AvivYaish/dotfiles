@@ -42,47 +42,19 @@
 #   fi
 # done
 
+# Powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # I put local programs in .local/bin
 local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
-
-source ${local_bin}/antigen.zsh
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle command-not-found
-antigen bundle git
-antigen bundle python
-antigen bundle pip
-antigen bundle npm
-if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
-  export FZF_BASE=${local_bin}/homebrew/opt/fzf
-  # export PATH=${FZF_BASE}:$PATH
-  # $(brew --prefix)/opt/fzf/install # To install useful key bindings and fuzzy completion for FZF, run once
-fi
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-antigen bundle fzf
-if [[ `uname` == "Darwin" ]]; then
-  antigen bundle macos
-fi
-# Bundles from other repos
-antigen bundle marlonrichert/zsh-autocomplete@main
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen theme romkatv/powerlevel10k     # Load the theme.
-antigen apply   # Tell Antigen that you're done.
 
 # Check if apps are found in non-standard directories
 if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
@@ -101,6 +73,30 @@ if command -v neovim &> /dev/null; then
   alias vim="neovim"
   alias vimdiff="neovim -d"
 fi
+
+# Load the oh-my-zsh's library.
+source ${local_bin}/antigen.zsh
+antigen use oh-my-zsh
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle command-not-found
+antigen bundle git
+antigen bundle python
+antigen bundle pip
+antigen bundle npm
+if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
+  export FZF_BASE=${local_bin}/homebrew/opt/fzf
+  # ${FZF_BASE}/install # To install useful key bindings and fuzzy completion for FZF, run once
+fi
+antigen bundle fzf
+if [[ `uname` == "Darwin" ]]; then
+  antigen bundle macos
+fi
+# Bundles from other repos
+antigen bundle marlonrichert/zsh-autocomplete@main
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme romkatv/powerlevel10k     # Load the theme.
+antigen apply   # Tell Antigen that you're done.
 
 eval "$(zoxide init zsh)"
 alias ..="z .."
