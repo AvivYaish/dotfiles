@@ -153,13 +153,7 @@ def configure(repl):
         "pygments.name.function.magic": "#56B6C2 bold",
         "pygments.name.builtin": "#E5C07B",
         "pygments.name.attribute": "#E06C75",
-#        "pygments.name.constant": "#f8f8f2",
-#        "pygments.name.entity": "#f8f8f2",
-#        "pygments.name.exception": "#f8f8f2",
-#        "pygments.name.label": "#8be9fd italic",
-#        "pygments.name.namespace": "#f8f8f2",
         "pygments.name.tag": "#E06C75",
-#        "pygments.name.variable": "#8be9fd italic",
         "pygments.name.other": "#E06C75",
     }
     repl.install_code_colorscheme("onedark", Style.from_dict(onedark_code_colorscheme))
