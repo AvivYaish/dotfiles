@@ -1,63 +1,26 @@
 ## Using ZSH on [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers:
 ## Add the following to the top of your ~/.cshrc file:
+## If you use VSCode, set FPATH and configure VSC's default shell to be csh.
+## Set zsh as the default shell and execute it.
 # if ( $?prompt && -x /bin/zsh ) then
 #   setenv FPATH $FPATH\:/usr/local/share/zsh/site-functions\:/usr/share/zsh/vendor-functions\:/usr/share/zsh/vendor-completions\:/usr/share/zsh/functions/Calendar\:/usr/share/zsh/functions/Chpwd\:/usr/share/zsh/functions/Completion\:/usr/share/zsh/functions/Completion/AIX\:/usr/share/zsh/functions/Completion/BSD\:/usr/share/zsh/functions/Completion/Base\:/usr/share/zsh/functions/Completion/Cygwin\:/usr/share/zsh/functions/Completion/Darwin\:/usr/share/zsh/functions/Completion/Debian\:/usr/share/zsh/functions/Completion/Linux\:/usr/share/zsh/functions/Completion/Mandriva\:/usr/share/zsh/functions/Completion/Redhat\:/usr/share/zsh/functions/Completion/Solaris\:/usr/share/zsh/functions/Completion/Unix\:/usr/share/zsh/functions/Completion/X\:/usr/share/zsh/functions/Completion/Zsh\:/usr/share/zsh/functions/Completion/openSUSE\:/usr/share/zsh/functions/Exceptions\:/usr/share/zsh/functions/MIME\:/usr/share/zsh/functions/Math\:/usr/share/zsh/functions/Misc\:/usr/share/zsh/functions/Newuser\:/usr/share/zsh/functions/Prompts\:/usr/share/zsh/functions/TCP\:/usr/share/zsh/functions/VCS_Info\:/usr/share/zsh/functions/VCS_Info/Backends\:/usr/share/zsh/functions/Zftp\:/usr/share/zsh/functions/Zle
 #   setenv SHELL /bin/zsh
 #   exec /bin/zsh
 # endif
-## The first setenv is for VSCode's remote extension.
-## For VSCode, you need to set csh as the default shell.
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# I put local programs in .local/bin
-local_bin=~/.local/bin
-export PATH=${local_bin}:$PATH
-
+## Install everything
 # if [ ! -d ${local_bin} ]; then
 #   mkdir -p ${local_bin}
 # fi
-
-# Install favorite applications
-# - To get nerdfonts to work on termux, run 'p10k configure'
-
-## [zap](https://github.com/srevinsaju/zap) is an AppImage package manager, install:
-# curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
-
-## zap install:
-## pomotroid is a pomodoro app.
-## neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
+# if ! test -f ${local_bin}/antigen.zsh; then
+#   curl -L git.io/antigen > ${local_bin}/antigen.zsh
+# fi
+# curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s # Install zap
 # for app in firefox pomotroid neovim; do
 #   if ! command -v ${app} &> /dev/null; then
 #     zap install ${app}
 #   fi
 # done
-
-## Install antigen:
-# if ! test -f ${local_bin}/antigen.zsh; then
-#   curl -L git.io/antigen > ${local_bin}/antigen.zsh
-# fi
-
-## Install homebrew applications:
-## - chezmoi is a dotfile manager.
-## - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-## - lsd is a nicer 'ls'.
-## - lf is a file manager.
-## - sd is a more common-sense 'sed' that supports python-like regex.
-## - byobu is a nice frontend for terminal multiplexers such as tmux.
-## - procs is a 'ps' alternative.
-## - bottom is a 'top' replacement.
-## - glow is a CLI markdown reader.
-## - ptpython is a nicer Python REPL.
-
 # for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
 #   case ${app} in
 #     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
@@ -73,21 +36,25 @@ export PATH=${local_bin}:$PATH
 #     brew install ${app}
 #   fi
 # done
-
-## To install useful key bindings and fuzzy completion for FZF: 
-# $(brew --prefix)/opt/fzf/install
-
-# Manual installation:
-# - googler searches google.
-# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
-
-## pip install:
-# pip install epy 	# [epy](https://github.com/wustho/epy) CLI ebook reader.
 # for app in epy; do
 #   if ! command -v ${app} &> /dev/null; then
 #     pip install ${app}
 #   fi
 # done
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# I put local programs in .local/bin
+local_bin=~/.local/bin
+export PATH=${local_bin}:$PATH
 
 source ${local_bin}/antigen.zsh
 
@@ -103,6 +70,7 @@ antigen bundle npm
 if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
   export FZF_BASE=${local_bin}/homebrew/opt/fzf
   # export PATH=${FZF_BASE}:$PATH
+  # $(brew --prefix)/opt/fzf/install # To install useful key bindings and fuzzy completion for FZF, run once
 fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 antigen bundle fzf
