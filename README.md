@@ -30,7 +30,7 @@ Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
 - Icons: [Papirus icons](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - Curosr: [Oreo Cursors](https://github.com/varlesh/oreo-cursors)
-- Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+- Font: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regular/complete)
 - gedit theme: [Dracula](https://draculatheme.com/gedit)
 - Mate Terminal theme: [Dracula](https://github.com/pygaurav/mate-terminal-dracula-custom-theme)
 
