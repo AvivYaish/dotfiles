@@ -1,23 +1,34 @@
 # Installation
+# I put non-packaged apps in ${HOME}\.local\bin, and add the path to PATH.
 # winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
-# Install-Module PSWindowsUpdate 		# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
+# Install-Module PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
 # Install-Module PSReadLine			# Nicer PowerShell auto-completion
-# Install-Module -Name PSFzf 			# fzf integration with PowerShell
-# iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
-# # sudo allows sudoing in Windows
-# foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command', 'glow') {
-# 	scoop install $app
-# }
-#
-# Other niceties:
+# Install-Module -Name PSFzf 		# fzf integration with PowerShell
+# scoop install sudo 				# Allows sudoing in Windows
 # - cargo install viu 				# A cross-platform terminal image viewer
 # - pip install ptpython 			# A nicer Python REPL
 # - pip install visidata 			# A nice terminal spreadsheet tool, requires windows-curses
 #   pip install windows-curses
 # - pip install epy-reader 			# CLI ebook reader.
+# Manual installation:
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
-#
-# I put non-packaged apps in ${HOME}\.local\bin, and add the path to PATH.
+
+# foreach ($app in @('JanDeDobbeleer.OhMyPosh')) {
+# 	winget install $app
+# }
+# foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSWindowsUpdate', 'PSFzf')) {
+# 	Install-Module $app
+# }
+# iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
+# foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command', 'glow')) {
+# 	scoop install $app
+# }
+# foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader')) {
+# 	pip install $app
+# }
+# foreach ($app in @('viu')) {
+# 	cargo install $app
+# }
 
 Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
 
