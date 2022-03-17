@@ -8,11 +8,12 @@
 # dotfiles
 My dotfiles.
 I use the following applications:
-- Editor: [nvim](https://github.com/neovim/neovim)
+- Editor: [nvim](https://github.com/neovim/neovim), see [this](https://neovim.io/doc/user/nvim.html) for VIM migration instructions.
 - Shell: zsh, PowerShell
 - Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
 - Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
+- AppImage package manager: [zap](https://github.com/srevinsaju/zap). I use it to manage Firefox, NeoVim and Pomotroid (a pomodoro timer).
 - Additional niceties (all are available on Linux, MacOS and Windows, except tealdeer):
   - [zoxide](https://github.com/ajeetdsouza/zoxide): a smarter 'cd' command.
   - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'.
@@ -25,12 +26,20 @@ I use the following applications:
   - [sd](https://github.com/chmln/sd): intuitive 'sed' alternative.
   - [curlie](https://github.com/rs/curlie): a 'curl' front-end inspired by HTTPie.
   - [glow](https://github.com/charmbracelet/glow): cli markdown renderer.
+  - [lf](https://github.com/gokcehan/lf) is a file manager.
+  - [procs](https://github.com/dalance/procs) is a 'ps' alternative.
+  - [bottom](https://github.com/ClementTsang/bottom) is a 'top' replacement.
+  - [ptpython](https://github.com/prompt-toolkit/ptpython) is a nicer Python REPL.
+  - [reader](https://github.com/mrusme/reader) is a wonderful CLI webpage reader (available via github).
+  - [epy](https://github.com/wustho/epy) is a CLI ebook reader (available via pip).
 
 Desktop configuration:
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
 - Icons: [Papirus icons](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - Curosr: [Oreo Cursors](https://github.com/varlesh/oreo-cursors)
-- Font: [DroidSandMono Nerd Font Book](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono)
+- Font: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode/Regular/complete)
+- gedit theme: [One Dark](https://github.com/isdampe/gedit-gtk-one-dark-style-scheme)
+- Mate Terminal theme: [One Dark](https://github.com/denysdovhan/one-gnome-terminal)
 
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
 To that end, many people have created countless configurations to help you start:

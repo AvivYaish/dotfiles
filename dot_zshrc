@@ -1,108 +1,21 @@
-# Using ZSH on [HUJI](https://wiki.cs.huji.ac.il/en/wiki/Changing_Shell#zsh)'s computers:
-# Add the following to the top of your ~/.cshrc file:
-# if ( $?prompt && -x /bin/zsh ) then
-#   setenv FPATH $FPATH\:/usr/local/share/zsh/site-functions\:/usr/share/zsh/vendor-functions\:/usr/share/zsh/vendor-completions\:/usr/share/zsh/functions/Calendar\:/usr/share/zsh/functions/Chpwd\:/usr/share/zsh/functions/Completion\:/usr/share/zsh/functions/Completion/AIX\:/usr/share/zsh/functions/Completion/BSD\:/usr/share/zsh/functions/Completion/Base\:/usr/share/zsh/functions/Completion/Cygwin\:/usr/share/zsh/functions/Completion/Darwin\:/usr/share/zsh/functions/Completion/Debian\:/usr/share/zsh/functions/Completion/Linux\:/usr/share/zsh/functions/Completion/Mandriva\:/usr/share/zsh/functions/Completion/Redhat\:/usr/share/zsh/functions/Completion/Solaris\:/usr/share/zsh/functions/Completion/Unix\:/usr/share/zsh/functions/Completion/X\:/usr/share/zsh/functions/Completion/Zsh\:/usr/share/zsh/functions/Completion/openSUSE\:/usr/share/zsh/functions/Exceptions\:/usr/share/zsh/functions/MIME\:/usr/share/zsh/functions/Math\:/usr/share/zsh/functions/Misc\:/usr/share/zsh/functions/Newuser\:/usr/share/zsh/functions/Prompts\:/usr/share/zsh/functions/TCP\:/usr/share/zsh/functions/VCS_Info\:/usr/share/zsh/functions/VCS_Info/Backends\:/usr/share/zsh/functions/Zftp\:/usr/share/zsh/functions/Zle
-#   setenv SHELL /bin/zsh
-#   exec /bin/zsh
-# endif
-# The first setenv is for VSCode's remote extension.
-# For VSCode, you need to set csh as the default shell.
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
 
+# Powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # I put local programs in .local/bin
 local_bin=~/.local/bin
 export PATH=${local_bin}:$PATH
-
-# Install favorite applications
-# To get nerdfonts to work on termux, run 'p10k configure'
-# - neovim is a fork of vim, see [this](https://neovim.io/doc/user/nvim.html) for migration instructions
-# - chezmoi is a dotfile manager.
-# - bat is a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
-# - lsd is a nicer 'ls'.
-# - lf is a file manager.
-# - sd is a more common-sense 'sed' that supports python-like regex.
-# - byobu is a nice frontend for terminal multiplexers such as tmux.
-# - procs is a 'ps' alternative.
-# - bottom is a 'top' replacement.
-# - glow is a CLI markdown reader.
-# - ptpython is a nicer Python REPL.
-# - googler searches google.
-# - [epy](https://github.com/wustho/epy) 	# CLI ebook reader.
-# - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
-# To install useful key bindings and fuzzy completion for FZF: $(brew --prefix)/opt/fzf/install
-# if [ ! -d ${local_bin} ]; then
-#   mkdir -p ${local_bin}
-# fi
-# if ! test -f ${local_bin}/antigen.zsh; then
-#   curl -L git.io/antigen > ${local_bin}/antigen.zsh
-# fi
-# if ! command -v brew &> /dev/null; then
-#   git clone https://github.com/Homebrew/brew ${local_bin}/homebrew
-#   eval "$(${local_bin}/homebrew/bin/brew shellenv)"
-#   brew update --force --quiet
-#   chmod -R go-w "$(brew --prefix)/share/zsh"
-#   brew analytics off
-# fi
-# for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
-#   case ${app} in
-#     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
-#     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
-#     universal-ctags)    appCommand="ctags";;  # If your ctags is outdated, this is required for VIM's tagbar
-#     ripgrep)            appCommand="rg";;     # Faster, better 'grep'!
-#     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
-#     nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
-#     *)                  appCommand=${app};;
-#     saulpw/vd/visidata) appCommand="visidata" # CLI spreadsheet editor
-#   esac
-#   if ! command -v ${appCommand} &> /dev/null; then
-#     brew install ${app}
-#   fi
-# done
-# if [[ `uname` == "Linux" ]]; then
-#   if ! command -v nvim &> /dev/null; then
-#     if ! command -v nvim.appimage &> /dev/null; then # Currently assumes you are using Linux on x64
-#       echo "Installing NeoVIM"
-#       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-#       mv -f nvim.appimage ${local_bin}/
-#     fi
-#   fi
-# fi
-
-source ${local_bin}/antigen.zsh
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle command-not-found
-antigen bundle git
-antigen bundle python
-antigen bundle pip
-antigen bundle npm
-if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
-  export FZF_BASE=${local_bin}/homebrew/opt/fzf
-  export PATH=${local_bin}/homebrew/opt/fzf:$PATH
-fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-antigen bundle fzf
-if [[ `uname` == "Darwin" ]]; then
-  antigen bundle macos
-fi
-# Bundles from other repos
-antigen bundle marlonrichert/zsh-autocomplete@main
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen theme romkatv/powerlevel10k     # Load the theme.
-antigen apply   # Tell Antigen that you're done.
 
 # Check if apps are found in non-standard directories
 if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
@@ -110,26 +23,50 @@ if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
 fi
 if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
   export BYOBU_PREFIX=${local_bin}/homebrew
-  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
+#  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
 fi
 if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   export NVM_DIR="$HOME/.nvm"
-  [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
-  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
+  export NVM_LAZY_LOAD=true
+  export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim' 'neovim')
+  export NVM_COMPLETION=true
+
+## nvm is lazy-loaded by zsh-nvm, no need for the following:
+#   [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
+#  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
-if ! command -v nvim &> /dev/null; then
-  if command -v nvim.appimage &> /dev/null; then
-    alias nvim="nvim.appimage"
-  elif command -v ${local_bin}/nvim/bin/nvim &> /dev/null; then
-    alias nvim="${local_bin}/nvim/bin/nvim"
-  fi
-fi
-if command -v nvim &> /dev/null; then
-  alias vim="nvim"
-  alias vimdiff="nvim -d"
+if command -v neovim &> /dev/null; then
+  alias vim="neovim"
+  alias vimdiff="neovim -d"
 fi
 
-eval "$(zoxide init zsh)"
+# Load the oh-my-zsh's library.
+source ${local_bin}/antigen.zsh
+antigen use oh-my-zsh
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle command-not-found
+antigen bundle git
+# antigen bundle python
+# antigen bundle pip
+# antigen bundle npm
+if command -v ${local_bin}/homebrew/bin/fzf &> /dev/null; then
+  export FZF_BASE=${local_bin}/homebrew/opt/fzf
+  # ${FZF_BASE}/install # To install useful key bindings and fuzzy completion for FZF, run once
+fi
+antigen bundle fzf
+if [[ `uname` == "Darwin" ]]; then
+  antigen bundle macos
+fi
+# Bundles from other repos
+antigen bundle mroth/evalcache 	# Speeds up evals
+antigen bundle lukechilds/zsh-nvm  # Lazy-loads nvm
+antigen bundle marlonrichert/zsh-autocomplete@main
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme romkatv/powerlevel10k     # Load the theme.
+antigen apply   # Tell Antigen that you're done.
+
+_evalcache zoxide init zsh # eval "$(zoxide init zsh)"
 alias ..="z .."
 alias ll="lsd -lhat"
 alias dif="delta -ns"

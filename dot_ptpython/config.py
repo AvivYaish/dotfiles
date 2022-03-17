@@ -128,8 +128,36 @@ def configure(repl):
         "pygments.name.tag": "#ff79c6",
         "pygments.name.variable": "#8be9fd italic",
     }
-    repl.install_code_colorscheme("dracula", Style.from_dict(dracula_code_colorscheme))
-    repl.use_code_colorscheme("dracula")
+    onedark_code_colorscheme = {
+        "pygments.token": "#ABB2BF",
+
+        "pygments.punctuation": "#ABB2BF",
+        "pygments.punctuation.marker": "#ABB2BF",
+
+        "pygments.comment": "#7F848E",
+        "pygments.keyword": "#C678DD",
+
+        "pygments.keyword.constant": "#E5C07B",
+        "pygments.keyword.declaration": "#C678DD",
+        "pygments.keyword.namespace": "#C678DD",
+        "pygments.keyword.reserved": "#C678DD",
+        "pygments.keyword.type": "#E5C07B",
+
+        "pygments.number": "#D19A66",
+        "pygments.operator": "#56B6C2",
+        "pygments.string": "#98C379",
+        "pygments.name": "#E06C75",
+        "pygments.name.decorator": "#61AFEF",
+        "pygments.name.class": "#E5C07B",
+        "pygments.name.function": "#61AFEF bold",
+        "pygments.name.function.magic": "#56B6C2 bold",
+        "pygments.name.builtin": "#E5C07B",
+        "pygments.name.attribute": "#E06C75",
+        "pygments.name.tag": "#E06C75",
+        "pygments.name.other": "#E06C75",
+    }
+    repl.install_code_colorscheme("onedark", Style.from_dict(onedark_code_colorscheme))
+    repl.use_code_colorscheme("onedark")
 
     # Set color depth (keep in mind that not all terminals support true color).
 
