@@ -35,6 +35,16 @@ nnoremap <C-s> :w<CR>
 " set complete+=kspell
 " set viminfo='100,n$HOME/.vim/viminfo " viminfo files save state and histories (command line, search, input), irrelevant for nvim
 
+" vim-buffet colors
+" Note: Make sure the function is defined before `vim-buffet` is loaded.
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#98C379 guifg=#323A3F
+  hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#2C323C guifg=#98C379
+  hi! BuffetBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#2C323C guifg=#ABB2BF
+  " BuffetTabs are the weird leftmost squares in the tab-bar
+  hi! BuffetTab cterm=NONE ctermbg=5 ctermfg=8 guibg=#3E4452 guifg=#ABB2BF
+endfunction
+
 " Install vim-plug
 if empty(glob('$HOME/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo '.glob('$HOME').'/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -47,6 +57,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
+    Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
     Plug 'puremourning/vimspector'      " Debugger
     Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
@@ -54,7 +65,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview (variables, functions, etc)
     Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveLineUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
     Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
-    Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
+    " Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Shows an undo history tree (Alt-z)
     Plug 'tpope/vim-sleuth'             " Automatically adjusts shiftwidth and expandtab based on the current file. If is blank, based on other files from the same directory
     Plug 'tpope/vim-fugitive'           " Git integration (:Git commit, :Git <some-git-command>)
@@ -356,3 +367,36 @@ function s:vertopen_url()
 endfunction
 noremap <Plug>vertopen_url : call <SID>vertopen_url()<CR>
 nmap gx <Plug>vertopen_url
+
+" vim-buffet
+let g:buffet_always_show_tabline = 0
+let g:buffet_powerline_separators = 1
+let g:buffet_show_index = 1
+let g:buffet_tab_icon = "\uf00a"
+let g:buffet_left_trunc_icon = "\uf0a8"
+let g:buffet_right_trunc_icon = "\uf0a9"
+
+nmap <leader>1 <Plug>BuffetSwitch(1)
+nmap <leader>2 <Plug>BuffetSwitch(2)
+nmap <leader>3 <Plug>BuffetSwitch(3)
+nmap <leader>4 <Plug>BuffetSwitch(4)
+nmap <leader>5 <Plug>BuffetSwitch(5)
+nmap <leader>6 <Plug>BuffetSwitch(6)
+nmap <leader>7 <Plug>BuffetSwitch(7)
+nmap <leader>8 <Plug>BuffetSwitch(8)
+nmap <leader>9 <Plug>BuffetSwitch(9)
+nmap <leader>0 <Plug>BuffetSwitch(10)
+
+" Go to next tab
+noremap <Tab> :bn<CR>
+" Go to previous tab
+noremap <S-Tab> :bp<CR>
+
+" Close tab
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+noremap <C-F4> :Bw<CR>
+noremap <C-S-F4> :Bw!<CR>
+
+" New tab
+noremap <C-t> :enew<CR>
