@@ -44,7 +44,7 @@ Desktop configuration:
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
 To that end, many people have created countless configurations to help you start:
 - [Oh-my-zsh](https://github.com/ohmyzsh/): a framework that makes your terminal informative and beautiful.
-- [Nvchad](https://nvchad.github.io/): a NeoVIM IDE!
+- [LunarVim](https://github.com/LunarVim/LunarVim): a NeoVIM IDE!
 - [.tmux](https://github.com/gpakosz/.tmux): a tmux configuration file.
 
 To paraphrase the Rifleman's Creed:
