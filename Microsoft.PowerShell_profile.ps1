@@ -49,6 +49,12 @@ function dif([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Re
 	delta -ns $Remaining
 }
 
+function readerPandoc([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {
+	# Parses a webpage for reading in the terminal
+	# Relies on pandoc (winget install pandoc)
+	pandoc -f html -t plain $Remaining
+}
+
 # Autocomplete (uses PSReadLine)
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin 
 # Set-PSReadLineOption -EditMode Windows
