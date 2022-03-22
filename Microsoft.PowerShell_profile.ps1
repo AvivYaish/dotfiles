@@ -78,7 +78,7 @@ function updateStoreApps() {
 }
 
 function updateAll() {
-	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocUpdate +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
+	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
 }
 
 $backup_path = "D:/OneDrive/Backups"
