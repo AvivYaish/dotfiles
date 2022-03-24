@@ -80,7 +80,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
     Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
     Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
-    Plug 'terryma/vim-multiple-cursors' " Multiple cursors (Ctrl+n to mark the next, Ctrl+x to skip)
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}         " Multiple cursors (Ctrl+d to mark the next occurence, Ctrl+Shift+l to select all occurences, Ctrl+Alt+up/down arrows to select previous/next line)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+o)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
     Plug 'scrooloose/nerdcommenter'     ", { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }      For easy commenting (Ctrl+/)
@@ -153,16 +153,22 @@ let g:NERDToggleCheckAllLines = 1 " Enable NERDCommenterToggle to check all sele
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 
-" vim-multiple-cursors
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" vim-visual-multi
+let g:VM_default_mappings = 0
+let g:VM_maps = {}
+let g:VM_maps['Find Under']                  = '<C-d>'
+let g:VM_maps['Find Subword Under']          = '<C-d>'
+let g:VM_maps["Select All"]                  = '<C-L>'
+let g:VM_maps["Start Regex Search"]          = '\\/'
+let g:VM_maps["Add Cursor Down"]             = '<C-A-Down>'
+let g:VM_maps["Add Cursor Up"]               = '<C-A-Up>'
+let g:VM_maps["Add Cursor At Pos"]           = '\\\'
+
+let g:VM_maps["Visual Regex"]                = '\\/'
+let g:VM_maps["Visual All"]                  = '\\A' 
+let g:VM_maps["Visual Add"]                  = '\\a'
+let g:VM_maps["Visual Find"]                 = '\\f'
+let g:VM_maps["Visual Cursors"]              = '\\c'
 
 " Markdownpreview
 let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
