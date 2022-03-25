@@ -170,6 +170,8 @@ let g:VM_maps["Visual Add"]                  = '\\a'
 let g:VM_maps["Visual Find"]                 = '\\f'
 let g:VM_maps["Visual Cursors"]              = '\\c'
 
+let g:VM_mouse_mappings = 1
+
 " Markdownpreview
 let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
 let g:mkdp_auto_close = 1 " set to 1, the nvim will auto close current preview window when change from markdown buffer to another buffer
