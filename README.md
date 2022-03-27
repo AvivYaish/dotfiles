@@ -1,11 +1,11 @@
 ![desktop](https://user-images.githubusercontent.com/12000894/144870928-dd2529ca-f1d5-457d-a0bd-61742edb02eb.png)
 ![terminal](https://user-images.githubusercontent.com/12000894/160268393-91213855-1f0d-4f12-b2e1-60201a7431a2.png)
 
-
-
 # dotfiles
+
 My dotfiles.
 I use the following applications:
+
 - Editor: [nvim](https://github.com/neovim/neovim), see [this](https://neovim.io/doc/user/nvim.html) for VIM migration instructions.
 - Shell: zsh, PowerShell
 - Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
@@ -32,6 +32,7 @@ I use the following applications:
   - [epy](https://github.com/wustho/epy) is a CLI ebook reader (available via pip).
 
 Desktop configuration:
+
 - Theme: [Orchis dark compact](https://www.mate-look.org/p/1357889)
 - Icons: [Papirus icons](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 - Curosr: [Oreo Cursors](https://github.com/varlesh/oreo-cursors)
@@ -41,6 +42,7 @@ Desktop configuration:
 
 The shell should be an extension of your mind - it should be tailored exactly to your measures, so that using it saves you time instead of creating more problems.
 To that end, many people have created countless configurations to help you start:
+
 - [Oh-my-zsh](https://github.com/ohmyzsh/): a framework that makes your terminal informative and beautiful.
 - [LunarVim](https://github.com/LunarVim/LunarVim): a NeoVIM IDE!
 - [.tmux](https://github.com/gpakosz/.tmux): a tmux configuration file.
