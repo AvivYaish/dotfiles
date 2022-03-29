@@ -17,6 +17,9 @@ for app in firefox pomotroid neovim; do
   fi
 done
 
+# Set up neovim to use ~/.vimrc
+vim -c "call mkdir(stdpath('config'),'p')" —c "call writefile(['set runtimepath^=~/.vim runtimepath+=~/.vim/after', 'let &packpath = &runtimepath', 'source ~/.vimrc'], stdpath('config').'/init.vim', 'a')" +qall 
+
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
