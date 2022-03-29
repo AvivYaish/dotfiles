@@ -2,14 +2,12 @@
 ![terminal](https://user-images.githubusercontent.com/12000894/160268393-91213855-1f0d-4f12-b2e1-60201a7431a2.png)
 ![jupyter-on-android](https://user-images.githubusercontent.com/12000894/160621258-074b844a-b6c8-4893-869f-5a3c3de33787.png)
 
-
-
 # dotfiles
 
 My dotfiles.
 I use the following applications:
 
-- Editor: [nvim](https://github.com/neovim/neovim), see [this](https://neovim.io/doc/user/nvim.html) for VIM migration instructions.
+- Editor: [nvim](https://github.com/neovim/neovim)
 - Shell: zsh, PowerShell
 - Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
