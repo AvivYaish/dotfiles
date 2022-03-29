@@ -9,7 +9,7 @@ if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
 
-for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
+for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer nodejs fd byobu fzf lf procs bottom glow openjdk-17; do
   pkg install ${app}
 done
 
