@@ -28,6 +28,8 @@ I use the following applications:
   - [procs](https://github.com/dalance/procs) is a 'ps' alternative.
   - [bottom](https://github.com/ClementTsang/bottom) is a 'top' replacement.
   - [ptpython](https://github.com/prompt-toolkit/ptpython) is a nicer Python REPL.
+  - [euporie](https://github.com/joouha/euporie) allows editing and running Jupyter notebooks in the terminal.
+  - [visidata](https://www.visidata.org) is a CLI spreadsheet editor.
   - [reader](https://github.com/mrusme/reader) is a wonderful CLI webpage reader (available via github).
   - [epy](https://github.com/wustho/epy) is a CLI ebook reader (available via pip).
 
