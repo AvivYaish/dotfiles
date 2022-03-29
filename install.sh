@@ -25,7 +25,7 @@ vim -c "call mkdir(stdpath('config'),'p')" —c "call writefile(['set runtimepat
 
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler saulpw/vd/visidata euporie; do
+for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler; do
   case ${app} in
     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -34,7 +34,6 @@ for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-c
     tealdeer)           appCommand="tldr";;   # A good companion for 'man', with succint descriptions and useful examples
     nvm)                appCommand="${local_bin}/homebrew/opt/nvm/nvm-exec";; # nvm is used to install node, which is required by nvim-coc, a plugin for programming language server protocols (for autocompletions, etc').
     *)                  appCommand=${app};;
-    saulpw/vd/visidata) appCommand="visidata" # CLI spreadsheet editor
   esac
   if ! command -v ${appCommand} &> /dev/null; then
     brew install ${app}
@@ -42,9 +41,9 @@ for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-c
 done
 
 # pip
-for app in epy-reader ptpython; do
+for app in epy-reader ptpython euporie visidata; do
   case ${app} in
-    epy      appCommand="epy";; # A curl front-end inspired by HTTPie
+    epy-reader)         appCommand="epy";;      # A curl front-end inspired by HTTPie
   esac
   if ! command -v ${appCommand} &> /dev/null; then
     pip install ${app}
