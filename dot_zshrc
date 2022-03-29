@@ -35,7 +35,10 @@ if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
 #   [ -s "${local_bin}/homebrew/opt/nvm/nvm.sh" ] && \. "${local_bin}/homebrew/opt/nvm/nvm.sh"  # load nvm
 #  [ -s "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "${local_bin}/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # load nvm bash_completion
 fi
-if command -v neovim &> /dev/null; then
+if command -v nvim &> /dev/null; then
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+elif command -v neovim &> /dev/null; then
   alias vim="neovim"
   alias vimdiff="neovim -d"
 fi
