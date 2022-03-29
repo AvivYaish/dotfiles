@@ -34,7 +34,7 @@ if [ ! -d ${local_bin} ]; then
 fi
 
 # - libzmq is needed for some python packages that fail to use 'pip' to install 'pyzmq'
-for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer nodejs fd byobu fzf lf procs bottom glow openjdk-17 libzmq; do
+for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer nodejs fd byobu fzf lf procs bottom glow openjdk-17 libzmq pandoc; do
   pkg install ${app}
 done
 
