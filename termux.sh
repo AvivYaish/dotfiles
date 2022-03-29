@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Termux stuff
-#
+
 # On your computer:
 #
 # - Install [scrcpy](https://github.com/Genymobile/scrcpy) to control the phone remotely easily.
@@ -9,8 +9,10 @@
 # - If you use Taskbar and SecondScreen:
 #   - Install [adb](https://developer.android.com/studio/command-line/adb)
 #     Can do so using scoop: ``scoop install adb``
-#   - adb shell pm grant com.farmerbb.taskbar android.permission.WRITE_SECURE_SETTINGS
-#   - adb shell pm grant com.farmerbb.secondscreen.free android.permission.WRITE_SECURE_SETTINGS
+#   - Enable "Developer Mode" and all the various USB debugging options
+#   - Run: ``adb shell pm grant com.farmerbb.secondscreen.free android.permission.WRITE_SECURE_SETTINGS``
+#   - Run: ``adb shell pm grant com.farmerbb.taskbar android.permission.WRITE_SECURE_SETTINGS``
+#     This allows changing the taskbar's density.
 # - Get a DisplayLink adapter if you want to use an external screen and your phone doesn't support MHL.
 
 # On your phone:
