@@ -1,6 +1,7 @@
 ![desktop](https://user-images.githubusercontent.com/12000894/144870928-dd2529ca-f1d5-457d-a0bd-61742edb02eb.png)
 ![terminal](https://user-images.githubusercontent.com/12000894/160268393-91213855-1f0d-4f12-b2e1-60201a7431a2.png)
-![jupyter-on-android](https://user-images.githubusercontent.com/12000894/160621015-5da1414c-7d82-4221-a9f5-71f7b3031786.png)
+![jupyter-on-android](https://user-images.githubusercontent.com/12000894/160621258-074b844a-b6c8-4893-869f-5a3c3de33787.png)
+
 
 
 # dotfiles
