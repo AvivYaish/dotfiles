@@ -53,7 +53,7 @@ echo "" >> ~/.termux/termux.properties
 echo "extra-keys = []" >> ~/.termux/termux.properties
 
 # - Install the Nerd Font "Fira Code Regular Nerd Font Complete":
-curl https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf > ~/.tmux/font.ttf
+curl -fL "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf" > ~/.termux/font.ttf
 
 # - Install XFCE following [this](https://wiki.termux.com/wiki/Graphical_Environment)
 pkg install x11-repo
