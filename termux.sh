@@ -9,13 +9,15 @@ if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
 
+for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
+  pkg install ${app}
+done
+
+# Set up zsh
+chsh -s zsh
 if ! test -f ${local_bin}/antigen.zsh; then
   curl -L git.io/antigen > ${local_bin}/antigen.zsh
 fi
-
-for app in wget chezmoi neovim git zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
-  pkg install ${app}
-done
 
 # - Fetched my dotfiles:
 chezmoi init https://github.com/AvivYaish/dotfiles.git
