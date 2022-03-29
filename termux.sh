@@ -52,6 +52,9 @@ chezmoi update -v
 echo "" >> ~/.termux/termux.properties
 echo "extra-keys = []" >> ~/.termux/termux.properties
 
+curl -o ~/.local/bin/googler https://raw.githubusercontent.com/jarun/googler/v4.3.2/googler && chmod +x ~/.local/bin/googler
+wget https://github.com/mrusme/reader/releases/download/v0.1.3/reader_0.1.3_linux_arm64.tar.gz
+
 # - Install the Nerd Font "Fira Code Regular Nerd Font Complete":
 curl -fL "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf" > ~/.termux/font.ttf
 
