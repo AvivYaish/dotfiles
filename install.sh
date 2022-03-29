@@ -25,7 +25,7 @@ vim -c "call mkdir(stdpath('config'),'p')" —c "call writefile(['set runtimepat
 
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow ptpython googler saulpw/vd/visidata; do
+for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler saulpw/vd/visidata; do
   case ${app} in
     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -42,8 +42,11 @@ for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-c
 done
 
 # pip
-for app in epy; do
-  if ! command -v ${app} &> /dev/null; then
+for app in epy-reader ptpython; do
+  case ${app} in
+    epy      appCommand="epy";; # A curl front-end inspired by HTTPie
+  esac
+  if ! command -v ${appCommand} &> /dev/null; then
     pip install ${app}
   fi
 done
