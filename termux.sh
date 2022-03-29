@@ -102,18 +102,13 @@ EOT
 # - Can connect from phone using [VNC Viewer](https://play.google.com/store/apps/details?id=com.realvnc.viewer.android), IP is 127.0.0.1
 # - Can connect from a computer using TigerVNC, check IP using ifconfig
 # - After starting XFCE:
-#   - Install the Nerd Font "MesloLGMNF":
-# p10k configure
-
 #   - Install Orchis-dark-compact theme:
 git clone https://github.com/vinceliuice/Orchis-theme.git
 cd Orchis-theme
 ./install.sh
 #   - Change theme both in "Appearance" and "Window Manager"
-
 #   - Install Papirus-Dark:
 wget -qO- https://git.io/papirus-icon-theme-install | sh
-
 #   - Install [Oreo Blue cursors](https://github.com/varlesh/oreo-cursors).
 #   - Create [onedark.theme](https://gist.github.com/fluxrad/f9ff8bf36c3f58e63265c34f2751ff18) in ~/../usr/share/xfce4/terminal/colorschemes/
 #   - Unlock bottom panel, move to the left.
