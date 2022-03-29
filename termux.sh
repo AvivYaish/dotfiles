@@ -1,12 +1,19 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Termux stuff
-#
 # - Installed termux using F-Droid
 # - Installed [scrcpy](https://github.com/Genymobile/scrcpy) on my PC to control
 #   the phone remotely.
 # - Installed some programs:
-for app in git wget chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
+if [ ! -d ${local_bin} ]; then
+  mkdir -p ${local_bin}
+fi
+
+if ! test -f ${local_bin}/antigen.zsh; then
+  curl -L git.io/antigen > ${local_bin}/antigen.zsh
+fi
+
+for app in wget chezmoi neovim git zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer fd byobu fzf lf procs bottom glow openjdk-17; do
   pkg install ${app}
 done
 
