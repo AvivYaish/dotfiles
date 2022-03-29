@@ -1,5 +1,5 @@
 README.md
-termux.md
+termux.sh
 install.sh
 {{ if ne .chezmoi.os "linux" }}
 .cshrc
