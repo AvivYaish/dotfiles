@@ -1,10 +1,27 @@
 #!/bin/zsh
 
 # Termux stuff
-# - Installed termux using F-Droid
-# - Installed [scrcpy](https://github.com/Genymobile/scrcpy) on my PC to control
-#   the phone remotely.
-# - Installed some programs:
+#
+# On your computer:
+#
+# - Install [scrcpy](https://github.com/Genymobile/scrcpy) to control the phone remotely easily.
+#   Can do so using scoop: ``scoop install scrcpy``
+# - If you use Taskbar and SecondScreen:
+#   - Install [adb](https://developer.android.com/studio/command-line/adb)
+#     Can do so using scoop: ``scoop install adb``
+#   - adb shell pm grant com.farmerbb.taskbar android.permission.WRITE_SECURE_SETTINGS
+#   - adb shell pm grant com.farmerbb.secondscreen.free android.permission.WRITE_SECURE_SETTINGS
+# - Get a DisplayLink adapter if you want to use an external screen and your phone doesn't support MHL.
+
+# On your phone:
+#
+# - Install [Taskbar](https://play.google.com/store/apps/details?id=com.farmerbb.taskbar).
+#   This is a nice desktop-like launcher.
+# - Install [SecondScreen](https://play.google.com/store/apps/details?id=com.farmerbb.secondscreen.free)
+#   This allows you to set the resolution and density for your large screen.
+# - Install [F-Droid](https://f-droid.org), a nice app store.
+# - Install termux using F-Droid
+# - Install some programs:
 if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
