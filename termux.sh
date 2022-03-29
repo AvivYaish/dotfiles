@@ -33,7 +33,8 @@ if [ ! -d ${local_bin} ]; then
   mkdir -p ${local_bin}
 fi
 
-for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer nodejs fd byobu fzf lf procs bottom glow openjdk-17; do
+# - libzmq is needed for some python packages that fail to use 'pip' to install 'pyzmq'
+for app in wget neovim zsh git chezmoi zoxide curlie bat lsd git-delta ripgrep sd ctags tealdeer nodejs fd byobu fzf lf procs bottom glow openjdk-17 libzmq; do
   pkg install ${app}
 done
 
