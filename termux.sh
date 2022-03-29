@@ -14,6 +14,11 @@
 #   - Run: ``adb shell pm grant com.farmerbb.taskbar android.permission.WRITE_SECURE_SETTINGS``
 #     This allows changing the taskbar's density.
 # - Get a DisplayLink adapter if you want to use an external screen and your phone doesn't support MHL.
+#   I use [WAVLINK USB3.0 to HDMI Universal Video Graphics Adapter/2048x1152](https://www.amazon.com/dp/B08HN2X88P).
+#   It supports audio-out and can be connected to a USB-C hub, and then to a computer.
+#   If the hub has an audio-out jack, then if your Android version is too old, you might need to use
+#   an app such as [Lesser AudioSwitch](https://play.google.com/store/apps/details?id=com.nordskog.LesserAudioSwitch)
+#   to select the correct audio output channel.
 
 # On your phone:
 #
