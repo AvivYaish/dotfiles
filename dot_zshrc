@@ -23,7 +23,6 @@ if command -v ${local_bin}/homebrew/bin/brew &> /dev/null; then
 fi
 if command -v ${local_bin}/homebrew/bin/byobu &> /dev/null; then
   export BYOBU_PREFIX=${local_bin}/homebrew
-#  [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
 fi
 if command -v ${local_bin}/homebrew/opt/nvm/nvm-exec &> /dev/null; then
   export NVM_DIR="$HOME/.nvm"
