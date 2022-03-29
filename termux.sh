@@ -44,7 +44,7 @@ if ! test -f ${local_bin}/antigen.zsh; then
   curl -L git.io/antigen > ${local_bin}/antigen.zsh
 fi
 
-# - Fetched my dotfiles:
+# - Fetch my dotfiles:
 chezmoi init https://github.com/AvivYaish/dotfiles.git
 chezmoi update -v
 
@@ -52,7 +52,10 @@ chezmoi update -v
 echo "" >> ~/.termux/termux.properties
 echo "extra-keys = []" >> ~/.termux/termux.properties
 
-# - Installed XFCE following [this](https://wiki.termux.com/wiki/Graphical_Environment)
+# - Install the Nerd Font "Fira Code Regular Nerd Font Complete":
+curl https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf > ~/.tmux/font.ttf
+
+# - Install XFCE following [this](https://wiki.termux.com/wiki/Graphical_Environment)
 pkg install x11-repo
 pkg install tigervnc
 pkg install xfce4
@@ -100,7 +103,7 @@ EOT
 # - Can connect from a computer using TigerVNC, check IP using ifconfig
 # - After starting XFCE:
 #   - Install the Nerd Font "MesloLGMNF":
-p10k configure
+# p10k configure
 
 #   - Install Orchis-dark-compact theme:
 git clone https://github.com/vinceliuice/Orchis-theme.git
