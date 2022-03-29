@@ -31,13 +31,13 @@ pkg install xfce4-terminal
 pkg install otter-browser
 
 # - Configure TigerVNC:
-echo "" >! ~/.vnc/xstartup
+echo "" > ~/.vnc/xstartup
 cat <<EOT >> ~/.vnc/xstartup
 #!/data/data/com.termux/files/usr/bin/sh
 xfce4-session &
 EOT
 
-echo "" >! ~/.vnc/config
+echo "" > ~/.vnc/config
 cat <<EOT >> ~/.vnc/config
 # Supported server options to pass to vncserver upon invocation can be listed
 # in this file. See the following manpages for more: vncserver(1) Xvnc(1).
@@ -46,7 +46,7 @@ geometry=3840x2160 # Define the resolution
 EOT
 
 # - Create a run script in .local/bin/startdesktop
-echo "" >! ~/.local/bin/startdesktop
+echo "" > ~/.local/bin/startdesktop
 cat <<EOT >> ~/.local/bin/startdesktop
 #!/data/data/com.termux/files/usr/bin/bash
 # Export Display
