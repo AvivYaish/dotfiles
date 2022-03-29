@@ -23,6 +23,10 @@ fi
 chezmoi init https://github.com/AvivYaish/dotfiles.git
 chezmoi update -v
 
+# - Hide extra keys
+echo "" >> ~/.termux/termux.properties
+echo "extra-keys = []" >> ~/.termux/termux.properties
+
 # - Installed XFCE following [this](https://wiki.termux.com/wiki/Graphical_Environment)
 pkg install x11-repo
 pkg install tigervnc
