@@ -81,7 +81,7 @@ function updateAll() {
 	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
 }
 
-$backup_path = "~/OneDrive/Backups/Apps"
+$backup_path = Resolve-Path "~/OneDrive/Backups/Apps"
 function backupAll() {
 	scoop export > $backup_path/scoop.txt;
 	winget export -o $backup_path/winget.json;
