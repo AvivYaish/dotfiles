@@ -81,12 +81,12 @@ function updateAll() {
 	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
 }
 
-$backup_path = Resolve-Path "~/OneDrive/Backups/Apps"
+$backup_path = Resolve-Path "~/OneDrive/Backups"
 function backupAll() {
-	scoop export > $backup_path/scoop.txt;
-	winget export -o $backup_path/winget.json;
-	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/windows_store.txt;
-	winget list | rg -v "winget" > $backup_path/windows_regular.txt;
+	scoop export > $backup_path/Apps/scoop.txt;
+	winget export -o $backup_path/Apps/winget.json;
+	Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/Apps/windows_store.txt;
+	winget list | rg -v "winget" > $backup_path/Apps/windows_regular.txt;
 	& "$backup_path/syncToExternal.ps1";
 }
 
