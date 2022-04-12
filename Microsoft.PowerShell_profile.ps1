@@ -81,7 +81,7 @@ function updateAll() {
 	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
 }
 
-$backup_path = "D:/OneDrive/Backups"
+$backup_path = "~/OneDrive/Backups/Apps"
 function backupAll() {
 	scoop export > $backup_path/scoop.txt;
 	winget export -o $backup_path/winget.json;
@@ -93,6 +93,6 @@ function backupAll() {
 function condaStart() {
 	#region conda initialize
 	# !! Contents within this block are managed by 'conda init' !!
-	(& "C:\Users\darti\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+	(& "~\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
 	#endregion
 }
