@@ -1,28 +1,24 @@
 # Installation
+
 # I put non-packaged apps in ${HOME}\.local\bin, and add the path to PATH.
-# winget install JanDeDobbeleer.OhMyPosh	# Has nice p10k-like theme
-# Install-Module PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
-# Install-Module PSReadLine			# Nicer PowerShell auto-completion
-# Install-Module -Name PSFzf 		# fzf integration with PowerShell
-# scoop install sudo 				# Allows sudoing in Windows
-# - cargo install viu 				# A cross-platform terminal image viewer
-# - pip install ptpython 			# A nicer Python REPL
-# - pip install visidata 			# A nice terminal spreadsheet tool, requires windows-curses
-#   pip install windows-curses
-# - pip install epy-reader 			# CLI ebook reader.
 # Manual installation:
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 
 # foreach ($app in @('JanDeDobbeleer.OhMyPosh')) {
 # 	winget install $app
 # }
+
+# Install-Module PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
+# Install-Module PSReadLine		# Nicer PowerShell auto-completion
+# Install-Module -Name PSFzf 		# fzf integration with PowerShell
 # foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSWindowsUpdate', 'PSFzf')) {
 # 	Install-Module $app
 # }
-# iwr -useb get.scoop.sh | iex			# Install 'scoop' package manager
+# iwr -useb get.scoop.sh | iex		# Install 'scoop' package manager, requires first setting execution policies, e.g. 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'
 # foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command', 'glow')) {
 # 	scoop install $app
 # }
+# # visidata is a nice terminal spreadsheet tool, requires windows-curses
 # foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader')) {
 # 	pip install $app
 # }
