@@ -58,7 +58,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
     Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
-    Plug 'puremourning/vimspector'      " Debugger
+    Plug 'puremourning/vimspector'      " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
     Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
