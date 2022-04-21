@@ -57,7 +57,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-     Plug 'rhysd/vim-grammarous'        " Human-language grammar checking, see [this](http://www.languagetool.org)
+    Plug 'rhysd/vim-grammarous'         " Human-language grammar checking, see [this](http://www.languagetool.org). This is interchangable with coc-ltex.
     Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
     Plug 'puremourning/vimspector'      " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
     Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
@@ -196,7 +196,7 @@ let g:mkdp_preview_options = {
     \ }
 
 " coc language plugins
-" coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes. Seems it doesn't work properly on Windows and requires fixing the path to a tool called "clipboardy"
+" coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes. Seems it doesn't work properly on Windows and requires fixing the path to a tool called "clipboardy", use :CocOpenLog to see if this is indeed the case. This plugin is interchangable with Grammarous.
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
