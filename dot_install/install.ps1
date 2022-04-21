@@ -28,3 +28,5 @@ foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader')) {
 foreach ($app in @('viu')) {
 	cargo install $app
 }
+
+# Make sure %PROFILE% points to Microsoft.PowerShell_profile.ps1, and that Windows Terminal's settings.json points to chezmoi's settings.json
