@@ -196,6 +196,7 @@ let g:mkdp_preview_options = {
     \ }
 
 " coc language plugins
+" coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes. Seems it doesn't work properly on Windows and requires fixing the path to a tool called "clipboardy"
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
