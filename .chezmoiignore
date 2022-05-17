@@ -1,16 +1,17 @@
 README.md
-dot_install
 {{ if ne .chezmoi.os "linux" }}
-.fonts/Fira Code Regular Nerd Font Complete.ttf
 .cshrc
 {{ end }}
 {{ if ne .chezmoi.os "windows" }}
+.install/install.ps1
 .fonts/Fira Code Regular Nerd Font Complete Windows Compatible.ttf
 Microsoft.PowerShell_profile.ps1
 .mytheme.omp.json
 settings.json
 {{ end }}
 {{ if eq .chezmoi.os "windows" }}
+.install/install.sh
+.fonts/Fira Code Regular Nerd Font Complete.ttf
 .zshrc
 .p10k.zsh
 .tmux.conf
