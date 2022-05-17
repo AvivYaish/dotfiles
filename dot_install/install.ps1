@@ -31,3 +31,6 @@ foreach ($app in @('viu')) {
 
 # Make sure %PROFILE% points to Microsoft.PowerShell_profile.ps1, and that Windows Terminal's settings.json points to chezmoi's settings.json
 # Notepad++: 1. Set global font, 2. Enable DirectWrite (for ligatures)
+
+chezmoi init https://github.com/AvivYaish/dotfiles.git
+chezmoi apply -v
