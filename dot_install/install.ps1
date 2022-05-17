@@ -30,7 +30,12 @@ foreach ($app in @('viu')) {
 }
 
 # Make sure %PROFILE% points to Microsoft.PowerShell_profile.ps1, and that Windows Terminal's settings.json points to chezmoi's settings.json
-# Notepad++: 1. In Settings -> Style Configurator: Set global font, 2. In Settings -> MISC. Enable DirectWrite (for ligatures), 3. In Settings -> Dark Mode: Enable dark mode, 4. In Settings -> Editing: Enable Multi-Editing, smooth font, 4. Set theme
+# Notepad++: 
+# 1. In Settings -> Style Configurator: Set global font, select Enable global font,
+# 2. In Settings -> MISC. Enable DirectWrite (for ligatures),
+# 3. In Settings -> Dark Mode: Enable dark mode,
+# 4. In Settings -> Editing: Enable Multi-Editing, smooth font,
+# 5. Set theme to my [1-Dark](https://github.com/AvivYaish/NAND2TET-1-Dark)
 
 chezmoi init https://github.com/AvivYaish/dotfiles.git
 chezmoi apply -v
