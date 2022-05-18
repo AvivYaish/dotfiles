@@ -11,7 +11,7 @@ foreach ($app in @('JanDeDobbeleer.OhMyPosh')) {
 # - PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
 # - PSReadLine		    # Nicer PowerShell auto-completion
 # - PSFzf 		        # fzf integration with PowerShell
-foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSWindowsUpdate', 'PSFzf')) {
+foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSFzf')) {
 	Install-Module $app
 }
 
