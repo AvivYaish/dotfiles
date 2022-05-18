@@ -16,6 +16,7 @@ foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSWindowsUpdate', 'PSFzf'))
 }
 
 iwr -useb get.scoop.sh | iex		# Install 'scoop' package manager, requires first setting execution policies, e.g. 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'
+scoop bucket add extras
 foreach ($app in @('sudo', '7zip', 'chezmoi', 'bat', 'lsd', 'ripgrep', 'sd', 'universal-ctags', 'neovim', 'ripgrep', 'fd', 'tldr', 'fzf', 'lf', 'curlie', 'procs', 'bottom', 'tre-command', 'glow')) {
 	scoop install $app
 }
