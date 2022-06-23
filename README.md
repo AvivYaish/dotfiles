@@ -35,6 +35,7 @@ I use the following applications:
   - [visidata](https://www.visidata.org) is a CLI spreadsheet editor.
   - [reader](https://github.com/mrusme/reader) is a wonderful CLI webpage reader (available via github).
   - [epy](https://github.com/wustho/epy) is a CLI ebook reader (available via pip).
+  - [pandoc](https://pandoc.org/) is an immensely capable document converter, which can even parse webpages in order to present them in the commandline. I also recommend the [GitHub HTML5 Template](https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github).
 
 Desktop configuration:
 
