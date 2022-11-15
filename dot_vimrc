@@ -103,7 +103,7 @@ function! OnVimEnter() abort
     endif
   endif
 endfunction
-autocmd VimEnter * call OnVimEnter()
+" autocmd VimEnter * call OnVimEnter()
 
 " NERDTree Ctrl-o shows file browser
 map <C-o> :NERDTreeToggle<CR> 
