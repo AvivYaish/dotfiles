@@ -30,6 +30,12 @@ foreach ($app in @('viu')) {
 	cargo install $app
 }
 
+# Configure PSFzf
+# replace 'Ctrl+t' and 'Ctrl+r' with your preferred bindings:
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+# PSFzf can replace the standard tab completion
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
 # Make sure %PROFILE% points to Microsoft.PowerShell_profile.ps1, and that Windows Terminal's settings.json points to chezmoi's settings.json
 # Notepad++: 
 # 1. In Settings -> Style Configurator: Set global font, select Enable global font,
