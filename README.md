@@ -19,7 +19,7 @@ I use the following applications:
   - [zoxide](https://github.com/ajeetdsouza/zoxide): a smarter 'cd' command.
   - [lsd](https://github.com/Peltoche/lsd): nicer 'ls'.
   - [fd](https://github.com/sharkdp/fd): user-friendly alternative to 'find'.
-  - [fzf](https://github.com/junegunn/fzf): cli fuzzy finder.
+  - [fzf](https://github.com/junegunn/fzf): cli fuzzy finder + [PSFzf](https://github.com/kelleyma49/PSFzf) for PowerShell integration.
   - [bat](https://github.com/sharkdp/bat): a modern 'cat' replacement, has a nice OneHalfDark syntax highlighting theme.
   - [delta](https://github.com/dandavison/delta): snazzier 'diff', also with One Half Dark support.
   - [ripgrep](https://github.com/BurntSushi/ripgrep): faster, better 'grep'!
