@@ -41,12 +41,10 @@ Invoke-Expression (& {
 	(zoxide init --hook $hook powershell | Out-String)
 })
 
-function updateStoreApps() {
-	 Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod
-}
-
 function updateAll() {
-	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; updateStoreApps ; Get-WindowsUpdate ; Install-WindowsUpdate
+	# Update-Module updates PowerShell modules
+	# The last command ("Get-CimInstance ...") updates Windows Store programs
+	scoop update * ; winget upgrade --all ; vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall ; Get-WindowsUpdate ; Install-WindowsUpdate ; Update-Module ; Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod ;
 }
 
 $backup_path = Resolve-Path "~/OneDrive/Backups"
