@@ -1,4 +1,4 @@
-Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
+oh-my-posh init pwsh --config ~/.mytheme.omp.json | Invoke-Expression # Set theme (uses oh-my-posh)
 
 # Aliases
 Set-Alias -Name sed -Value sd
