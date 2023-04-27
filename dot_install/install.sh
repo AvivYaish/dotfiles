@@ -49,3 +49,6 @@ for app in epy-reader ptpython euporie visidata; do
     pip install ${app}
   fi
 done
+
+# Bat and delta require some other modifications:
+# See where bat's config file is (`bat --config-file`), and take my config there (from `.config`)
