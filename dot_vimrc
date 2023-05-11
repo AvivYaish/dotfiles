@@ -39,8 +39,8 @@ nnoremap <C-s> :w<CR>
 " Note: Make sure the function is defined before `vim-buffet` is loaded.
 function! g:BuffetSetCustomColors()
   hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#98C379 guifg=#323A3F
-  hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#2C323C guifg=#98C379
-  hi! BuffetBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#2C323C guifg=#ABB2BF
+  hi! BuffetActiveBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#282C34 guifg=#98C379
+  hi! BuffetBuffer cterm=NONE ctermbg=5 ctermfg=8 guibg=#282C34 guifg=#ABB2BF
   " BuffetTabs are the weird leftmost squares in the tab-bar
   hi! BuffetTab cterm=NONE ctermbg=5 ctermfg=8 guibg=#3E4452 guifg=#ABB2BF
 endfunction
@@ -79,13 +79,14 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'junegunn/fzf.vim'             " vim-fzf integration
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
     Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
+    Plug 'vim-airline/vim-airline-themes' " Themes for airline
     Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
     Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}         " Multiple cursors (Ctrl+d to mark the next occurence, Ctrl+Shift+l to select all occurences, Ctrl+Alt+up/down arrows to select previous/next line)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+o)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
     Plug 'scrooloose/nerdcommenter'     ", { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }      For easy commenting (Ctrl+/)
-    Plug 'joshdick/onedark.vim'         " Onedark theme
+    Plug 'Mofiqul/vscode.nvim'          " VSCode theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
 
@@ -110,8 +111,8 @@ map <C-o> :NERDTreeToggle<CR>
 
 " onedark colorscheme
 set background=dark
-colorscheme onedark 
-let g:airline_theme='onedark'
+colorscheme vscode
+let g:airline_theme='deus'
 
 " tagbar
 if !empty(glob("~/.local/bin/homebrew/bin/ctags"))
@@ -395,7 +396,7 @@ nmap gx <Plug>vertopen_url
 
 " vim-buffet
 let g:buffet_always_show_tabline = 0
-let g:buffet_powerline_separators = 1
+let g:buffet_powerline_separators = 0
 let g:buffet_show_index = 1
 let g:buffet_tab_icon = "\uf00a"
 let g:buffet_left_trunc_icon = "\uf0a8"
