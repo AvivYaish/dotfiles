@@ -22,7 +22,8 @@ foreach ($app in @('sudo', 'lsd', 'sd', 'tldr', 'curlie', 'procs', 'glow')) {
 }
 
 # visidata is a nice terminal spreadsheet tool, requires windows-curses
-foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader')) {
+# pynvim is required to let neovim use python, for example for the vimspector debugger
+foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader', 'pynvim')) {
 	pip install $app
 }
 
