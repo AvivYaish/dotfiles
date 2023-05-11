@@ -41,7 +41,7 @@ for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-c
 done
 
 # pip
-for app in epy-reader ptpython euporie visidata; do
+for app in epy-reader ptpython euporie visidata pynvim; do
   case ${app} in
     epy-reader)         appCommand="epy";;      # A curl front-end inspired by HTTPie
   esac
