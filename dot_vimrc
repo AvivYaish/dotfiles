@@ -57,35 +57,34 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'rhysd/vim-grammarous'         " Human-language grammar checking, see [this](http://www.languagetool.org). This is interchangable with coc-ltex.
+    " Plug 'rhysd/vim-grammarous'         " Human-language grammar checking, see [this](http://www.languagetool.org). This is interchangable with coc-ltex.
     Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
-    Plug 'puremourning/vimspector'      " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
-    Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
+    " Plug 'puremourning/vimspector'      " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
+    " Plug 'TovarishFin/vim-solidity'     " Solidity syntax-highlighting
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview: variables, functions, etc (Alt+Ctrl+b)
     Plug 'matze/vim-move', { 'on': ['<Plug>MoveLineDown', '<Plug>MoveLineUp', '<Plug>MoveBlockDown', '<Plug>MoveBlockUp', '<Plug>MoveBlockLeft', '<Plug>MoveBlockRight'] } 		" Moves selection using Alt-ArrowKeys
-    Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
+    " Plug 'mhinz/vim-startify' 		" Fancy start screen that shows recent files, sessions, etc
     " Plug 'wellle/tmux-complete.vim' 	" Completes all words visible in your Tmux panes. In insert mode, start typing any word you see and press <C-X><C-U> to the trigger user defined insert mode completion.
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Shows an undo history tree (Alt-z)
     Plug 'tpope/vim-sleuth'             " Automatically adjusts shiftwidth and expandtab based on the current file. If is blank, based on other files from the same directory
-    Plug 'tpope/vim-fugitive'           " Git integration (:Git commit, :Git <some-git-command>)
+    " Plug 'tpope/vim-fugitive'           " Git integration (:Git commit, :Git <some-git-command>)
     Plug 'machakann/vim-highlightedyank' " Highlights last yank
-    Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " Formats code (:Neoformat)
-    Plug 'vim-test/vim-test'            " Testing framework
-    Plug 'https://github.com/sevko/vim-nand2tetris-syntax.git', { 'for': ['hdl', 'hack', 'asm', 'vm', 'jack', 'tst'] } " NAND2TETRIS syntax highlighting, only open for nand2tet files
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown']} " Live preview for markdown
+    " Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " Formats code (:Neoformat)
+    " Plug 'vim-test/vim-test'            " Testing framework
+    " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown']} " Live preview for markdown
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Make sure you have latest version of the fzf binary. fzf is a command-line fuzzy finder
     Plug 'junegunn/fzf.vim'             " vim-fzf integration
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
     Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
     Plug 'vim-airline/vim-airline-themes' " Themes for airline
-    Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
+    " Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
     Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}         " Multiple cursors (Ctrl+d to mark the next occurence, Ctrl+Shift+l to select all occurences, Ctrl+Alt+up/down arrows to select previous/next line)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+e)
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
-    Plug 'scrooloose/nerdcommenter'     ", { 'on': ['<Plug>NERDCommenterToggle', '<Plug>NERDCommenterToggle<CR>gv'] }      For easy commenting (Ctrl+/)
+    Plug 'scrooloose/nerdcommenter'     " For easy commenting (Ctrl+/)
     Plug 'Mofiqul/vscode.nvim'          " VSCode theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
@@ -174,27 +173,27 @@ let g:VM_maps["Visual Cursors"]              = '\\c'
 
 let g:VM_mouse_mappings = 1
 
-" Markdownpreview
-let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
-let g:mkdp_auto_close = 1 " set to 1, the nvim will auto close current preview window when change from markdown buffer to another buffer
-let g:mkdp_refresh_slow = 0 " set to 1, the vim will refresh markdown when save the buffer or leave from insert mode, default 0 is auto refresh markdown as you edit or move the cursor
-let g:mkdp_open_ip = '' " use custom IP to open preview page, useful when you work in remote vim and preview on local browser, more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-let g:mkdp_port = '' " use a custom port to start server or random for empty
-let g:mkdp_filetypes = ['markdown'] " recognized filetypes, these filetypes will have MarkdownPreview... commands
-" options for markdown render
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
+" " Markdownpreview
+" let g:mkdp_auto_start = 0 " set to 1, nvim will open the preview window after entering the markdown buffer
+" let g:mkdp_auto_close = 1 " set to 1, the nvim will auto close current preview window when change from markdown buffer to another buffer
+" let g:mkdp_refresh_slow = 0 " set to 1, the vim will refresh markdown when save the buffer or leave from insert mode, default 0 is auto refresh markdown as you edit or move the cursor
+" let g:mkdp_open_ip = '' " use custom IP to open preview page, useful when you work in remote vim and preview on local browser, more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" let g:mkdp_port = '' " use a custom port to start server or random for empty
+" let g:mkdp_filetypes = ['markdown'] " recognized filetypes, these filetypes will have MarkdownPreview... commands
+" " options for markdown render
+" let g:mkdp_preview_options = {
+"     \ 'mkit': {},
+"     \ 'katex': {},
+"     \ 'uml': {},
+"     \ 'maid': {},
+"     \ 'disable_sync_scroll': 0,
+"     \ 'sync_scroll_type': 'middle',
+"     \ 'hide_yaml_meta': 1,
+"     \ 'sequence_diagrams': {},
+"     \ 'flowchart_diagrams': {},
+"     \ 'content_editable': v:false,
+"     \ 'disable_filename': 0
+"     \ }
 
 " coc language plugins
 " coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes. Seems it doesn't work properly on Windows and requires fixing the path to a tool called "clipboardy", use :CocOpenLog to see if this is indeed the case. This plugin is interchangable with Grammarous.
@@ -351,31 +350,31 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" VimTeX
-syntax enable " This enables Vim's and neovim's syntax-related features. Without this, some VimTeX features will not work (see ':help vimtex-requirements' for more info).
-let g:vimtex_view_general_viewer = 'SumatraPDF'
-let g:vimtex_view_general_options
-            \ = '-reuse-instance -forward-search @tex @line @pdf'
-            \ . ' -inverse-search "vim --servername ' . v:servername
-            \ . ' --remote-send \"^<C-\^>^<C-n^>'
-            \ . ':drop \%f^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'
-            \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
-            \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
-            \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
-" Fix inverse search on nvim+windows+sumatra: https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/
-" If you prefer Firefox
-" let g:vimtex_view_method = 'general'
-" let g:vimtex_view_general_viewer = 'firefox'
-" let g:vimtex_view_general_options = "file:///@pdf"
-" let g:vimtex_view_general_options_latexmk = '--unique'
+" " VimTeX
+" syntax enable " This enables Vim's and neovim's syntax-related features. Without this, some VimTeX features will not work (see ':help vimtex-requirements' for more info).
+" let g:vimtex_view_general_viewer = 'SumatraPDF'
+" let g:vimtex_view_general_options
+"             \ = '-reuse-instance -forward-search @tex @line @pdf'
+"             \ . ' -inverse-search "vim --servername ' . v:servername
+"             \ . ' --remote-send \"^<C-\^>^<C-n^>'
+"             \ . ':drop \%f^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'
+"             \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+"             \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+"             \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+" " Fix inverse search on nvim+windows+sumatra: https://jdhao.github.io/2021/02/20/inverse_search_setup_neovim_vimtex/
+" " If you prefer Firefox
+" " let g:vimtex_view_method = 'general'
+" " let g:vimtex_view_general_viewer = 'firefox'
+" " let g:vimtex_view_general_options = "file:///@pdf"
+" " let g:vimtex_view_general_options_latexmk = '--unique'
 
-" vimspector
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" " vimspector
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" " for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " vim-test
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
@@ -427,4 +426,4 @@ noremap <C-S-F4> :Bw!<CR>
 " New tab
 noremap <C-t> :enew<CR>
 
-let g:grammarous#languagetool_cmd = 'languagetool-commandline'
+" let g:grammarous#languagetool_cmd = 'languagetool-commandline'
