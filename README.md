@@ -1,5 +1,6 @@
 ![desktop](https://user-images.githubusercontent.com/12000894/144870928-dd2529ca-f1d5-457d-a0bd-61742edb02eb.png)
-![terminal](https://user-images.githubusercontent.com/12000894/160268393-91213855-1f0d-4f12-b2e1-60201a7431a2.png)
+![terminal](https://github.com/AvivYaish/dotfiles/assets/12000894/314331fa-10bb-4376-bc8e-288f669df7b9)
+
 ![LangaugeToolAlert](https://user-images.githubusercontent.com/12000894/164498717-2888d24a-6bba-4fc9-bbc9-3ff76f54fa44.png)
 ![LanguageToolFix](https://user-images.githubusercontent.com/12000894/164498860-238852b6-1410-47b0-b7b9-353d452c36ef.png)
 ![jupyter-on-android](https://user-images.githubusercontent.com/12000894/160621258-074b844a-b6c8-4893-869f-5a3c3de33787.png)
