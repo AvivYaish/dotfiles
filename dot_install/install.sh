@@ -11,21 +11,15 @@ fi
 
 # zap
 curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s # Install zap
-for app in firefox pomotroid neovim; do
+for app in firefox pomotroid; do
   if ! command -v ${app} &> /dev/null; then
     zap install ${app}
   fi
 done
 
-# Set up neovim to use ~/.vimrc
-vim -c "call mkdir(stdpath('config'),'p')" -c "call writefile(['set runtimepath^=~/.vim runtimepath+=~/.vim/after', 'let &packpath = &runtimepath', 'source ~/.vimrc'], stdpath('config').'/init.vim', 'a')" +qall 
-
-# Set up byobu's .tmux.conf
-[[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
-
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-for app in chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler; do
+for app in neovim chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler; do
   case ${app} in
     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
     git-delta)          appCommand="delta";;  # Snazzier 'diff', with One Half Dark support
@@ -52,3 +46,11 @@ done
 
 # Bat and delta require some other modifications:
 # See where bat's config file is (`bat --config-file`), and take my config there (from `.config`)
+chezmoi init https://github.com/AvivYaish/dotfiles.git
+chezmoi apply -v
+
+# Set up neovim to use ~/.vimrc
+vim -c "call mkdir(stdpath('config'),'p')" -c "call writefile(['set runtimepath^=~/.vim runtimepath+=~/.vim/after', 'let &packpath = &runtimepath', 'source ~/.vimrc'], stdpath('config').'/init.vim', 'a')" +qall 
+
+# Set up byobu's .tmux.conf
+[[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
