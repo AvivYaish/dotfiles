@@ -7,7 +7,7 @@ README.md
 .themes/Windows11.deskthemepack
 .install/install.ps1
 .fonts/Fira Code Regular Nerd Font Complete Windows Compatible.ttf
-Microsoft.PowerShell_profile.ps1
+Documents
 .mytheme.omp.json
 settings.json
 {{ end }}
