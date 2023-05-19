@@ -4,7 +4,7 @@
 # Manual installation:
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 
-foreach ($app in @('JanDeDobbeleer.OhMyPosh', '7zip.7zip', 'Anaconda.Anaconda3', 'BurntSushi.ripgrep.MSVC', 'Docker.DockerDesktop', 'Git.Git', 'Microsoft.WindowsTerminal', 'ajeetdsouza.zoxide', 'dandavison.delta', 'jftuga.less', 'junegunn.fzf', 'sharkdp.bat', 'sharkdp.fd', 'twpayne.chezmoi', 'Microsoft.PowerShell', 'Clement.bottom', 'ca.duan.tre-command', 'Microsoft.VisualStudioCode', 'JohnMacFarlane.Pandoc', 'OpenJS.NodeJS', 'Neovim.Neovim', 'UniversalCtags.Ctags', 'gokcehan.lf')) {
+foreach ($app in @('gerardog.gsudo', 'JanDeDobbeleer.OhMyPosh', '7zip.7zip', 'Anaconda.Anaconda3', 'BurntSushi.ripgrep.MSVC', 'Docker.DockerDesktop', 'Git.Git', 'Microsoft.WindowsTerminal', 'ajeetdsouza.zoxide', 'dandavison.delta', 'jftuga.less', 'junegunn.fzf', 'sharkdp.bat', 'sharkdp.fd', 'twpayne.chezmoi', 'Microsoft.PowerShell', 'Clement.bottom', 'ca.duan.tre-command', 'Microsoft.VisualStudioCode', 'JohnMacFarlane.Pandoc', 'OpenJS.NodeJS', 'Neovim.Neovim', 'UniversalCtags.Ctags', 'gokcehan.lf')) {
 	winget install $app
 }
 
@@ -17,7 +17,7 @@ foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSFzf')) {
 
 iwr -useb get.scoop.sh | iex		# Install 'scoop' package manager, requires first setting execution policies, e.g. 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'
 scoop bucket add extras
-foreach ($app in @('sudo', 'lsd', 'sd', 'tldr', 'curlie', 'procs', 'glow')) {
+foreach ($app in @('lsd', 'sd', 'tldr', 'curlie', 'procs', 'glow')) {
 	scoop install $app
 }
 
