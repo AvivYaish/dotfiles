@@ -47,3 +47,6 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 chezmoi init https://github.com/AvivYaish/dotfiles.git
 chezmoi apply -v
+
+# Set up neovim to use ~/.vimrc
+vim -c "call mkdir(stdpath('config'),'p')" -c "call writefile(['set runtimepath^=~/.vim runtimepath+=~/.vim/after', 'let &packpath = &runtimepath', 'source ~/.vimrc'], stdpath('config').'/init.vim', 'a')" +qall
