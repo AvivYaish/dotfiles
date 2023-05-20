@@ -27,6 +27,12 @@ foreach ($app in @('ptpython', 'visidata', 'windows-curses', 'epy-reader', 'pynv
 	pip install $app
 }
 
+# hck is a 'cut' equivalent
+foreach ($app in @('hck')) {
+	conda install -c conda-forge $app
+}
+
+# viu is a CLI image viewer
 foreach ($app in @('viu')) {
 	cargo install $app
 }
