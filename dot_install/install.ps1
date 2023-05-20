@@ -9,9 +9,10 @@ foreach ($app in @('dbrgn.tealdeer', 'gerardog.gsudo', 'JanDeDobbeleer.OhMyPosh'
 }
 
 # - PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
-# - CompletionPredictor # Intellisense for PowerShell
 # - PSReadLine		# Nicer PowerShell auto-completion
 # - PSFzf 		# fzf integration with PowerShell
+# - PowerType		# Completion for common commands
+# - CompletionPredictor # Intellisense for PowerShell
 foreach ($app in @('PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine -AllowPrerelease', 'PSFzf', 'PowerType -AllowPrerelease')) {
 	Install-Module -Name $app
 }
