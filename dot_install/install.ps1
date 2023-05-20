@@ -9,9 +9,10 @@ foreach ($app in @('dbrgn.tealdeer', 'gerardog.gsudo', 'JanDeDobbeleer.OhMyPosh'
 }
 
 # - PSWindowsUpdate 	# Update windows using 'Get-WindowsUpdate ; Install-WindowsUpdate'
+# - CompletionPredictor # Intellisense for PowerShell
 # - PSReadLine		# Nicer PowerShell auto-completion
 # - PSFzf 		# fzf integration with PowerShell
-foreach ($app in @('PSWindowsUpdate', 'PSReadLine', 'PSFzf')) {
+foreach ($app in @('PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine', 'PSFzf')) {
 	Install-Module $app
 }
 
@@ -36,12 +37,6 @@ foreach ($app in @('hck')) {
 foreach ($app in @('viu')) {
 	cargo install $app
 }
-
-# Configure PSFzf
-# replace 'Ctrl+t' and 'Ctrl+r' with your preferred bindings:
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
-# PSFzf can replace the standard tab completion
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Make sure %PROFILE% points to Microsoft.PowerShell_profile.ps1, and that Windows Terminal's settings.json points to chezmoi's settings.json
 # Notepad++: 
