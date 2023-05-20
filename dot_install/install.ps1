@@ -12,8 +12,8 @@ foreach ($app in @('dbrgn.tealdeer', 'gerardog.gsudo', 'JanDeDobbeleer.OhMyPosh'
 # - CompletionPredictor # Intellisense for PowerShell
 # - PSReadLine		# Nicer PowerShell auto-completion
 # - PSFzf 		# fzf integration with PowerShell
-foreach ($app in @('PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine', 'PSFzf')) {
-	Install-Module $app
+foreach ($app in @('PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine -AllowPrerelease', 'PSFzf', 'PowerType -AllowPrerelease')) {
+	Install-Module -Name $app
 }
 
 iwr -useb get.scoop.sh | iex		# Install 'scoop' package manager, requires first setting execution policies, e.g. 'Set-ExecutionPolicy RemoteSigned -Scope CurrentUser'
