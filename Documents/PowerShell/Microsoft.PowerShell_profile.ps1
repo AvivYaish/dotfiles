@@ -4,6 +4,7 @@ Invoke-Expression (& {$hook = if ($PSVersionTable.PSVersion.Major -lt 6) {'promp
 # Aliases
 function ..() {cd ..}
 Set-Alias -Name cut -Value hck
+Set-Alias -Name cat -Value bat
 Set-Alias -Name sed -Value sd
 Set-Alias -Name ls -Value lsd
 Set-Alias -Name vim -Value nvim
