@@ -41,6 +41,6 @@ function backupAll() {
 
 function condaStart() {
   #region conda initialize
-  & "~\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
+  (& "~\anaconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
   #endregion
 }
