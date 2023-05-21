@@ -1,4 +1,4 @@
-Set-PoshPrompt -Theme ~\.mytheme.omp.json # Set theme (uses oh-my-posh)
+oh-my-posh init pwsh --config ~/.mytheme.omp.json | Invoke-Expression # Set theme (uses oh-my-posh)
 Invoke-Expression (& {$hook = if ($PSVersionTable.PSVersion.Major -lt 6) {'prompt'} else {'pwd'} ; (zoxide init --hook $hook powershell | Out-String)}) # Init zoxide
 
 # Aliases
