@@ -17,6 +17,7 @@ function readerPandoc([String[]] [Parameter(Position=1, ValueFromRemainingArgume
 # Autocomplete
 # If bat is installed, previews are syntax-highlighted, can be scrolled using ctl+up/down
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Enable-PowerType
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin -PredictionViewStyle ListView
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock {Invoke-FzfTabCompletion}
 
