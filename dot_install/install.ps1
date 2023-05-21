@@ -13,7 +13,7 @@ foreach ($app in @('dbrgn.tealdeer', 'gerardog.gsudo', 'JanDeDobbeleer.OhMyPosh'
 # - PSFzf 		# fzf integration with PowerShell
 # - PowerType		# Completion for common commands
 # - CompletionPredictor # Intellisense for PowerShell
-foreach ($app in @('oh-my-posh', 'PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine -AllowPrerelease', 'PSFzf', 'PowerType -AllowPrerelease')) {
+foreach ($app in @('PSWindowsUpdate', 'CompletionPredictor', 'PSReadLine -AllowPrerelease', 'PSFzf', 'PowerType -AllowPrerelease')) {
 	Install-Module -Name $app
 }
 
