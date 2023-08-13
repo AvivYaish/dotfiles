@@ -19,6 +19,8 @@ done
 
 # homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Follow on-screen instructions to add homebrew to path
+brew analytics off
 for app in neovim chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd universal-ctags tealdeer fd nvm byobu fzf lf procs bottom glow googler; do
   case ${app} in
     rs/tap/curlie)      appCommand="curlie";; # A curl front-end inspired by HTTPie
