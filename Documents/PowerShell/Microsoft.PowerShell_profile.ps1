@@ -23,7 +23,6 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock {Invoke-FzfTabCompletion}
 
 # Some utility functions
 function updateAll() {
-  scoop update *
   vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall
   Update-Module # Update PowerShell modules
   Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod # Update Windows Store apps
@@ -33,7 +32,6 @@ function updateAll() {
 
 function backupAll() {
   $backup_path = Resolve-Path "~/OneDrive/Backups"
-  scoop export > $backup_path/Apps/scoop.txt;
   winget export -o $backup_path/Apps/winget.json;
   Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/Apps/windows_store.txt;
   winget list | rg -v "winget" > $backup_path/Apps/windows_regular.txt;
