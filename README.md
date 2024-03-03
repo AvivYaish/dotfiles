@@ -9,11 +9,11 @@
 My dotfiles.
 I use the following applications:
 
-- Editor: [nvim](https://github.com/neovim/neovim)
-- Shell: zsh, PowerShell
-- Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/)
-- Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi)
+- Editor: [nvim](https://github.com/neovim/neovim).
+- Shell: zsh, PowerShell.
+- Shell styling: [oh-my-zsh](https://github.com/ohmyzsh/), [oh-my-posh](https://ohmyposh.dev), [powerlevel10k](https://github.com/romkatv/powerlevel10k).
+- Terminal multiplexer: [byobu](https://byobu.org) + [tmux](https://github.com/tmux/tmux/).
+- Dotfile tracking: [chezmoi](https://github.com/twpayne/chezmoi).
 - AppImage package manager: [zap](https://github.com/srevinsaju/zap). I use it to manage Firefox, NeoVim and Pomotroid (a pomodoro timer).
 - Additional niceties (all are available on Linux, MacOS and Windows, except tealdeer):
   - [zoxide](https://github.com/ajeetdsouza/zoxide): a smarter 'cd' command.
@@ -31,11 +31,12 @@ I use the following applications:
   - [procs](https://github.com/dalance/procs) is a 'ps' alternative.
   - [bottom](https://github.com/ClementTsang/bottom) is a 'top' replacement.
   - [ptpython](https://github.com/prompt-toolkit/ptpython) is a nicer Python REPL.
-  - [euporie](https://github.com/joouha/euporie) allows editing and running Jupyter notebooks in the terminal. Run using `` euporie --color-scheme=dark --syntax-theme=one-dark --show-cell-borders --expand --autoinspect --autosuggest --autocomplete --edit-mode=vi --line-numbers``
+  - [euporie](https://github.com/joouha/euporie) allows editing and running Jupyter notebooks in the terminal. Run using ``euporie --color-scheme=dark --syntax-theme=one-dark --show-cell-borders --expand --autoinspect --autosuggest --autocomplete --edit-mode=vi --line-numbers``.
   - [visidata](https://www.visidata.org) is a CLI spreadsheet editor.
   - [reader](https://github.com/mrusme/reader) is a wonderful CLI webpage reader (available via github).
   - [epy](https://github.com/wustho/epy) is a CLI ebook reader (available via pip).
   - [pandoc](https://pandoc.org/) is an immensely capable document converter, which can even parse webpages in order to present them in the commandline. I also recommend the [GitHub HTML5 Template](https://github.com/tajmone/pandoc-goodies/tree/master/templates/html5/github).
+  - [dust](https://github.com/bootandy/dust) is an alternative to 'du'.
 
 Desktop configuration:
 
