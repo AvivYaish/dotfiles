@@ -5,10 +5,10 @@
 # - [reader](https://github.com/mrusme/reader) 	# CLI webpage reader.
 
 foreach ($app in @('Git.Git', 'twpayne.chezmoi', 'JanDeDobbeleer.OhMyPosh', 'junegunn.fzf', 'lsd-rs.lsd', 'ajeetdsouza.zoxide', `
-		'dalance.procs', 'chmln.sd', 'dbrgn.tealdeer', 'gerardog.gsudo', '7zip.7zip', 'Anaconda.Anaconda3', 'BurntSushi.ripgrep.MSVC', `
-  		'Docker.DockerDesktop', 'Microsoft.WindowsTerminal', 'dandavison.delta', 'jftuga.less', 'sharkdp.bat', 'sharkdp.fd', 'Microsoft.PowerShell', `
-    		'Clement.bottom', 'ca.duan.tre-command', 'Microsoft.VisualStudioCode', 'JohnMacFarlane.Pandoc', 'OpenJS.NodeJS', 'Neovim.Neovim', 'UniversalCtags.Ctags', `
-      		'gokcehan.lf', 'charmbracelet.glow', 'yt-dlp.yt-dlp', 'PDFArranger.PDFArranger')) {
+		'dalance.procs', 'chmln.sd', 'dbrgn.tealdeer', '7zip.7zip', 'Anaconda.Anaconda3', 'BurntSushi.ripgrep.MSVC', `
+  		'Docker.DockerDesktop', 'dandavison.delta', 'jftuga.less', 'sharkdp.bat', 'sharkdp.fd', 'Microsoft.PowerShell', `
+    		'Clement.bottom', 'ca.duan.tre-command', 'Microsoft.VisualStudioCode', 'JohnMacFarlane.Pandoc', 'OpenJS.NodeJS', `
+      		'Neovim.Neovim', 'UniversalCtags.Ctags', 'gokcehan.lf', 'charmbracelet.glow', 'yt-dlp.yt-dlp', 'PDFArranger.PDFArranger')) {
 	winget install $app
 }
 
