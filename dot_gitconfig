@@ -1,6 +1,6 @@
 [user]
     name = Aviv Yaish
-    email = aviv.yaish@mail.huji.ac.il
+    email = a@yai.sh
 
 [core]
     pager = delta --paging=never
