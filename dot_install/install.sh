@@ -56,3 +56,4 @@ vim -c "call mkdir(stdpath('config'),'p')" -c "call writefile(['set runtimepath^
 
 # Set up byobu's .tmux.conf
 [[ $(diff ~/.tmux.conf ~/.byobu/.tmux.conf) ]] && cp .tmux.conf .byobu/.tmux.conf  # if your .tmux.conf file is not in the correct place
+tmux source ~/.tmux.conf  # Load config
