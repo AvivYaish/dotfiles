@@ -60,10 +60,8 @@ if [[ `uname` == "Darwin" ]]; then
   antigen bundle macos
 fi
 # Bundles from other repos
-ZSH_EVALCACHE_DIR=~/.zsh-evalcache # Required for HUJI course users
 antigen bundle mroth/evalcache 	# Speeds up evals
 antigen bundle lukechilds/zsh-nvm  # Lazy-loads nvm
-antigen bundle marlonrichert/zsh-autocomplete@main
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme romkatv/powerlevel10k     # Load the theme.
