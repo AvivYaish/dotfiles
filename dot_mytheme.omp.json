@@ -2,61 +2,54 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "alignment": "right",
       "segments": [
-        {
-          "foreground": "#FFE700",
-          "properties": {
-            "prefix": " \uE235 "
-          },
-          "style": "plain",
-          "type": "python"
-        },
         {
           "foreground": "#00C5C7",
           "properties": {
             "time_format": "15:04:05"
           },
           "style": "plain",
+          "template": " {{ .CurrentDate | date .Format }} ",
           "type": "time"
+        },
+        {
+          "properties": {
+            "prefix": " \ue235 "
+          },
+          "foreground": "#FFE700",
+          "type": "python",
+          "style": "plain"
         }
       ],
-      "type": "prompt",
-      "vertical_offset": -1
+      "type": "rprompt"
     },
     {
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
           "foreground": "#77E4F7",
           "properties": {
-            "prefix": "",
             "style": "full"
           },
           "style": "plain",
+          "template": "{{ .Path }} ",
           "type": "path"
         },
         {
           "foreground": "#FFE700",
-          "properties": {
-            "prefix": "",
-            "template": "{{ .HEAD }}"
-          },
           "style": "plain",
+          "template": "{{ .HEAD }} ",
           "type": "git"
         },
         {
           "foreground": "#43D426",
-          "properties": {
-            "prefix": "",
-            "text": "❯"
-          },
           "style": "plain",
+          "template": "\u276f ",
           "type": "text"
         }
       ],
       "type": "prompt"
     }
-  ]
+  ],
+  "version": 3
 }
