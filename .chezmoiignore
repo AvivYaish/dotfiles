@@ -1,7 +1,6 @@
 README.md
 {{ if ne .chezmoi.os "linux" }}
 .install/termux.sh
-.cshrc
 {{ end }}
 {{ if ne .chezmoi.os "windows" }}
 .themes/Windows11.deskthemepack
