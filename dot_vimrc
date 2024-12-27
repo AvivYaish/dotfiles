@@ -173,7 +173,7 @@ let g:VM_mouse_mappings = 1
 " coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes; it's interchangable with Grammarous and Harper.
 " coc-ltex doesn't work properly on Windows and requires fixing the code:
 " - https://github.com/valentjn/vscode-ltex/issues/704
-" - https://github.com/valentjn/vscode-ltex/issues/884#issuecomment-2263630384 the link is for VSCode, for vim:
+" - https://github.com/valentjn/vscode-ltex/issues/884#issuecomment-2263630384 the link is for VSCode, for vim need to edit C:\Users\YOURUSER\AppData\Local\coc\extensions\node_modules\coc-ltex\dist\extension.js:
 "   - Around line 852:
 " function parse(command, args, options) {
 "   // Normalize arguments, similar to nodejs
