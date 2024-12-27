@@ -170,7 +170,58 @@ let g:VM_maps["Visual Cursors"]              = '\\c'
 let g:VM_mouse_mappings = 1
 
 " coc language plugins
-" coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes. Seems it doesn't work properly on Windows and requires fixing the path to a tool called "clipboardy", use :CocOpenLog to see if this is indeed the case. This plugin is interchangable with Grammarous.
+" coc-ltex uses ltex-ls (and LanguageTools) to check grammar mistakes; it's interchangable with Grammarous and Harper.
+" coc-ltex doesn't work properly on Windows and requires fixing the code:
+" - https://github.com/valentjn/vscode-ltex/issues/704
+" - https://github.com/valentjn/vscode-ltex/issues/884#issuecomment-2263630384 the link is for VSCode, for vim:
+"   - Around line 852:
+" function parse(command, args, options) {
+"   // Normalize arguments, similar to nodejs
+"   if (args && !Array.isArray(args)) {
+"       options = args;
+"       args = null;
+"   }
+" 
+"   args = args ? args.slice(0) : []; // Clone array to avoid changing the original
+"   options = Object.assign({}, options); // Clone object to avoid changing the original
+"   options.shell = true;  // <- FIX
+"   
+"   // Build our parsed object
+"   const parsed = {
+"       command,
+"       args,
+"       options,
+"       file: undefined,
+"       original: {
+"           command,
+"           args,
+"       },
+"   };
+" 
+"   // Delegate further parsing to shell or non-shell
+"   return options.shell ? parsed : parseNonShell(parsed);
+" }
+"
+"   - Around line 18113:
+"     test() {
+"        return __awaiter(this, void 0, void 0, function* () {
+"            const executable = yield this.getLtexLsExecutable();
+"            if (executable.args == null)
+"                executable.args = [];
+"            executable.args.push('--version');
+"            const executableOptions = {
+"                encoding: 'utf-8',
+"                timeout: 15000,
+"                shell: true
+"            };
+"
+"   - Around line 18211:
+" static getDebugServerOptions() {
+"   const executableOptions = {
+"       encoding: 'utf-8',
+"       timeout: 15000,
+"       shell: true  // <- FIX
+"   };
 let g:coc_global_extensions = ['coc-pydocstring', 'coc-highlight', 'coc-powershell', 'coc-json', 'coc-git', 'coc-pyright', 'coc-tsserver', 'coc-ltex', 'coc-sh', 'coc-markdownlint', 'coc-spell-checker']
 " coc-highlight highlights colors and the current word
 " coc-spell-checker is a spellchecker, used by invoking codeAction and then down
