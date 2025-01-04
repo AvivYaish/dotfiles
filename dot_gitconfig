@@ -3,18 +3,22 @@
     email = a@yai.sh
 
 [core]
-    pager = delta --paging=never
+	pager = delta
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 
 [interactive]
     diffFilter = delta --color-only
 
 [delta]
+    features = diff-so-fancy
     navigate = true # use n and N to move between diff sections
     theme = One Half Dark
+    side-by-side = true
+    line-numbers = true
+    hyperlinks = true
 
 [merge]
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 
 [diff]
     colorMoved = default
-
