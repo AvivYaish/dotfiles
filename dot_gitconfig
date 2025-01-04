@@ -11,11 +11,12 @@
 
 [delta]
     features = diff-so-fancy
-    navigate = true # use n and N to move between diff sections
+    zero-style = dim syntax
     theme = One Half Dark
     side-by-side = true
     line-numbers = true
     hyperlinks = true
+    navigate = true # use n and N to move between diff sections
 
 [merge]
     conflictstyle = zdiff3
