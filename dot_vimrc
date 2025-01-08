@@ -57,9 +57,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 " Install plugins
 call plug#begin('$HOME/.vim/plugged')
-    Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
-    " Plug 'puremourning/vimspector'    " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
     " Plug 'TovarishFin/vim-solidity'   " Solidity syntax-highlighting
+    " Plug 'puremourning/vimspector'    " Debugger. On NeoVim, might require installing [pynvim](https://github.com/neovim/pynvim) or setting 'let g:python3_host_prog=~/path/to/python3.exe'
+    Plug 'bagrat/vim-buffet'            " Nice tab (and buffer) bar
     Plug 'tpope/vim-obsession'          " Session management (saves Vim's state)
     Plug 'vim-scripts/SearchComplete'   " Autocomplete in search-mode (/) using TAB
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " Programming file overview: variables, functions, etc (Alt+Ctrl+b)
@@ -69,6 +69,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Shows an undo history tree (Alt-z)
     Plug 'tpope/vim-sleuth'             " Automatically adjusts shiftwidth and expandtab based on the current file. If is blank, based on other files from the same directory
     " Plug 'tpope/vim-fugitive'         " Git integration (:Git commit, :Git <some-git-command>)
+    Plug 'github/copilot.vim'           " CoPilot!
     Plug 'machakann/vim-highlightedyank' " Highlights last yank
     " Plug 'sbdchd/neoformat', { 'on': 'Neoformat' } " Formats code (:Neoformat)
     " Plug 'vim-test/vim-test'          " Testing framework
@@ -76,15 +77,15 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Make sure you have latest version of the fzf binary. fzf is a command-line fuzzy finder
     Plug 'junegunn/fzf.vim'             " vim-fzf integration
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server provider (<leader>+a to invoke codeAction, <leader> is usually '\')
-    Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
-    Plug 'vim-airline/vim-airline-themes' " Themes for airline
     " Plug 'lervag/vimtex', { 'for': 'tex' }  " Tex support, load only when .tex file is opened
-    Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}         " Multiple cursors (Ctrl+d to mark the next occurence, Ctrl+Shift+l to select all occurences, Ctrl+Alt+up/down arrows to select previous/next line)
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } " Opens a file-tree (Ctrl+e)
+    Plug 'vim-airline/vim-airline'      " Nice statusbar / tabline
+    Plug 'vim-airline/vim-airline-themes' " Themes for airline
+    Plug 'luochen1990/rainbow'          " Color-codes matching parentheses
     Plug 'jiangmiao/auto-pairs'         " Auto pairs for (, [, ', etc
     Plug 'scrooloose/nerdcommenter'     " For easy commenting (Ctrl+/)
-    Plug 'tomasiser/vim-code-dark'      " VSCode theme
+    Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' } " Theme
     Plug 'ryanoasis/vim-devicons'       " Nice icons
 call plug#end()
 
@@ -107,9 +108,9 @@ call plug#end()
 " NERDTree Ctrl+e shows file browser
 map <C-e> :NERDTreeToggle<CR> 
 
-" VSCode color scheme
-colorscheme codedark
-let g:airline_theme='codedark'
+" Color scheme
+colorscheme moonfly
+let g:airline_theme='moonfly'
 
 " tagbar
 if !empty(glob("~/.local/bin/homebrew/bin/ctags"))
