@@ -35,6 +35,7 @@ for app in neovim chezmoi zoxide rs/tap/curlie bat lsd git-delta ripgrep sd univ
     brew install ${app}
   fi
 done
+brew tap browsh-org/homebrew-browsh  # A terminal-based browser (requires FireFox to be installed)
 
 # pip
 for app in epy-reader ptpython euporie visidata pynvim; do
