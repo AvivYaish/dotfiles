@@ -8,7 +8,7 @@ foreach ($app in @('Git.Git', 'twpayne.chezmoi', 'JanDeDobbeleer.OhMyPosh', 'jun
 		'dalance.procs', 'chmln.sd', 'dbrgn.tealdeer', '7zip.7zip', 'Anaconda.Anaconda3', 'BurntSushi.ripgrep.MSVC', `
   		'Docker.DockerDesktop', 'dandavison.delta', 'jftuga.less', 'sharkdp.bat', 'sharkdp.fd', 'Microsoft.PowerShell', `
     		'Clement.bottom', 'ca.duan.tre-command', 'Microsoft.VisualStudioCode', 'JohnMacFarlane.Pandoc', 'OpenJS.NodeJS', `
-      		'Neovim.Neovim', 'UniversalCtags.Ctags', 'gokcehan.lf', 'charmbracelet.glow', 'yt-dlp.yt-dlp', 'PDFArranger.PDFArranger')) {
+      		'Neovim.Neovim', 'UniversalCtags.Ctags', 'sxyazi.yazi', 'charmbracelet.glow', 'yt-dlp.yt-dlp', 'PDFArranger.PDFArranger')) {
 	winget install $app
 }
 

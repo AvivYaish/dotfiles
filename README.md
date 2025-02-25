@@ -27,7 +27,7 @@ I use the following applications:
   - [sd](https://github.com/chmln/sd): intuitive 'sed' alternative.
   - [curlie](https://github.com/rs/curlie): a 'curl' front-end inspired by HTTPie.
   - [glow](https://github.com/charmbracelet/glow): cli markdown renderer.
-  - [lf](https://github.com/gokcehan/lf) is a file manager.
+  - [yazi](https://github.com/sxyazi/yazi) is a file manager.
   - [procs](https://github.com/dalance/procs) is a 'ps' alternative.
   - [bottom](https://github.com/ClementTsang/bottom) is a 'top' replacement.
   - [ptpython](https://github.com/prompt-toolkit/ptpython) is a nicer Python REPL.
