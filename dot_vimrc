@@ -14,7 +14,7 @@ set mouse=a 			" Mouse support. Prevents copying to system clipboard, unless mou
 " When pasting code, indentation can be broken without setting 'paste'.
 " F2 in normal mode will invert the 'paste' option, and will show the option value.
 nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2> 	" F2 toggles 'paste' in insert mode
+" set pastetoggle=<F2> 	" F2 toggles 'paste' in insert mode
 set showmode 		" Shows 'paste' value in insert mode
 
 " Map Ctrl-z, Ctrl-y to undo, redo, Ctrl-a to select all, Ctrl-s to save

@@ -15,22 +15,6 @@ function dif([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Re
 function vimdiff([string[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {vim -d $Remaining}
 function readerPandoc([String[]] [Parameter(Position=1, ValueFromRemainingArguments)] $Remaining) {pandoc -f html -t plain $Remaining} # Parses a webpage to text
 
-# Some utility functions
-function updateAll() {
-  vim +PlugUpgrade +PlugUpdate +PlugInstall +PlugClean +CocInstall +CocUpdateSync +qall
-  Update-Module # Update PowerShell modules
-  Get-CimInstance -Namespace "Root\cimv2\mdm\dmmap" -ClassName "MDM_EnterpriseModernAppManagement_AppManagement01" | Invoke-CimMethod -MethodName UpdateScanMethod # Update Windows Store apps
-  winget upgrade --all
-  Get-WindowsUpdate ; Install-WindowsUpdate
-}
-function backupAll() {
-  $backup_path = Resolve-Path "~/OneDrive/Backups"
-  winget export -o $backup_path/Apps/winget.json;
-  Get-AppxPackage | Select Name, PackageFullName | Format-Table -AutoSize > $backup_path/Apps/windows_store.txt;
-  winget list | rg -v "winget" > $backup_path/Apps/windows_regular.txt;
-  & "$backup_path/syncToExternal.ps1";
-}
-
 # Autocomplete
 # If bat is installed, previews are syntax-highlighted, can be scrolled using ctl+up/down
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
